@@ -9,12 +9,17 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>(); 
     }
 
     // Update is called once per frame
     void Update()
     {
         Vector3 direction = player.position - transform.position;
+    }
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.gameObject.CompareTag("Player")){
+            Debug.Log("hit");            
+        }
     }
 }

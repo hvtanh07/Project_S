@@ -5,12 +5,15 @@ using UnityEngine.EventSystems;
 
 public class CharacterControl : MonoBehaviour
 {
+    [Header("Movement")]
     public Joystick joystick;
     public float dashDistance;
     public float speed;
     public float maxDashs;
     public float numOfDashs;
     public float dashHealTime = 2;
+    [Header("Attack")]
+    public float damage;
     Vector2 dir;
     private bool HoldingDown,Dashing;
     private float timer;
@@ -22,13 +25,18 @@ public class CharacterControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {    
-        if(HoldingDown){
+        if(HoldingDown && joystick.Direction != Vector2.zero){
             dir = joystick.Direction.normalized * dashDistance;
-            Debug.Log(dir);
         }
         if ( lastDashTime >= 0 && Time.time - lastDashTime >= dashHealTime && numOfDashs < maxDashs )
         {
             addDash();
+        }
+         if (Input.GetKeyDown(KeyCode.R)){
+            Time.timeScale = 0.1f;
+        }
+         if (Input.GetKeyDown(KeyCode.E)){
+            Time.timeScale = 1f;
         }
     }
     
@@ -44,6 +52,7 @@ public class CharacterControl : MonoBehaviour
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, 360f);
             LeanTween.move(this.gameObject,target, dashDistance/speed).setOnComplete(FinishedDash);
         }       
+       
     }
     
     private void FinishedDash(){
@@ -54,6 +63,12 @@ public class CharacterControl : MonoBehaviour
     public void addDash(){              
         numOfDashs++;   
         lastDashTime = Time.time;      
+    }
+    public float DealtDamage(){
+        if(Dashing){
+            return damage;
+        }
+        return 0f;
     }
 }
  
