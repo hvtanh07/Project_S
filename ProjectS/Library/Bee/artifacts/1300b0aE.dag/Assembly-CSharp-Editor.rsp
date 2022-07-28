@@ -399,6 +399,8 @@
 "Assets/Joystick Pack/Scripts/Editor/JoystickEditor.cs"
 "Assets/Joystick Pack/Scripts/Editor/VariableJoystickEditor.cs"
 "Assets/LeanTween/Editor/LeanTweenDocumentationEditor.cs"
+"Assets/TutorialInfo/Scripts/Editor/ReadmeEditor.cs"
+"Assets/TutorialInfo/Scripts/Editor/TutorialInfoEditor.cs"
 -langversion:9.0
 
 /deterministic

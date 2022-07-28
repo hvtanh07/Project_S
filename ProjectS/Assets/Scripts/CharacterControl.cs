@@ -24,10 +24,10 @@ public class CharacterControl : MonoBehaviour
     void Update()
     {    
         if(HoldingDown){
+            
             dir = joystick.Direction.normalized * dashDistance;
-            Debug.Log(dir);
         }
-        if ( lastDashTime >= 0 && Time.time - lastDashTime >= dashHealTime && numOfDashs < maxDashs )
+        if ( numOfDashs < maxDashs && Time.time - lastDashTime >= dashHealTime )
         {
             addDash();
         }

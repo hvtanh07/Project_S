@@ -417,6 +417,16 @@
 "Assets/Scripts/CharacterControl.cs"
 "Assets/Scripts/Enemy.cs"
 "Assets/Scripts/JoystickEvent.cs"
+"Assets/TutorialInfo/Scripts/Readme.cs"
+"Assets/TutorialInfo/Scripts/TutorialInfo.cs"
+"Assets/_Complete-Game/Scripts/BoardManager.cs"
+"Assets/_Complete-Game/Scripts/Enemy.cs"
+"Assets/_Complete-Game/Scripts/GameManager.cs"
+"Assets/_Complete-Game/Scripts/Loader.cs"
+"Assets/_Complete-Game/Scripts/MovingObject.cs"
+"Assets/_Complete-Game/Scripts/Player.cs"
+"Assets/_Complete-Game/Scripts/SoundManager.cs"
+"Assets/_Complete-Game/Scripts/Wall.cs"
 -langversion:9.0
 
 /deterministic
