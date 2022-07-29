@@ -6,6 +6,8 @@ public class Player : MonoBehaviour
 {
     public TrailRenderer trail;
     public Joystick joystick;
+    [Header("Health")]
+    public int health;
     [Header("Attack Stats")]
     public int damage;
     [Header("Movement Stats")]
@@ -91,5 +93,10 @@ public class Player : MonoBehaviour
     }
     public int getDamage(){
         return damage;
+    }
+    public void TakeDamage(int damage){
+        if(!Dashing){
+            health -= damage;
+        }        
     }
 }
