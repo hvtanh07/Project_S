@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public TrailRenderer trail;
     public Joystick joystick;
     public float dashDistance;
     public float speed;
@@ -44,6 +45,9 @@ public class Player : MonoBehaviour
     public void Dash(){
         HoldingDown = false;
         if(numOfDashs > 0){
+            trail.transform.SetParent(this.transform);
+            trail.transform.localPosition = Vector3.zero;
+            trail.Clear();
             Vector2 target = new Vector2(transform.position.x + dir.x , transform.position.y + dir.y);
             Dashing = true;
             Quaternion toRotation = Quaternion.LookRotation(transform.forward, dir);
@@ -58,6 +62,9 @@ public class Player : MonoBehaviour
         transform.position += walkoffset;
     }
     private void FinishedDash(){
+        //trail.emitting = false;
+        trail.transform.SetParent(null);
+        trail.Clear();
         Dashing = false;
         numOfDashs--;
         lastDashTime = Time.time;
