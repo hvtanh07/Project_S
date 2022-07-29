@@ -10,16 +10,10 @@ public class TrailControl : MonoBehaviour
         slashDamage = player.GetComponent<Player>().damage;
     }
     private void OnTriggerEnter2D(Collider2D other){
-        if(other.gameObject.CompareTag("Enemy")){
-            StartCoroutine(Attack(0.5f, slashDamage, other));
+        Enemy enemy = other.GetComponent<Enemy>();
+        if(enemy != null){
+            Debug.Log("slash");
+            enemy.TakeDamage(slashDamage);
         }
-    }
-
-    IEnumerator Attack(float secs, int damage, Collider2D col)
-    {
-        yield return new WaitForSeconds(secs);
-        Enemy enemy = col.GetComponent<Enemy>();
-        if (enemy != null)
-            enemy.gameObject.GetComponent<Enemy>().TakeDamage(damage);
     }
 }
