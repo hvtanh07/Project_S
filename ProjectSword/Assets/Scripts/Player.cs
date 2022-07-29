@@ -13,12 +13,15 @@ public class Player : MonoBehaviour
     public float dashHealTime = 1;
     public float turnningSpeed;
     public float walkingSpeed;
+    public LayerMask wallmask;
     Vector2 dir;
     private bool HoldingDown,Dashing;
+    private Rigidbody2D rb;
     private float timer;
     private float lastDashTime = -1;
     private void Start() {
         numOfDashs = maxDashs;
+        rb = GetComponent<Rigidbody2D>();
     }
     
     void Update()
@@ -45,21 +48,33 @@ public class Player : MonoBehaviour
     public void Dash(){
         HoldingDown = false;
         if(numOfDashs > 0){
+            //get trail and prepare to draw
             trail.transform.SetParent(this.transform);
             trail.transform.localPosition = Vector3.zero;
-            trail.Clear();
-            Vector2 target = new Vector2(transform.position.x + dir.x , transform.position.y + dir.y);
+            trail.Clear();     
+            //set target
+            Vector3 target = new Vector2(transform.position.x + dir.x , transform.position.y + dir.y);
+            //draw line to front to check if dash will hit anything then dash to the target
+            
+            //Debug.DrawLine(transform.position, target, Color.red, 1f);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, dashDistance, wallmask);
+            if(hit.collider != null){
+                Debug.Log("this one hit wall");
+                target = hit.point;
+            }
+            
             Dashing = true;
             Quaternion toRotation = Quaternion.LookRotation(transform.forward, dir);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, 360f);
+            transform.rotation = toRotation;
             LeanTween.move(this.gameObject,target, dashDistance/speed).setEase(LeanTweenType.easeOutQuart).setOnComplete(FinishedDash);
         }       
     }
     public void Walk(){
         Quaternion toRotation = Quaternion.LookRotation(transform.forward, dir);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, turnningSpeed);
-        Vector3 walkoffset = joystick.Direction.normalized * walkingSpeed * Time.deltaTime;
-        transform.position += walkoffset;
+        Vector2 walkoffset = joystick.Direction.normalized * walkingSpeed * Time.deltaTime;
+        //transform.position += walkoffset;
+        rb.position += walkoffset;	
     }
     private void FinishedDash(){
         //trail.emitting = false;
