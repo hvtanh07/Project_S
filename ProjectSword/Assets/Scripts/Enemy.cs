@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] Transform target;
+    public float flinchTime;
     NavMeshAgent agent;
     public int health;
     public float speed;
@@ -28,12 +29,12 @@ public class Enemy : MonoBehaviour
     }
     public void TakeDamage(int damage){
         agent.speed = 0;
-        StartCoroutine(Hurt(0.5f, damage));       
+        StartCoroutine(Hurt(damage));       
     }
 
-    IEnumerator Hurt(float secs, int damage)
+    IEnumerator Hurt(int damage)
     {      
-        yield return new WaitForSeconds(secs);
+        yield return new WaitForSeconds(flinchTime);
         health -= damage;
         if(health <=0){
             Death();
