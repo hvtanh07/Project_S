@@ -6,6 +6,9 @@ public class Player : MonoBehaviour
 {
     public TrailRenderer trail;
     public Joystick joystick;
+    [Header("Attack Stats")]
+    public int damage;
+    [Header("Movement Stats")]
     public float dashDistance;
     public float speed;
     public float maxDashs;
@@ -51,18 +54,16 @@ public class Player : MonoBehaviour
             //get trail and prepare to draw
             trail.transform.SetParent(this.transform);
             trail.transform.localPosition = Vector3.zero;
-            trail.Clear();     
+            trail.Clear();
+
             //set target
             Vector3 target = new Vector2(transform.position.x + dir.x , transform.position.y + dir.y);
-            //draw line to front to check if dash will hit anything then dash to the target
-            
-            //Debug.DrawLine(transform.position, target, Color.red, 1f);
+
+            //draw line to front to check if dash will hit anything then dash to the target                   
             RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, dashDistance, wallmask);
             if(hit.collider != null){
-                Debug.Log("this one hit wall");
                 target = hit.point;
-            }
-            
+            }          
             Dashing = true;
             Quaternion toRotation = Quaternion.LookRotation(transform.forward, dir);
             transform.rotation = toRotation;
@@ -87,5 +88,8 @@ public class Player : MonoBehaviour
     public void addDash(){              
         numOfDashs++;   
         lastDashTime = Time.time;      
+    }
+    public int getDamage(){
+        return damage;
     }
 }

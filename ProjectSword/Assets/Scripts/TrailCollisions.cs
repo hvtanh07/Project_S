@@ -35,6 +35,7 @@ public class TrailCollisions : MonoBehaviour
         {
             validCollider = new GameObject("TrailCollider",typeof(EdgeCollider2D)).GetComponent<EdgeCollider2D>();
             validCollider.gameObject.AddComponent(typeof(TrailControl));
+            
         }
         return validCollider;
     }

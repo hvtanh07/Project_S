@@ -425,6 +425,7 @@
 "Assets/LeanTween/Framework/LTDescrOptional.cs"
 "Assets/LeanTween/Framework/LTSeq.cs"
 "Assets/Scripts/CameraFollow.cs"
+"Assets/Scripts/Enemy.cs"
 "Assets/Scripts/JoystickEvent.cs"
 "Assets/Scripts/Player.cs"
 "Assets/Scripts/TrailCollisions.cs"
