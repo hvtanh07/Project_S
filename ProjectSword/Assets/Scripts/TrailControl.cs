@@ -15,11 +15,5 @@ public class TrailControl : MonoBehaviour
             enemy.TakeDamage(slashDamage);
             return;
         }
-        DashEnemy enemy1 = other.GetComponent<DashEnemy>();
-        if(enemy1 != null){
-            enemy1.TakeDamage(slashDamage);
-            return;
-        }
-
     }
 }

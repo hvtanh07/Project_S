@@ -67,14 +67,14 @@ public class Player : MonoBehaviour
                 target = hit.point;
             }          
             Dashing = true;
-            Quaternion toRotation = Quaternion.LookRotation(transform.forward, dir);
-            transform.rotation = toRotation;
+            //Quaternion toRotation = Quaternion.LookRotation(transform.forward, dir);
+            //transform.rotation = toRotation;
             LeanTween.move(this.gameObject,target, dashDistance/speed).setEase(LeanTweenType.easeOutQuart).setOnComplete(FinishedDash);
         }       
     }
     public void Walk(){
-        Quaternion toRotation = Quaternion.LookRotation(transform.forward, dir);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, turnningSpeed);
+        //Quaternion toRotation = Quaternion.LookRotation(transform.forward, dir);
+        //transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, turnningSpeed);
         Vector2 walkoffset = joystick.Direction.normalized * walkingSpeed * Time.deltaTime;
         //transform.position += walkoffset;
         rb.position += walkoffset;	
@@ -98,5 +98,8 @@ public class Player : MonoBehaviour
         if(!Dashing){
             health -= damage;
         }        
+        if (health < 0){
+            //die
+        }
     }
 }
