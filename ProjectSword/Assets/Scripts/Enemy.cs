@@ -58,8 +58,7 @@ public class Enemy : MonoBehaviour
             currentDamageTime = 0.0f;
         }
     }
-    private void OnTriggerStay2D(Collider2D other) {
-        Debug.Log("staying");
+    private void OnTriggerStay2D(Collider2D other) {       
         Player player = other.GetComponent<Player>();
         if(player != null && !flinch){
             currentDamageTime += Time.deltaTime;
