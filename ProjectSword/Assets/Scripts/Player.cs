@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     [Header("Attack Stats")]
     public int damage;
     [Header("Movement Stats")]
+    [SerializeField] GameObject indicator;
     public float dashDistance;
     public float speed;
     public float maxDashs;
@@ -31,7 +32,8 @@ public class Player : MonoBehaviour
     
     void Update()
     {
-        if(HoldingDown){         
+        if(HoldingDown){  
+            indicator.SetActive(true); 
             dir = joystick.Direction.normalized * dashDistance;
             Walk();
         }
@@ -52,6 +54,7 @@ public class Player : MonoBehaviour
     }
     public void Dash(){
         HoldingDown = false;
+        indicator.SetActive(false);
         if(numOfDashs > 0){
             //get trail and prepare to draw
             trail.transform.SetParent(this.transform);
@@ -67,14 +70,14 @@ public class Player : MonoBehaviour
                 target = hit.point;
             }          
             Dashing = true;
-            //Quaternion toRotation = Quaternion.LookRotation(transform.forward, dir);
-            //transform.rotation = toRotation;
+            
             LeanTween.move(this.gameObject,target, dashDistance/speed).setEase(LeanTweenType.easeOutQuart).setOnComplete(FinishedDash);
         }       
     }
     public void Walk(){
-        //Quaternion toRotation = Quaternion.LookRotation(transform.forward, dir);
-        //transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, turnningSpeed);
+        Quaternion toRotation = Quaternion.LookRotation(indicator.transform.forward, dir);
+        indicator.transform.rotation = Quaternion.RotateTowards(indicator.transform.rotation, toRotation, turnningSpeed);
+
         Vector2 walkoffset = joystick.Direction.normalized * walkingSpeed * Time.deltaTime;
         //transform.position += walkoffset;
         rb.position += walkoffset;	

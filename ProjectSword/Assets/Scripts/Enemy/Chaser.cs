@@ -15,7 +15,9 @@ public class Chaser : Enemy
     // Update is called once per frame
     void Update()
     {
-        agent.SetDestination(target.position);
+        if(health > 0){
+            agent.SetDestination(target.position);
+        }
         
     }
 

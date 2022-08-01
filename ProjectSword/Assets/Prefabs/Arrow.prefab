@@ -210,7 +210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ac25cd3935c07478fbdf29bb668e64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flySpeed: 30
+  flySpeed: 20
   damage: 10
 --- !u!50 &-2569024859567600350
 Rigidbody2D:

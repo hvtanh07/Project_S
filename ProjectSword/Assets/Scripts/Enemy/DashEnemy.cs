@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DashEnemy : Enemy
 {
+    [Header("Sword Master stats")]
     public float distanceToDash;
     public float timeBeforeDash;
     public float dashDistance;
@@ -26,10 +27,12 @@ public class DashEnemy : Enemy
     // Update is called once per frame
     void Update()
     {
-        agent.SetDestination(target.position);
+        if(health > 0){
+            agent.SetDestination(target.position);
+        }
         //float dist=agent.remainingDistance; 
         currentDashTime += Time.deltaTime;
-        if (agent.remainingDistance <= agent.stoppingDistance && currentDashTime > dashRate && health > 0){    
+        if (agent.remainingDistance <= agent.stoppingDistance && currentDashTime > dashRate){    
             currentDashTime = 0f;      
             agent.speed = 0;
             trail.emitting = true;
@@ -38,22 +41,22 @@ public class DashEnemy : Enemy
         }     
     }
     IEnumerator Dash(Vector3 target){
-        yield return new WaitForSeconds(timeBeforeDash);      
-        Vector3 dir = (target - transform.position).normalized * dashDistance;
-        //set target
-        Vector3 finaltarget = new Vector2(transform.position.x + dir.x , transform.position.y + dir.y);
+        yield return new WaitForSeconds(timeBeforeDash);
+        if(health > 0){
+            Vector3 dir = (target - transform.position).normalized * dashDistance;
+            //set target
+            Vector3 finaltarget = new Vector2(transform.position.x + dir.x , transform.position.y + dir.y);
         
-        //draw line to front to check if dash will hit anything then dash to the target                   
-        RaycastHit2D hit = Physics2D.Linecast(transform.position, finaltarget, wallmask);
-        if(hit.collider != null){
-            Debug.Log("this one goes outside");
-            finaltarget = hit.point;
-        }  
-        Debug.DrawLine(transform.position,finaltarget,Color.red,1.0f);        
-        //Dashing = true;
-        //Quaternion toRotation = Quaternion.LookRotation(transform.forward, dir);
-        //transform.rotation = toRotation;
-        LeanTween.move(this.gameObject,finaltarget, dashDistance/dashSpeed).setEase(LeanTweenType.easeOutQuart).setOnComplete(FinishedDash);
+            //draw line to front to check if dash will hit anything then dash to the target                   
+            RaycastHit2D hit = Physics2D.Linecast(transform.position, finaltarget, wallmask);
+            if(hit.collider != null){
+                Debug.Log("this one goes outside");
+                finaltarget = hit.point;
+            }  
+            Debug.DrawLine(transform.position,finaltarget,Color.red,1.0f);        
+            LeanTween.move(this.gameObject,finaltarget, dashDistance/dashSpeed).setEase(LeanTweenType.easeOutQuart).setOnComplete(FinishedDash);
+        }      
+        
     }
     
     void FinishedDash(){

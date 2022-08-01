@@ -31,13 +31,13 @@ public class Enemy : MonoBehaviour
     {
         agent.SetDestination(target.position);        
     }
-    public void TakeDamage(int damage){
+    virtual public void TakeDamage(int damage){
         flinch = true;
         agent.speed = 0;
         StartCoroutine(Hurt(damage));       
     }
 
-    IEnumerator Hurt(int damage)
+    protected IEnumerator Hurt(int damage)
     {             
         yield return new WaitForSeconds(flinchTime);
         health -= damage;
@@ -50,6 +50,7 @@ public class Enemy : MonoBehaviour
         
     }
     private void Death(){
+        agent.speed = 0;
         Debug.Log("died");
     }
 }

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Shooter : Enemy
 {
+    [Header("Shooter stats")]
     [SerializeField] GameObject objBullet;
-    public float bulletSpeed;
     public float distanceToShoot;
     public float timeBeforeShoot;
     public float fireRate;
@@ -20,9 +20,12 @@ public class Shooter : Enemy
     // Update is called once per frame
     void Update()
     {
-        agent.SetDestination(target.position);
+        if(health > 0){
+            agent.SetDestination(target.position);
+        }
+        
         curentFireTime += Time.deltaTime;
-        if (agent.remainingDistance <= agent.stoppingDistance && curentFireTime > fireRate && health > 0){
+        if (agent.remainingDistance <= agent.stoppingDistance && curentFireTime > fireRate){
             curentFireTime = 0f;      
             agent.speed = 0;            
             StartCoroutine(Shoot(target.position));
@@ -33,10 +36,9 @@ public class Shooter : Enemy
 
     IEnumerator Shoot(Vector3 target){
         yield return new WaitForSeconds(timeBeforeShoot); 
-          
-        Quaternion rotation = Quaternion.LookRotation(transform.forward, target - transform.position); 
-        GameObject bullet = Instantiate(objBullet,transform.position,rotation);
-        
-        //LeanTween.move(bullet,target*10,)
+        if (health > 0){
+            Quaternion rotation = Quaternion.LookRotation(transform.forward, target - transform.position); 
+            GameObject bullet = Instantiate(objBullet,transform.position,rotation);      
+        }
     }
 }
