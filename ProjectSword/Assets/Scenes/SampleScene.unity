@@ -711,6 +711,7 @@ MonoBehaviour:
   health: 10
   speed: 3
   damage: 10
+  distanceToAttack: 0.8
 --- !u!1 &591644490
 GameObject:
   m_ObjectHideFlags: 0
@@ -1884,7 +1885,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1075019053}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.81, y: 9.42, z: 0}
+  m_LocalPosition: {x: -3.9, y: 10.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1908,7 +1909,7 @@ MonoBehaviour:
   health: 10
   speed: 3
   damage: 10
-  distanceToDash: 5
+  distanceToAttack: 5
   timeBeforeDash: 0.5
   dashDistance: 10
   dashSpeed: 50
@@ -2212,8 +2213,8 @@ MonoBehaviour:
   health: 10
   speed: 3
   damage: 0
+  distanceToAttack: 8
   objBullet: {fileID: 7743424670256140933, guid: 64d390ea453d6fb489c7ca6095f3f522, type: 3}
-  distanceToShoot: 8
   timeBeforeShoot: 1
   fireRate: 4
 --- !u!50 &1349092838
@@ -2323,7 +2324,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1349092835}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.8, y: 9.53, z: 0}
+  m_LocalPosition: {x: -0, y: 10.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2659,7 +2660,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!195 &1596106554
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2789,7 +2790,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1596106553}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.31, y: 8.72, z: 0}
+  m_LocalPosition: {x: 10.9, y: 10.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2813,13 +2814,14 @@ MonoBehaviour:
   health: 10
   speed: 3
   damage: 10
+  distanceToAttack: 8
   objBullet: {fileID: 0}
-  distanceToShoot: 8
   timeBeforeShoot: 1
   fireRate: 5
   spotWidth: 0.5
   spotSpreadRange: 3
   numberOfAttackPoint: 5
+  typeOfMagic: 2
   playerMask:
     serializedVersion: 2
     m_Bits: 128
@@ -2918,7 +2920,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!195 &1696146596
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2958,6 +2960,7 @@ MonoBehaviour:
   health: 10
   speed: 3
   damage: 10
+  distanceToAttack: 0.8
   maximumBlockHealth: 30
   blockingHealth: 0
   healAmount: 10
@@ -3069,7 +3072,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1696146595}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.31, y: 8.72, z: 0}
+  m_LocalPosition: {x: 6.1, y: 10.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

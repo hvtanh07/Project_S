@@ -5,7 +5,6 @@ using UnityEngine;
 public class DashEnemy : Enemy
 {
     [Header("Sword Master stats")]
-    public float distanceToDash;
     public float timeBeforeDash;
     public float dashDistance;
     public float dashSpeed;
@@ -18,7 +17,6 @@ public class DashEnemy : Enemy
     void Start()
     {
         setupAgent();
-        agent.stoppingDistance = distanceToDash;
         trail = GetComponent<TrailRenderer>();
         trail.Clear();
         trail.emitting = false;

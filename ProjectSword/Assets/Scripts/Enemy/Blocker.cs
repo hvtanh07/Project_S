@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Blocker : Enemy
 {
+    [Header("Blocker stats")]
     public int maximumBlockHealth;
     public int blockingHealth;
     public int healAmount;
@@ -24,7 +25,7 @@ public class Blocker : Enemy
         if(health > 0){
             agent.SetDestination(target.position);
         }
-        if ( blockingHealth < maximumBlockHealth && Time.time - lastBlockTime >= blockHealTime )
+        if ( blockingHealth < maximumBlockHealth && Time.time - lastBlockTime >= blockHealTime && health > 0)
         {
             blockingHealth += healAmount;
             lastBlockTime = Time.time;
@@ -55,13 +56,16 @@ public class Blocker : Enemy
         if (blockingHealth <=0){
             StartCoroutine(Hurt(damage));  
         }else{
-            blockingHealth -= damage;
-            lastBlockTime = Time.time;
-            StartCoroutine(Flinch());
-            //if (animator.GetCurrentAnimatorStateInfo(0).IsName("YourAnimationName"))
-            //{
-                // agent.speed = speed;
-            //}
+            if(health > 0){
+                blockingHealth -= damage;
+                lastBlockTime = Time.time;
+                StartCoroutine(Flinch());
+                //if (animator.GetCurrentAnimatorStateInfo(0).IsName("YourAnimationName"))
+                //{
+                    // agent.speed = speed;
+                //}
+            }
+            
         }          
     }
 

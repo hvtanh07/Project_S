@@ -5,22 +5,31 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
+    //state machine
+    private Vector3 startingPosition;
+
     [SerializeField] protected Transform target;
     public float flinchTime;
     
     public int health;
     public float speed;
     public int damage;
+    public float distanceToAttack;
     protected bool flinch;
+    
     protected NavMeshAgent agent;
     // Start is called before the first frame update
     void Start()
     {
         setupAgent();
     }
+
+    
     protected void setupAgent(){
+        startingPosition = transform.position;
         target = GameObject.FindGameObjectWithTag("Player").transform;
         agent = GetComponent<NavMeshAgent>();
+        agent.stoppingDistance = distanceToAttack;
         agent.speed = speed;
         agent.updateRotation = false;
         agent.updateUpAxis = false;

@@ -6,7 +6,6 @@ public class Shooter : Enemy
 {
     [Header("Shooter stats")]
     [SerializeField] GameObject objBullet;
-    public float distanceToShoot;
     public float timeBeforeShoot;
     public float fireRate;
     float curentFireTime;
@@ -14,7 +13,6 @@ public class Shooter : Enemy
     void Start()
     {
         setupAgent();
-        agent.stoppingDistance = distanceToShoot;
     }
 
     // Update is called once per frame
