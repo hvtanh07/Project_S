@@ -62,4 +62,13 @@ public class Enemy : MonoBehaviour
         agent.speed = 0;
         Debug.Log("died");
     }
+
+    public bool isDead(){
+        if (health <= 0){
+            return true;
+        }else{
+            return false;
+        }
+        
+    }
 }
