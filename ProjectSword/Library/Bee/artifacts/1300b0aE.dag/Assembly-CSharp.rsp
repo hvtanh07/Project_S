@@ -432,6 +432,7 @@
 "Assets/Scripts/Enemy/Chaser.cs"
 "Assets/Scripts/Enemy/ColliderTrigger.cs"
 "Assets/Scripts/Enemy/DashEnemy.cs"
+"Assets/Scripts/Enemy/DoorSystem.cs"
 "Assets/Scripts/Enemy/Enemy.cs"
 "Assets/Scripts/Enemy/Projectile.cs"
 "Assets/Scripts/Enemy/Shooter.cs"
