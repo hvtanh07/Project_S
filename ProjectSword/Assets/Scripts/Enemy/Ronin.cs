@@ -4,15 +4,15 @@ using UnityEngine;
 using UnityEngine.AI;
 
 
-[RequireComponent(typeof(Attack))]
+//[RequireComponent(typeof(Attack))]
 public class Ronin : Enemy
 {
     [SerializeField] Attack attack;
     private NavMeshAgent agent;
     public float flinchTime;
     public float distanceToAttack;
-    public bool flinch;  
-    public float attackRate;
+    private bool flinch;  
+    public float timeBetweenAtack;
     float curentAttactTime;
 
     // Start is called before the first frame update
@@ -44,7 +44,7 @@ public class Ronin : Enemy
         } 
         curentAttactTime += Time.deltaTime;
         if(health > 0){
-            if (agent.remainingDistance <= agent.stoppingDistance && curentAttactTime > attackRate){                
+            if (agent.remainingDistance <= agent.stoppingDistance && curentAttactTime > timeBetweenAtack){                
                 curentAttactTime = 0f;        
                 attack.Attacking(target.position);
             }

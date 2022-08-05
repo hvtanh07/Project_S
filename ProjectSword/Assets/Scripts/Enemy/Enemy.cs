@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     //state machine
     private Vector3 startingPosition;
     public event EventHandler OnEnemyDie;
-    [SerializeField] protected Transform target;
+    [HideInInspector] protected Transform target;
     public int health;
     public float speed;
 
