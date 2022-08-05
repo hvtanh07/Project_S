@@ -9974,10 +9974,10 @@ GameObject:
   - component: {fileID: 1456778502996530364}
   - component: {fileID: 1456778502996530362}
   - component: {fileID: 1456778502996530361}
-  - component: {fileID: 1456778502996531018}
-  - component: {fileID: 1456778502996531017}
   - component: {fileID: 1456778502996531015}
   - component: {fileID: 1456778502996531016}
+  - component: {fileID: 1456778502996531018}
+  - component: {fileID: 1456778502996531017}
   m_Layer: 9
   m_Name: Enemy
   m_TagString: Enemy
@@ -10115,17 +10115,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1456778502996530365}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ba8177c8f0966c4ca6b078beda3e217, type: 3}
+  m_Script: {fileID: 11500000, guid: 3409ac67c5c271845b6de9e333c72785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
-  dashSpeed: 50
-  patern:
-  - {x: 1, y: 1, z: 0}
-  - {x: -1, y: -1, z: 0}
-  - {x: 1, y: -1, z: 0}
-  - {x: -1, y: 1, z: 0}
-  - {x: 1, y: -1, z: 0}
+  target: {fileID: 0}
+  health: 10
+  speed: 3
+  attack: {fileID: 1456778502996531018}
+  flinchTime: 0.8
+  distanceToAttack: 9
+  flinch: 0
+  attackRate: 5
 --- !u!114 &1456778502996531018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10135,13 +10135,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1456778502996530365}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 780bc7c7d5ef57a4f95be841dab20d4e, type: 3}
+  m_Script: {fileID: 11500000, guid: f1441d78f8f2d2c44ad7148dd97da7b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  health: 50
-  speed: 3
-  dashAttack: {fileID: 1456778502996531017}
-  damageReceiveDelay: 1
-  dashAttackRange: 4
-  attackRate: 4
+  objBullet: {fileID: 7743424670256140933, guid: 64d390ea453d6fb489c7ca6095f3f522, type: 3}
+  Force: 30
+  damage: 10
+  numOfProjectiles: 5
+  angle: 70
