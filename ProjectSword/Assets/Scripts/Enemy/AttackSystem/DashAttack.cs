@@ -11,12 +11,9 @@ public class DashAttack : Attack
     public float dashSpeed;
     public LayerMask wallmask;
     TrailRenderer trail;
-    Enemy enemy;
-    Collider2D col;
     bool Dashing;
     private void Start() {
         trail = GetComponent<TrailRenderer>(); 
-        col = GetComponent<Collider2D>();
     }
     public override void Attacking(Vector3 target){
         Vector3 dir = (target - transform.position).normalized * dashDistance;

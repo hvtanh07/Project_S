@@ -421,7 +421,8 @@ GameObject:
   - component: {fileID: 568205347}
   - component: {fileID: 568205346}
   - component: {fileID: 568205345}
-  m_Layer: 0
+  - component: {fileID: 568205348}
+  m_Layer: 6
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7150,6 +7151,22 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!19719996 &568205348
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 568205343}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0.00001
 --- !u!1 &630077342
 GameObject:
   m_ObjectHideFlags: 0
@@ -7184,7 +7201,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trail: {fileID: 1326369206500403533}
   joystick: {fileID: 2098974246}
-  health: 1000
+  health: 100
   damage: 10
   indicator: {fileID: 1582584138}
   dashDistance: 10
@@ -9957,10 +9974,8 @@ GameObject:
   - component: {fileID: 1456778502996530364}
   - component: {fileID: 1456778502996530362}
   - component: {fileID: 1456778502996530361}
-  - component: {fileID: 1456778502996531019}
   - component: {fileID: 1456778502996531018}
   - component: {fileID: 1456778502996531017}
-  - component: {fileID: 1456778502996531020}
   - component: {fileID: 1456778502996531015}
   - component: {fileID: 1456778502996531016}
   m_Layer: 9
@@ -10100,12 +10115,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1456778502996530365}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1441d78f8f2d2c44ad7148dd97da7b3, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ba8177c8f0966c4ca6b078beda3e217, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objBullet: {fileID: 7743424670256140933, guid: 64d390ea453d6fb489c7ca6095f3f522, type: 3}
-  Force: 30
   damage: 10
+  dashSpeed: 50
+  patern:
+  - {x: 1, y: 1, z: 0}
+  - {x: -1, y: -1, z: 0}
+  - {x: 1, y: -1, z: 0}
+  - {x: -1, y: 1, z: 0}
+  - {x: 1, y: -1, z: 0}
 --- !u!114 &1456778502996531018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10115,49 +10135,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1456778502996530365}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 371ad491a986ea34a9f30a88094e17b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dashDistance: 10
-  damage: 20
-  dashSpeed: 60
-  wallmask:
-    serializedVersion: 2
-    m_Bits: 8
---- !u!114 &1456778502996531019
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1456778502996530365}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de1b90dd6dda3f448b08612f1b96196e, type: 3}
+  m_Script: {fileID: 11500000, guid: 780bc7c7d5ef57a4f95be841dab20d4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   health: 50
   speed: 3
-  dashAttack: {fileID: 1456778502996531018}
-  projectileAttack: {fileID: 1456778502996531017}
+  dashAttack: {fileID: 1456778502996531017}
   damageReceiveDelay: 1
-  rangedAttackRange: 10
-  dashAttackRange: 5
-  attackRate: 3
---- !u!114 &1456778502996531020
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1456778502996530365}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7686e34d0a1b3fe4696126bfce8bad3e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maximumBlockHealth: 30
-  blockingHealth: 0
-  healAmount: 5
-  blockHealTime: 3
+  dashAttackRange: 4
+  attackRate: 4
