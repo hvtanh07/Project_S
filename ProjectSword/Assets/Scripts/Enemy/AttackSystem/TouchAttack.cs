@@ -6,28 +6,22 @@ using UnityEngine;
 public class TouchAttack : Attack
 {
     Player player;
-    Collider2D col;
     public int damage;
 
     bool touchingPlayer;
-    private void Start() {
-        
-        col = GetComponent<Collider2D>();
-    }
     private void OnTriggerEnter2D(Collider2D other) {       
-        player = other.GetComponent<Player>();
-        if(player != null){
-            touchingPlayer = true;
+        
+        if(other.CompareTag("Player")){
+            player = other.GetComponent<Player>();
         }
     }
     private void OnTriggerExit2D(Collider2D other) {
-        player = other.GetComponent<Player>();
-        if(player != null){
-            touchingPlayer = false;
+        if(other.CompareTag("Player")){
+            player = null;
         }
     }
     public override void Attacking(Vector3 target){
-        if(touchingPlayer){
+        if(player != null){
             player.TakeDamage(damage);
         }
     }

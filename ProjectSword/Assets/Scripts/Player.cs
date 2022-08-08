@@ -22,12 +22,15 @@ public class Player : MonoBehaviour
     public LayerMask wallmask;
     Vector2 dir;
     private bool HoldingDown,Dashing;
+    private bool m_FacingRight = true;
     private Rigidbody2D rb;
+    private Animator anim;
     private float timer;
     private float lastDashTime = -1;
     private void Start() {
         numOfDashs = maxDashs;
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
     
     void Update()
@@ -48,6 +51,8 @@ public class Player : MonoBehaviour
         {
             Time.timeScale = 1f;
         }
+       
+
     }
     public void GetDir(){
         HoldingDown = true;      
@@ -56,6 +61,7 @@ public class Player : MonoBehaviour
         HoldingDown = false;
         indicator.SetActive(false);
         if(numOfDashs > 0){
+            anim.Play("Attack");
             //get trail and prepare to draw
             trail.transform.SetParent(this.transform);
             trail.transform.localPosition = Vector3.zero;
@@ -75,14 +81,26 @@ public class Player : MonoBehaviour
         }       
     }
     public void Walk(){
+        anim.Play("Run");
         Quaternion toRotation = Quaternion.LookRotation(indicator.transform.forward, dir);
         indicator.transform.rotation = Quaternion.RotateTowards(indicator.transform.rotation, toRotation, turnningSpeed);
 
         Vector2 walkoffset = joystick.Direction.normalized * walkingSpeed * Time.deltaTime;
         //transform.position += walkoffset;
         rb.position += walkoffset;	
+
+        if (joystick.Direction.x > 0 && !m_FacingRight)
+		{
+			Flip();
+		}
+		// Otherwise if the input is moving the player left and the player is facing right...
+		else if (joystick.Direction.x < 0 && m_FacingRight)
+		{
+			Flip();
+		}
     }
     private void FinishedDash(){
+        anim.Play("Idle");
         //trail.emitting = false;
         trail.transform.SetParent(null);
         trail.Clear();
@@ -98,6 +116,7 @@ public class Player : MonoBehaviour
         return damage;
     }
     public void TakeDamage(int damage){
+        anim.Play("Hurt");
         if(!Dashing){
             health -= damage;
         }        
@@ -105,4 +124,18 @@ public class Player : MonoBehaviour
             //die
         }
     }
+    public void AnimHurtDone(){
+        anim.Play("Idle");
+    }
+
+    private void Flip()
+	{
+		// Switch the way the player is labelled as facing.
+		m_FacingRight = !m_FacingRight;
+
+		// Multiply the player's x local scale by -1.
+		Vector3 theScale = transform.localScale;
+		theScale.x *= -1;
+		transform.localScale = theScale;
+	}
 }
