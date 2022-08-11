@@ -443,6 +443,7 @@
 "Assets/Scripts/Enemy/Ninja.cs"
 "Assets/Scripts/Enemy/Ronin.cs"
 "Assets/Scripts/Enemy/Shogun.cs"
+"Assets/Scripts/GameManager/GameManager.cs"
 "Assets/Scripts/JoystickEvent.cs"
 "Assets/Scripts/MapControl/EntranceExitDoor.cs"
 "Assets/Scripts/MapControl/Key.cs"

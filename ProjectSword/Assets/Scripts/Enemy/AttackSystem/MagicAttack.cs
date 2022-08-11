@@ -9,6 +9,7 @@ public class MagicAttack : Attack
         random,
         line
     }
+    public GameObject lightning;
     public int damage;
     public float spotWidth;
     public float spotSpreadRange;
@@ -50,8 +51,11 @@ public class MagicAttack : Attack
             }
             foreach(Vector2 spot in randomSpot){
                 Collider2D hitEnemies = Physics2D.OverlapCircle(spot, spotWidth, playerMask);
+                GameObject lightningObject = Instantiate(lightning,spot,Quaternion.identity); 
+                Destroy(lightningObject, 0.8f);
                 if (hitEnemies != null){
-                    hitEnemies.GetComponent<Player>().TakeDamage(damage); 
+                    hitEnemies.GetComponent<Player>().TakeDamage(damage);
+                    
                 }   
                 Debug.DrawLine(spot,spot+(Vector2.up * spotWidth),Color.red,1.0f);
                 Debug.DrawLine(spot,spot+(Vector2.down * spotWidth),Color.yellow,1.0f);
@@ -73,6 +77,8 @@ public class MagicAttack : Attack
                 Collider2D hitEnemies = Physics2D.OverlapCircle(spot, spotWidth, playerMask);
                 if (hitEnemies != null){
                     hitEnemies.GetComponent<Player>().TakeDamage(damage); 
+                    GameObject lightningObject = Instantiate(lightning,spot,Quaternion.identity); 
+                    Destroy(lightningObject, 0.8f);
                 }   
                 Debug.DrawLine(spot,spot+(Vector2.up * spotWidth),Color.red,1.0f);
                 Debug.DrawLine(spot,spot+(Vector2.down * spotWidth),Color.yellow,1.0f);
@@ -94,6 +100,8 @@ public class MagicAttack : Attack
                 Collider2D hitEnemies = Physics2D.OverlapCircle(spot, spotWidth, playerMask);
                 if (hitEnemies != null){
                     hitEnemies.GetComponent<Player>().TakeDamage(damage); 
+                    GameObject lightningObject = Instantiate(lightning,spot,Quaternion.identity); 
+                    Destroy(lightningObject, 0.8f);
                 }   
                 Debug.DrawLine(spot,spot+(Vector2.up * spotWidth),Color.red,1.0f);
                 Debug.DrawLine(spot,spot+(Vector2.down * spotWidth),Color.yellow,1.0f);
