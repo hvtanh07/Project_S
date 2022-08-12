@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     private Vector3 startingPosition;
     public event EventHandler OnEnemyDie;
     [HideInInspector] protected Transform target;
+    [HideInInspector] protected Vector3 targetAttackPoint;
     public int health;
     public float speed;
 
