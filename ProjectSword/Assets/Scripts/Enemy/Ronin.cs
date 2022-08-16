@@ -15,8 +15,10 @@ public class Ronin : Enemy
     private bool flinch;  
     public float timeBetweenAtack;
     public float timeBeforeAttack;
-    float curentAttactTime;
+    [SerializeField] float curentAttactTime;
     bool chasing;
+    bool attacking;
+    private bool m_FacingRight = false;
     
 
     // Start is called before the first frame update
@@ -45,24 +47,40 @@ public class Ronin : Enemy
     // Update is called once per frame
     void Update()
     {
-        if(health > 0){
+        if(health > 0 && !flinch){
             if(target != null && chasing){
                 agent.SetDestination(target.position);
-                anim.Play("Run");
+                if (agent.velocity.x > 0 && !m_FacingRight)
+		        {
+			        Flip();
+		        }
+		        else if (agent.velocity.x < 0 && m_FacingRight)
+		        {
+			        Flip();
+		        }
             } 
             curentAttactTime += Time.deltaTime;
-            if (agent.remainingDistance <= agent.stoppingDistance && curentAttactTime > timeBetweenAtack){  
+            if (agent.remainingDistance <= agent.stoppingDistance && !attacking){ 
                 anim.Play("CombatIdle");
-                chasing = false;          
-                curentAttactTime = 0f;
-                targetAttackPoint = target.position;      
-                StartCoroutine(triggerAttack());    
-            } 
+                chasing = false;
+                if(curentAttactTime > timeBetweenAtack){
+                    Debug.Log("attack");
+                    Debug.ClearDeveloperConsole();
+                    curentAttactTime = 0f;
+                    targetAttackPoint = target.position;   
+                    StartCoroutine(triggerAttack());
+                }   
+            }else{
+                //Debug.Log("no longer at player pos");
+                chasing = true;
+                anim.Play("Run");
+            }
         }    
     }
     IEnumerator triggerAttack(){ 
         yield return new WaitForSeconds (timeBeforeAttack);
-        if(health > 0){
+        if(health > 0 && !flinch){
+            attacking = true;
             anim.Play("Attack");         
         }
     }
@@ -72,14 +90,16 @@ public class Ronin : Enemy
     }
 
     public void FinishAttack(){
+        attacking = false;
         chasing = true;
-        anim.Play("CombatIdle");
+        //anim.Play("CombatIdle");
     }
 
     public override void TakeDamage(int damage){
         chasing = false;
         flinch = true;
         agent.speed = 0;
+        anim.Play("Idle");
         StartCoroutine(Hurt(damage));       
     }
 
@@ -109,5 +129,14 @@ public class Ronin : Enemy
         base.Death();
     }
 
-    
+    private void Flip()
+	{
+		// Switch the way the player is labelled as facing.
+		m_FacingRight = !m_FacingRight;
+
+		// Multiply the player's x local scale by -1.
+		Vector3 theScale = transform.localScale;
+		theScale.x *= -1;
+		transform.localScale = theScale;
+	}
 }
