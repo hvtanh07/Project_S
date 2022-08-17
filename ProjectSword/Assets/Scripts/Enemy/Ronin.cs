@@ -16,8 +16,6 @@ public class Ronin : Enemy
     public float timeBetweenAtack;
     public float timeBeforeAttack;
     [SerializeField] float curentAttactTime;
-    bool chasing;
-    bool attacking;
     private bool m_FacingRight = false;
     
 
@@ -41,15 +39,15 @@ public class Ronin : Enemy
     { 
         yield return new WaitForSeconds(1.0f);
         target = GameObject.FindGameObjectWithTag("Player").transform;
-        chasing = true;
     }
 
     // Update is called once per frame
     void Update()
     {
         if(health > 0 && !flinch){
-            if(target != null && chasing){
+            if(target != null){
                 agent.SetDestination(target.position);
+                anim.SetBool("Moving", true);
                 if (agent.velocity.x > 0 && !m_FacingRight)
 		        {
 			        Flip();
@@ -60,28 +58,24 @@ public class Ronin : Enemy
 		        }
             } 
             curentAttactTime += Time.deltaTime;
-            if (agent.remainingDistance <= agent.stoppingDistance && !attacking){ 
-                anim.Play("CombatIdle");
-                chasing = false;
+            if (agent.remainingDistance <= agent.stoppingDistance){ 
+                anim.SetBool("Reached", true);
                 if(curentAttactTime > timeBetweenAtack){
-                    Debug.Log("attack");
                     Debug.ClearDeveloperConsole();
                     curentAttactTime = 0f;
                     targetAttackPoint = target.position;   
                     StartCoroutine(triggerAttack());
-                }   
+                } 
             }else{
                 //Debug.Log("no longer at player pos");
-                chasing = true;
-                anim.Play("Run");
+                anim.SetBool("Reached", false);
             }
         }    
     }
     IEnumerator triggerAttack(){ 
         yield return new WaitForSeconds (timeBeforeAttack);
         if(health > 0 && !flinch){
-            attacking = true;
-            anim.Play("Attack");         
+            anim.SetTrigger("Attack");   
         }
     }
 
@@ -90,15 +84,13 @@ public class Ronin : Enemy
     }
 
     public void FinishAttack(){
-        attacking = false;
-        chasing = true;
         //anim.Play("CombatIdle");
     }
 
     public override void TakeDamage(int damage){
-        chasing = false;
         flinch = true;
         agent.speed = 0;
+        anim.SetBool("Moving", false);
         anim.Play("Idle");
         StartCoroutine(Hurt(damage));       
     }
@@ -111,20 +103,20 @@ public class Ronin : Enemy
             health -= shield.Block(damage);
         }else{
             health -= damage;
+            anim.SetTrigger("Hurt");
         }
         //------------------------
         if(health <= 0){
             Death();
         }else {
-            anim.Play("Hurt");
             agent.speed = speed;
-            chasing = true;
             flinch = false;
         }  
     }
     
     override protected void Death(){
-        anim.Play("Death");
+        anim.SetBool("Die", true);
+        GetComponent<BoxCollider2D>().enabled = false;
         agent.speed = 0;
         base.Death();
     }
