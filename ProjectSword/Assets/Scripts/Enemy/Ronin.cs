@@ -46,7 +46,9 @@ public class Ronin : Enemy
     {
         if(health > 0 && !flinch){
             if(target != null){
-                agent.SetDestination(target.position);
+                agent.destination = target.position;
+                //agent.SetDestination(target.position);
+                
                 anim.SetBool("Moving", true);
                 if (agent.velocity.x > 0 && !m_FacingRight)
 		        {
@@ -58,21 +60,34 @@ public class Ronin : Enemy
 		        }
             } 
             curentAttactTime += Time.deltaTime;
-            if (agent.remainingDistance <= agent.stoppingDistance){ 
+            
+            if (agent.remainingDistance <= agent.stoppingDistance && !agent.pathPending){ 
                 anim.SetBool("Reached", true);
                 if(curentAttactTime > timeBetweenAtack){
                     Debug.ClearDeveloperConsole();
                     curentAttactTime = 0f;
                     targetAttackPoint = target.position;   
                     StartCoroutine(triggerAttack());
-                } 
+                }      
             }else{
                 //Debug.Log("no longer at player pos");
                 anim.SetBool("Reached", false);
             }
         }    
     }
+    private void FixedUpdate() {
+        if(agent.remainingDistance <= agent.stoppingDistance + 3 || health <= 0){
+                agent.radius = Mathf.MoveTowards(agent.radius,0.01f,0.01f);
+                agent.height = Mathf.MoveTowards(agent.height,0.01f,0.01f);
+                //agent.radius = 0.01f;
+            }else{
+                agent.radius = Mathf.MoveTowards(agent.radius,0.5f,0.01f);
+                agent.height = Mathf.MoveTowards(agent.height,1f,0.01f);
+                //agent.radius = 0.5f;
+            }
+    }
     IEnumerator triggerAttack(){ 
+        agent.speed = 0;
         yield return new WaitForSeconds (timeBeforeAttack);
         if(health > 0 && !flinch){
             anim.SetTrigger("Attack");   
@@ -84,15 +99,19 @@ public class Ronin : Enemy
     }
 
     public void FinishAttack(){
+        agent.speed = speed;
         //anim.Play("CombatIdle");
     }
 
     public override void TakeDamage(int damage){
-        flinch = true;
-        agent.speed = 0;
-        anim.SetBool("Moving", false);
-        anim.Play("Idle");
-        StartCoroutine(Hurt(damage));       
+        if(!flinch && health > 0){
+            flinch = true;
+            agent.speed = 0;
+            anim.SetBool("Moving", false);
+            anim.Play("Idle");
+            StartCoroutine(Hurt(damage));  
+        }
+             
     }
 
     protected IEnumerator Hurt(int damage)
@@ -117,7 +136,6 @@ public class Ronin : Enemy
     override protected void Death(){
         anim.SetBool("Die", true);
         GetComponent<BoxCollider2D>().enabled = false;
-        agent.speed = 0;
         base.Death();
     }
 
