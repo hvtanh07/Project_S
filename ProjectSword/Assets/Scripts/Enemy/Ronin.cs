@@ -91,7 +91,7 @@ public class Ronin : Enemy
                 //agent.radius = 0.01f;
             }else{
                 agent.radius = Mathf.MoveTowards(agent.radius,0.5f,0.01f);
-                agent.height = Mathf.MoveTowards(agent.height,1f,0.01f);
+                agent.height = Mathf.MoveTowards(agent.height,1f,0.02f);
                 //agent.radius = 0.5f;
             }
     }

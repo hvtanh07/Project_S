@@ -38,6 +38,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         if(HoldingDown){  
+            anim.ResetTrigger("Attack");
             indicator.SetActive(true); 
             dir = joystick.Direction.normalized * dashDistance;
             Walk();
@@ -83,7 +84,6 @@ public class Player : MonoBehaviour
             Dashing = true;
             walkable = false;
             anim.speed = (animlength * speed)/ dashLength;
-            Debug.Log(anim.speed);
             LeanTween.move(this.gameObject,target, dashLength/speed).setEase(LeanTweenType.easeOutQuart).setOnComplete(FinishedDash);
         }       
     }
@@ -132,9 +132,6 @@ public class Player : MonoBehaviour
         lastDashTime = Time.time;      
     }
 
-    public int getDamage(){
-        return damage;
-    }
 
     public void TakeDamage(int damage){
         if(!Dashing){

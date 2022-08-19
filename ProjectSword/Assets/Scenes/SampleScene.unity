@@ -188,7 +188,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5784429052699624485, guid: ad09e9139ecc57446b7b9f7af9601d16, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7824808599915293048, guid: ad09e9139ecc57446b7b9f7af9601d16, type: 3}
       propertyPath: m_Radius
@@ -261,7 +261,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5784429052699624485, guid: ad09e9139ecc57446b7b9f7af9601d16, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7824808599915293048, guid: ad09e9139ecc57446b7b9f7af9601d16, type: 3}
       propertyPath: m_Radius
@@ -334,7 +334,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5784429052699624485, guid: ad09e9139ecc57446b7b9f7af9601d16, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7824808599915293048, guid: ad09e9139ecc57446b7b9f7af9601d16, type: 3}
       propertyPath: m_Radius
@@ -8978,7 +8978,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5784429052699624485, guid: ad09e9139ecc57446b7b9f7af9601d16, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7824808599915293048, guid: ad09e9139ecc57446b7b9f7af9601d16, type: 3}
       propertyPath: m_Radius
@@ -11420,7 +11420,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5784429052699624485, guid: ad09e9139ecc57446b7b9f7af9601d16, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7824808599915293048, guid: ad09e9139ecc57446b7b9f7af9601d16, type: 3}
       propertyPath: m_Radius
@@ -11538,7 +11538,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5784429052699624485, guid: ad09e9139ecc57446b7b9f7af9601d16, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7824808599915293048, guid: ad09e9139ecc57446b7b9f7af9601d16, type: 3}
       propertyPath: m_Radius
@@ -11611,7 +11611,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5784429052699624485, guid: ad09e9139ecc57446b7b9f7af9601d16, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7824808599915293048, guid: ad09e9139ecc57446b7b9f7af9601d16, type: 3}
       propertyPath: m_Radius
@@ -11935,7 +11935,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5784429052699624485, guid: ad09e9139ecc57446b7b9f7af9601d16, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7824808599915293048, guid: ad09e9139ecc57446b7b9f7af9601d16, type: 3}
       propertyPath: m_Radius
@@ -11999,6 +11999,10 @@ PrefabInstance:
     - target: {fileID: 564662613067748522, guid: ad09e9139ecc57446b7b9f7af9601d16, type: 3}
       propertyPath: TargetPos
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 564662613067748522, guid: ad09e9139ecc57446b7b9f7af9601d16, type: 3}
+      propertyPath: flinchTime
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 564662613067748522, guid: ad09e9139ecc57446b7b9f7af9601d16, type: 3}
       propertyPath: distanceToAttack
