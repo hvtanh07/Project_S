@@ -8778,7 +8778,7 @@ MonoBehaviour:
   health: 100
   damage: 10
   indicator: {fileID: 1582584138}
-  dashDistance: 5
+  dashDistance: 7
   speed: 100
   maxDashs: 4
   numOfDashs: 0
@@ -11626,6 +11626,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 887674588}
     m_Modifications:
+    - target: {fileID: 8170153791668043265, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
+      propertyPath: deadZone
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8170153791668043268, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
       propertyPath: m_Pivot.x
       value: 0

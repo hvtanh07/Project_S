@@ -10,12 +10,15 @@ public class Ronin : Enemy
     [SerializeField] Attack attack;
     Animator anim;
     private NavMeshAgent agent;
-    public float flinchTime;
-    public float distanceToAttack;
+    [SerializeField] private float flinchTime;
+    [SerializeField] private float distanceToAttack;
     private bool flinch;  
-    public float timeBetweenAtack;
-    public float timeBeforeAttack;
-    [SerializeField] float curentAttactTime;
+    [SerializeField] private float timeBetweenAtack;
+    [SerializeField] private float timeBeforeAttack;
+    private bool damaged;
+    private float lastDamageTime;
+    private int takenDamage;
+    float curentAttactTime;
     private bool m_FacingRight = false;
     
 
@@ -44,8 +47,9 @@ public class Ronin : Enemy
     // Update is called once per frame
     void Update()
     {
-        if(health > 0 && !flinch){
-            if(target != null){
+        if(health > 0){
+            if(!flinch){
+                if(target != null){
                 agent.destination = target.position;
                 //agent.SetDestination(target.position);
                 
@@ -58,20 +62,25 @@ public class Ronin : Enemy
 		        {
 			        Flip();
 		        }
-            } 
-            curentAttactTime += Time.deltaTime;
+                } 
+                curentAttactTime += Time.deltaTime;
             
-            if (agent.remainingDistance <= agent.stoppingDistance && !agent.pathPending){ 
-                anim.SetBool("Reached", true);
-                if(curentAttactTime > timeBetweenAtack){
-                    Debug.ClearDeveloperConsole();
-                    curentAttactTime = 0f;
-                    targetAttackPoint = target.position;   
-                    StartCoroutine(triggerAttack());
+                if (agent.remainingDistance <= agent.stoppingDistance && !agent.pathPending){ 
+                    anim.SetBool("Reached", true);
+                    if(curentAttactTime > timeBetweenAtack){
+                        curentAttactTime = 0f;
+                        targetAttackPoint = target.position;   
+                        StartCoroutine(triggerAttack());
                 }      
-            }else{
-                //Debug.Log("no longer at player pos");
-                anim.SetBool("Reached", false);
+                }else{
+                    //Debug.Log("no longer at player pos");
+                    anim.SetBool("Reached", false);
+                }
+            }  
+
+            if ( damaged && Time.time - lastDamageTime >= flinchTime )
+            {
+                Hurt(takenDamage);
             }
         }    
     }
@@ -104,19 +113,22 @@ public class Ronin : Enemy
     }
 
     public override void TakeDamage(int damage){
-        if(!flinch && health > 0){
+        if(health > 0){
             flinch = true;
             agent.speed = 0;
             anim.SetBool("Moving", false);
             anim.Play("Idle");
-            StartCoroutine(Hurt(damage));  
-        }
-             
+            damaged = true;
+            takenDamage += damage;
+            lastDamageTime = Time.time;
+            //StartCoroutine(Hurt(damage));  
+        }        
     }
 
-    protected IEnumerator Hurt(int damage)
+    private void Hurt(int damage)
     {             
-        yield return new WaitForSeconds(flinchTime);
+        //yield return new WaitForSeconds(flinchTime);
+        damaged = false;
         Shield shield = GetComponent<Shield>();
         if (shield != null){
             health -= shield.Block(damage);
@@ -124,6 +136,7 @@ public class Ronin : Enemy
             health -= damage;
             anim.SetTrigger("Hurt");
         }
+        takenDamage = 0;
         //------------------------
         if(health <= 0){
             Death();
