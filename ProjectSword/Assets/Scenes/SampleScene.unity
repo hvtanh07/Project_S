@@ -145,7 +145,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!195 &53972394
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -227,7 +227,7 @@ MonoBehaviour:
   flinchTime: 1.5
   distanceToAttack: 5
   timeBetweenAtack: 4
-  timeBeforeAttack: 0.8
+  timeBeforeAttack: 0
 --- !u!50 &53972398
 Rigidbody2D:
   serializedVersion: 4
@@ -432,7 +432,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!195 &412436954
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -510,7 +510,7 @@ MonoBehaviour:
   flinchTime: 1.5
   distanceToAttack: 5
   timeBetweenAtack: 4
-  timeBeforeAttack: 0.8
+  timeBeforeAttack: 0
 --- !u!50 &412436958
 Rigidbody2D:
   serializedVersion: 4
@@ -12023,7 +12023,7 @@ MonoBehaviour:
   flinchTime: 1.5
   distanceToAttack: 5
   timeBetweenAtack: 4
-  timeBeforeAttack: 0.8
+  timeBeforeAttack: 0
 --- !u!50 &1672714760
 Rigidbody2D:
   serializedVersion: 4
@@ -12540,7 +12540,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!50 &6247052582931347480
 Rigidbody2D:
   serializedVersion: 4

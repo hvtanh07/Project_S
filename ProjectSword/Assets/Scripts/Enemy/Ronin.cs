@@ -70,7 +70,6 @@ public class Ronin : Enemy
 		            }
                 } 
                 curentAttactTime += Time.deltaTime;
-            
                 if (agent.remainingDistance <= agent.stoppingDistance && !agent.pathPending && !stopping)
                 { 
                     anim.SetBool("Reached", true);
