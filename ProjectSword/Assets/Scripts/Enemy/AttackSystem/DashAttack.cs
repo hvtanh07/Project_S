@@ -13,7 +13,8 @@ public class DashAttack : Attack
     TrailRenderer trail;
     bool Dashing;
     private void Start() {
-        trail = GetComponent<TrailRenderer>(); 
+        trail = GetComponent<TrailRenderer>();
+        trail.emitting = false; 
     }
     public override void Attacking(Vector3 target){
         Vector3 dir = (target - transform.position).normalized * dashDistance;

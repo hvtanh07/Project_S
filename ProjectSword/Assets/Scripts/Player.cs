@@ -37,7 +37,7 @@ public class Player : MonoBehaviour
     
     void Update()
     {
-        if(HoldingDown){  
+        if(HoldingDown && !Dashing){  
             anim.ResetTrigger("Attack");
             indicator.SetActive(true); 
             dir = joystick.Direction.normalized * dashDistance;
@@ -48,7 +48,7 @@ public class Player : MonoBehaviour
             addDash();
         }
         if(Input.GetKey(KeyCode.R)){
-            Time.timeScale = 0.2f;
+            Time.timeScale = 0.1f;
         }
         if (Input.GetKey(KeyCode.E))
         {

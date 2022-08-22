@@ -152,11 +152,10 @@ MonoBehaviour:
   health: 10
   speed: 4
   attack: {fileID: 3759503214782009806}
-  flinchTime: 0.8
-  distanceToAttack: 0.5
+  flinchTime: 1.5
+  distanceToAttack: 1
   timeBetweenAtack: 2
   timeBeforeAttack: 0
-  curentAttactTime: 0
 --- !u!114 &3759503214782009806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,7 +198,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 5784429052699624485}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.01
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50

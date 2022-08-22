@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    Rigidbody2D rb;
-    public float flySpeed;
     private void Start() {
         Destroy(gameObject,5.0f);
     }

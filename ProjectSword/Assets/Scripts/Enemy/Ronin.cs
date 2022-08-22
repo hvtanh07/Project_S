@@ -18,6 +18,7 @@ public class Ronin : Enemy
     private bool damaged;
     private float lastDamageTime;
     private int takenDamage;
+    private bool stopping;
     float curentAttactTime;
     private bool m_FacingRight = false;
     
@@ -25,6 +26,10 @@ public class Ronin : Enemy
     // Start is called before the first frame update
     void Start()
     {
+        attack = GetComponent<Attack>();
+        if(attack == null){
+            Debug.Log("No attack type found");
+        }
         anim = GetComponent<Animator>();
         setupAgent();
         StartCoroutine(GetPlayer());
@@ -48,33 +53,43 @@ public class Ronin : Enemy
     void Update()
     {
         if(health > 0){
-            if(!flinch){
+            if(!flinch)
+            {
                 if(target != null){
-                agent.destination = target.position;
-                //agent.SetDestination(target.position);
+                    agent.destination = target.position;
+                    //agent.SetDestination(target.position);
                 
-                anim.SetBool("Moving", true);
-                if (agent.velocity.x > 0 && !m_FacingRight)
-		        {
-			        Flip();
-		        }
-		        else if (agent.velocity.x < 0 && m_FacingRight)
-		        {
-			        Flip();
-		        }
+                    anim.SetBool("Moving", true);
+                    if (agent.velocity.x > 0 && !m_FacingRight)
+		            {
+			            Flip();
+		            }
+		            else if (agent.velocity.x < 0 && m_FacingRight)
+		            {
+			            Flip();
+		            }
                 } 
                 curentAttactTime += Time.deltaTime;
             
-                if (agent.remainingDistance <= agent.stoppingDistance && !agent.pathPending){ 
+                if (agent.remainingDistance <= agent.stoppingDistance && !agent.pathPending && !stopping)
+                { 
                     anim.SetBool("Reached", true);
                     if(curentAttactTime > timeBetweenAtack){
                         curentAttactTime = 0f;
-                        targetAttackPoint = target.position;   
+                        stopping = true;
+                        targetAttackPoint = target.position;
                         StartCoroutine(triggerAttack());
-                }      
-                }else{
+                    }      
+                }
+                else
+                {
                     //Debug.Log("no longer at player pos");
-                    anim.SetBool("Reached", false);
+                    //stopping = false;
+                    if(!stopping){
+                        agent.speed = speed;
+                        anim.SetBool("Reached", false);
+                    }
+                    
                 }
             }  
 
@@ -98,7 +113,7 @@ public class Ronin : Enemy
     IEnumerator triggerAttack(){ 
         agent.speed = 0;
         yield return new WaitForSeconds (timeBeforeAttack);
-        if(health > 0 && !flinch){
+        if(health > 0 && !flinch && attack != null){
             anim.SetTrigger("Attack");   
         }
     }
@@ -109,6 +124,7 @@ public class Ronin : Enemy
 
     public void FinishAttack(){
         agent.speed = speed;
+        stopping = false;
         //anim.Play("CombatIdle");
     }
 
