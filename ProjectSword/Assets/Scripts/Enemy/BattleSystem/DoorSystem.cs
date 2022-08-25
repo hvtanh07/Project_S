@@ -8,8 +8,8 @@ public class DoorSystem : MonoBehaviour
     //reference door anim or door object
 
     private void Start() {
-        battleSystem.OnBattleStart += BattleSystem_BattleStarted;
-        battleSystem.OnBattleEnd += BattleSystem_BattleEnd;
+        //battleSystem.OnBattleStart += BattleSystem_BattleStarted;
+        //battleSystem.OnBattleEnd += BattleSystem_BattleEnd;
     }
 
     private void BattleSystem_BattleStarted(object sender, System.EventArgs e){

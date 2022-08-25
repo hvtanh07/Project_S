@@ -20,8 +20,10 @@ public class Player : MonoBehaviour
     public float turnningSpeed;
     public float walkingSpeed;
     public LayerMask wallmask;
+    public LayerMask enemies;
     Vector2 dir;
     private bool HoldingDown,Dashing;
+    [SerializeField] private bool enemiesAround;
     private bool m_FacingRight = true;
     private Rigidbody2D rb;
     private Animator anim;
@@ -54,17 +56,23 @@ public class Player : MonoBehaviour
         {
             Time.timeScale = 1f;
         }
-       
-
+    }
+    private void FixedUpdate() {
+        Collider2D [] colliders = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.y),dashDistance *1.5f,enemies);
+        if (colliders.Length > 0){
+            enemiesAround = true;
+        }else{
+            enemiesAround = false;
+        }
     }
     public void GetDir(){
-        HoldingDown = true;      
+        HoldingDown = true;     
     }
     public void Dash(){
         HoldingDown = false;
         anim.SetBool("Running", false);
         indicator.SetActive(false);
-        if(numOfDashs > 0){
+        if(numOfDashs > 0 && enemiesAround){
             anim.SetTrigger("Attack");
             float animlength = anim.GetCurrentAnimatorStateInfo(0).length;
             //get trail and prepare to draw

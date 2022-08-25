@@ -11,8 +11,8 @@ public class EntranceExitDoor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        battleSystem.OnBattleStart += OnBattleStart;
-        battleSystem.OnBattleEnd += OnBattleEnd;
+        //battleSystem.OnBattleStart += OnBattleStart;
+        //battleSystem.OnBattleEnd += OnBattleEnd;
     }
     
 
