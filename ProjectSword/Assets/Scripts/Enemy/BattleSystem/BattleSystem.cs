@@ -54,7 +54,6 @@ public class BattleSystem : MonoBehaviour
         }
         else if (enemiesLockIndex > 0 && enemiesLockIndex < enemies.Count){  
             int i = UnityEngine.Random.Range(0, enemiesLockIndex + 1);
-            Debug.Log(i);
             return enemies[i];   
             //Instantiate(enemies[UnityEngine.Random.Range(0, enemiesLockIndex)], Spawnposition, Quaternion.identity);
         }else{

@@ -10,7 +10,6 @@ public class Shogun : Enemy
     Attack currentAttack;
     public float rangeAttackRange; 
     public float closeAttackRange; 
-    int attackTypeIndex;
     [SerializeField] private float timeBetweenAtack;
     [SerializeField] private float timeBeforeAttack;
     
@@ -50,7 +49,7 @@ public class Shogun : Enemy
 		            }
                 } 
                 curentAttackTime += Time.deltaTime;
-                if (agent.remainingDistance <= rangeAttackRange && !agent.pathPending && !stopping)
+                if (agent.remainingDistance <= agent.stoppingDistance && !agent.pathPending && !stopping)
                 {    
                     currentAttack = rangeAttack;
                     if (agent.remainingDistance <= closeAttackRange)     
@@ -62,7 +61,8 @@ public class Shogun : Enemy
                         targetAttackPoint = target.position;
                         StartCoroutine(triggerAttack());
                     }    
-                }else{
+                }else if(agent.remainingDistance > agent.stoppingDistance)
+                {
                     if(!stopping){
                         agent.speed = speed;
                         anim.SetBool("Reached", false);
@@ -91,7 +91,6 @@ public class Shogun : Enemy
     public void FinishAttack(){
         agent.speed = speed;
         stopping = false;
-        attackTypeIndex = 0;
         //anim.Play("CombatIdle");
     }
     

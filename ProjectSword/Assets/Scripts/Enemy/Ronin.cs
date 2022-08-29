@@ -66,7 +66,7 @@ public class Ronin : Enemy
                         StartCoroutine(triggerAttack());
                     }      
                 }
-                else
+                else if(agent.remainingDistance > agent.stoppingDistance)
                 {
                     //Debug.Log("no longer at player pos");
                     //stopping = false;
