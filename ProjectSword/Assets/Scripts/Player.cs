@@ -49,10 +49,10 @@ public class Player : MonoBehaviour
         {
             addDash();
         }
-        if(Input.GetKey(KeyCode.R)){
+        if(Input.GetKeyDown(KeyCode.R)){
             Time.timeScale = 0.1f;
         }
-        if (Input.GetKey(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             Time.timeScale = 1f;
         }
@@ -97,7 +97,7 @@ public class Player : MonoBehaviour
     }
     
     public void Walk(){
-        if (walkable){
+        if (walkable && joystick.Direction.magnitude > 0f){
             Quaternion toRotation = Quaternion.LookRotation(indicator.transform.forward, dir);
             indicator.transform.rotation = Quaternion.RotateTowards(indicator.transform.rotation, toRotation, turnningSpeed);
             if(joystick.Direction.magnitude > 0.5f){

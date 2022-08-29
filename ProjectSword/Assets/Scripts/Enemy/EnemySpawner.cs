@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] private List<EnemyToSpawn> enemies;
     [SerializeField] private Transform target;
     public float MinDistance;
-    public int enemySpawnTime;
+    public float enemySpawnTime;
     [SerializeField] bool isPlayerInRange;
-    float curentSpawnTime;
+    float SpawnTime;
 
     // Start is called before the first frame update
     void Start()
@@ -26,19 +25,11 @@ public class EnemySpawner : MonoBehaviour
         }else{
             isPlayerInRange = false;
         }
-        curentSpawnTime += Time.time;
-        if(!isPlayerInRange && curentSpawnTime > enemySpawnTime){
-            //Spawn
-            
-            curentSpawnTime = Time.time;
+        
+        if(!isPlayerInRange && Time.time - SpawnTime > enemySpawnTime && BattleSystem.instance.AllowedToSpawn){
+            Instantiate(BattleSystem.instance.GetEnemySpawn(), transform.position, Quaternion.identity);
+            SpawnTime = Time.time;
         }
-
-    }
-
-    [System.Serializable]
-    private class EnemyToSpawn{
-        public Enemy enemiesSpawn;
-        public bool StartSpawn;
     }
 }
 

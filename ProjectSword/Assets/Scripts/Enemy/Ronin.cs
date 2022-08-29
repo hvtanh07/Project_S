@@ -99,7 +99,7 @@ public class Ronin : Enemy
         }    
     }
     private void FixedUpdate() {
-        if(agent.remainingDistance <= agent.stoppingDistance + 3 || health <= 0){
+        if(agent.remainingDistance <= agent.stoppingDistance + 3){
                 agent.radius = Mathf.MoveTowards(agent.radius,0.01f,0.01f);
                 agent.height = Mathf.MoveTowards(agent.height,0.01f,0.01f);
                 //agent.radius = 0.01f;
@@ -164,6 +164,9 @@ public class Ronin : Enemy
     override protected void Death(){
         anim.SetBool("Die", true);
         GetComponent<BoxCollider2D>().enabled = false;
+        BattleSystem.instance.enemyKilled();
+        agent.radius = 0;
+        agent.height = 0;
         base.Death();
     }
 
