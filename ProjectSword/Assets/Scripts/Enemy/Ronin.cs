@@ -8,19 +8,11 @@ using UnityEngine.AI;
 public class Ronin : Enemy
 {
     [SerializeField] Attack attack;
-    Animator anim;
-    private NavMeshAgent agent;
-    [SerializeField] private float flinchTime;
     [SerializeField] private float distanceToAttack;
-    private bool flinch;  
     [SerializeField] private float timeBetweenAtack;
     [SerializeField] private float timeBeforeAttack;
-    private bool damaged;
-    private float lastDamageTime;
-    private int takenDamage;
-    private bool stopping;
-    float curentAttactTime;
-    private bool m_FacingRight = false;
+    float curentAttackTime;
+
     
 
     // Start is called before the first frame update
@@ -43,12 +35,6 @@ public class Ronin : Enemy
         agent.updateUpAxis = false;
     }
 
-    protected IEnumerator GetPlayer()
-    { 
-        yield return new WaitForSeconds(1.0f);
-        target = GameObject.FindGameObjectWithTag("Player").transform;
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -69,12 +55,12 @@ public class Ronin : Enemy
 			            Flip();
 		            }
                 } 
-                curentAttactTime += Time.deltaTime;
+                curentAttackTime += Time.deltaTime;
                 if (agent.remainingDistance <= agent.stoppingDistance && !agent.pathPending && !stopping)
                 { 
                     anim.SetBool("Reached", true);
-                    if(curentAttactTime > timeBetweenAtack){
-                        curentAttactTime = 0f;
+                    if(curentAttackTime > timeBetweenAtack){
+                        curentAttackTime = 0f;
                         stopping = true;
                         targetAttackPoint = target.position;
                         StartCoroutine(triggerAttack());
@@ -98,17 +84,7 @@ public class Ronin : Enemy
             }
         }    
     }
-    private void FixedUpdate() {
-        if(agent.remainingDistance <= agent.stoppingDistance + 3){
-                agent.radius = Mathf.MoveTowards(agent.radius,0.01f,0.01f);
-                agent.height = Mathf.MoveTowards(agent.height,0.01f,0.01f);
-                //agent.radius = 0.01f;
-            }else{
-                agent.radius = Mathf.MoveTowards(agent.radius,0.5f,0.01f);
-                agent.height = Mathf.MoveTowards(agent.height,1f,0.02f);
-                //agent.radius = 0.5f;
-            }
-    }
+
     IEnumerator triggerAttack(){ 
         agent.speed = 0;
         yield return new WaitForSeconds (timeBeforeAttack);
@@ -126,58 +102,4 @@ public class Ronin : Enemy
         stopping = false;
         //anim.Play("CombatIdle");
     }
-
-    public override void TakeDamage(int damage){
-        if(health > 0){
-            flinch = true;
-            agent.speed = 0;
-            anim.SetBool("Moving", false);
-            anim.Play("Idle");
-            damaged = true;
-            takenDamage += damage;
-            lastDamageTime = Time.time;
-            //StartCoroutine(Hurt(damage));  
-        }        
-    }
-
-    private void Hurt(int damage)
-    {             
-        //yield return new WaitForSeconds(flinchTime);
-        damaged = false;
-        Shield shield = GetComponent<Shield>();
-        if (shield != null){
-            health -= shield.Block(damage);
-        }else{
-            health -= damage;
-            anim.SetTrigger("Hurt");
-        }
-        takenDamage = 0;
-        //------------------------
-        if(health <= 0){
-            Death();
-        }else {
-            agent.speed = speed;
-            flinch = false;
-        }  
-    }
-    
-    override protected void Death(){
-        anim.SetBool("Die", true);
-        GetComponent<BoxCollider2D>().enabled = false;
-        BattleSystem.instance.enemyKilled();
-        agent.radius = 0;
-        agent.height = 0;
-        base.Death();
-    }
-
-    private void Flip()
-	{
-		// Switch the way the player is labelled as facing.
-		m_FacingRight = !m_FacingRight;
-
-		// Multiply the player's x local scale by -1.
-		Vector3 theScale = transform.localScale;
-		theScale.x *= -1;
-		transform.localScale = theScale;
-	}
 }

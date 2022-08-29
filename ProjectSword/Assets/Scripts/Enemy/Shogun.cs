@@ -5,73 +5,94 @@ using UnityEngine.AI;
 
 public class Shogun : Enemy
 {
-    [SerializeField] DashAttack dashAttack;
-    [SerializeField] ProjectileAttack projectileAttack;
-    private NavMeshAgent agent;
-    public float damageReceiveDelay;
-    public float rangedAttackRange; 
-    public float dashAttackRange;
-    public float attackRate;
-    float curentAttactTime;
+    [SerializeField] Attack rangeAttack;
+    [SerializeField] Attack closeAttack;
+    Attack currentAttack;
+    public float rangeAttackRange; 
+    public float closeAttackRange; 
+    int attackTypeIndex;
+    [SerializeField] private float timeBetweenAtack;
+    [SerializeField] private float timeBeforeAttack;
+    
+    float curentAttackTime;
     // Start is called before the first frame update
     void Start()
     {
+        
+        anim = GetComponent<Animator>();
         setupAgent();
         StartCoroutine(GetPlayer());
     }
     private void setupAgent(){
         agent = GetComponent<NavMeshAgent>();
-        agent.stoppingDistance = rangedAttackRange;
+        agent.stoppingDistance = rangeAttackRange;
         agent.speed = speed;
         agent.updateRotation = false;
         agent.updateUpAxis = false;
     }
-    protected IEnumerator GetPlayer()
-    { 
-        yield return new WaitForSeconds(1.0f);
-        target = GameObject.FindGameObjectWithTag("Player").transform;
-    }
     // Update is called once per frame
     void Update()
     {
-        if(target != null){
-            agent.SetDestination(target.position);
-        } 
-        curentAttactTime += Time.deltaTime;
         if(health > 0){
-            if (agent.remainingDistance <= rangedAttackRange && curentAttactTime > attackRate){                
-                curentAttactTime = 0f;  
-                if (agent.remainingDistance <= dashAttackRange){
-                    dashAttack.Attacking(target.position);
+            if(!flinch){
+                if(target != null){
+                    agent.destination = target.position;
+                    //agent.SetDestination(target.position);
+                
+                    anim.SetBool("Moving", true);
+                    if (agent.velocity.x > 0 && !m_FacingRight)
+		            {
+			            Flip();
+		            }
+		            else if (agent.velocity.x < 0 && m_FacingRight)
+		            {
+			            Flip();
+		            }
+                } 
+                curentAttackTime += Time.deltaTime;
+                if (agent.remainingDistance <= rangeAttackRange && !agent.pathPending && !stopping)
+                {    
+                    currentAttack = rangeAttack;
+                    if (agent.remainingDistance <= closeAttackRange)     
+                        currentAttack = closeAttack;       
+                    anim.SetBool("Reached", true);
+                    if(curentAttackTime > timeBetweenAtack){
+                        curentAttackTime = 0f;
+                        stopping = true;
+                        targetAttackPoint = target.position;
+                        StartCoroutine(triggerAttack());
+                    }    
                 }else{
-                    projectileAttack.Attacking(target.position);
-                }
-                //attack.Attacking(target.position);
+                    if(!stopping){
+                        agent.speed = speed;
+                        anim.SetBool("Reached", false);
+                    }
+                }    
+            }
+            if ( damaged && Time.time - lastDamageTime >= flinchTime )
+            {
+                Hurt(takenDamage);
             }
         }
     }
 
-    public override void TakeDamage(int damage){
-        StartCoroutine(Hurt(damage));       
+    IEnumerator triggerAttack(){ 
+        agent.speed = 0;
+        yield return new WaitForSeconds (timeBeforeAttack);
+        if(health > 0 && !flinch && currentAttack != null){
+            anim.SetTrigger("Attack");   
+        }
     }
 
-    protected IEnumerator Hurt(int damage)
-    {             
-        yield return new WaitForSeconds(damageReceiveDelay);
-        Shield shield = GetComponent<Shield>();
-        if (shield != null){
-            health -= shield.Block(damage);
-        }else{
-            health -= damage;
-        }
-        //------------------------
-        if(health <= 0){
-            Death();
-        }
+    public void RecordAttack(){
+        currentAttack.Attacking(targetAttackPoint);
+    }
+
+    public void FinishAttack(){
+        agent.speed = speed;
+        stopping = false;
+        attackTypeIndex = 0;
+        //anim.Play("CombatIdle");
     }
     
-    override protected void Death(){
-        agent.speed = 0;
-        base.Death();
-    }
 }

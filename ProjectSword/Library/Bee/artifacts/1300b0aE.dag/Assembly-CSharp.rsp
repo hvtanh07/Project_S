@@ -443,7 +443,6 @@
 "Assets/Scripts/Enemy/DefendSystem/Shield.cs"
 "Assets/Scripts/Enemy/Enemy.cs"
 "Assets/Scripts/Enemy/EnemySpawner.cs"
-"Assets/Scripts/Enemy/Ninja.cs"
 "Assets/Scripts/Enemy/Ronin.cs"
 "Assets/Scripts/Enemy/Shogun.cs"
 "Assets/Scripts/GameManager/GameManager.cs"
