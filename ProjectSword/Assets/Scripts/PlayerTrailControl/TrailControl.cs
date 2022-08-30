@@ -7,7 +7,7 @@ public class TrailControl : MonoBehaviour
     int slashDamage;
     private void Start() {
         GameObject player = GameObject.FindWithTag("Player");
-        slashDamage = player.GetComponent<Player>().damage;
+        slashDamage = player.GetComponent<PlayerAttack>().damage;
     }
     private void OnTriggerEnter2D(Collider2D other){        
         Enemy enemy = other.GetComponent<Enemy>();

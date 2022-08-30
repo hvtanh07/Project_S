@@ -56,10 +56,7 @@ public class Shogun : Enemy
                         currentAttack = closeAttack;       
                     anim.SetBool("Reached", true);
                     if(curentAttackTime > timeBetweenAtack){
-                        curentAttackTime = 0f;
-                        stopping = true;
-                        targetAttackPoint = target.position;
-                        StartCoroutine(triggerAttack());
+                        Attack();
                     }    
                 }else if(agent.remainingDistance > agent.stoppingDistance)
                 {
@@ -76,10 +73,12 @@ public class Shogun : Enemy
         }
     }
 
-    IEnumerator triggerAttack(){ 
+    private void Attack(){ 
+        curentAttackTime = 0f;
+        stopping = true;
+        targetAttackPoint = target.position;
         agent.speed = 0;
-        yield return new WaitForSeconds (timeBeforeAttack);
-        if(health > 0 && !flinch && currentAttack != null){
+        if(health > 0){
             anim.SetTrigger("Attack");   
         }
     }

@@ -60,10 +60,7 @@ public class Ronin : Enemy
                 { 
                     anim.SetBool("Reached", true);
                     if(curentAttackTime > timeBetweenAtack){
-                        curentAttackTime = 0f;
-                        stopping = true;
-                        targetAttackPoint = target.position;
-                        StartCoroutine(triggerAttack());
+                        Attack();
                     }      
                 }
                 else if(agent.remainingDistance > agent.stoppingDistance)
@@ -85,10 +82,12 @@ public class Ronin : Enemy
         }    
     }
 
-    IEnumerator triggerAttack(){ 
+    private void Attack(){ 
         agent.speed = 0;
-        yield return new WaitForSeconds (timeBeforeAttack);
-        if(health > 0 && !flinch && attack != null){
+        curentAttackTime = 0f;
+        stopping = true;
+        targetAttackPoint = target.position;
+        if(attack != null){
             anim.SetTrigger("Attack");   
         }
     }

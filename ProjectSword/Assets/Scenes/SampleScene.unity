@@ -8628,9 +8628,11 @@ GameObject:
   - component: {fileID: 630077345}
   - component: {fileID: 630077344}
   - component: {fileID: 630077343}
+  - component: {fileID: 630077349}
   - component: {fileID: 630077346}
   - component: {fileID: 630077347}
   - component: {fileID: 630077348}
+  - component: {fileID: 630077350}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -8650,25 +8652,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9fe4b20c0608be4dba4bf8a9c98e700, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trail: {fileID: 1326369206500403533}
+  indicator: {fileID: 1582584138}
   joystick: {fileID: 2098974246}
   health: 100
-  damage: 10
-  indicator: {fileID: 1582584138}
-  dashDistance: 7
-  speed: 100
-  maxDashs: 4
-  numOfDashs: 0
-  dashHealTime: 1
   turnningSpeed: 10
   walkingSpeed: 5
-  wallmask:
-    serializedVersion: 2
-    m_Bits: 8
-  enemies:
-    serializedVersion: 2
-    m_Bits: 512
-  enemiesAround: 0
+  HoldingDown: 0
+  dashing: 0
+  dir: {x: 0, y: 0}
+  walkable: 0
 --- !u!212 &630077344
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8794,6 +8786,47 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &630077349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630077342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6924b2fb0db8d41439a179054b3004bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trail: {fileID: 1326369206500403533}
+  specialAttack: {fileID: 630077350}
+  damage: 10
+  dashDistance: 7
+  dashSpeed: 100
+  maxDashs: 4
+  dashHealTime: 1
+  wallmask:
+    serializedVersion: 2
+    m_Bits: 8
+  enemies:
+    serializedVersion: 2
+    m_Bits: 512
+--- !u!114 &630077350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630077342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baec6262922e9f94d806f0ef6b32a49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numOfKunai: 10
+  throwForce: 30
+  damage: 10
+  kunai: {fileID: 7743424670256140933, guid: 005667e96f3fdb243b142f2cb4c7550b, type: 3}
 --- !u!1 &763460971
 GameObject:
   m_ObjectHideFlags: 0
@@ -11244,7 +11277,7 @@ MonoBehaviour:
   - {fileID: 9080408751182826972, guid: 2618e1739b697c742b8dbcaa7073d394, type: 3}
   - {fileID: 7185206675170164372, guid: 275084c47c1200645b9e4b12b2958941, type: 3}
   numOfEnemyOnMap: 0
-  maxEnemyOnMap: 10
+  maxEnemyOnMap: 20
   killToNewEnemy: 50
   killedEnemy: 0
   AllowedToSpawn: 0
@@ -11708,8 +11741,8 @@ MonoBehaviour:
   onJoyUp:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 630077343}
-        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+      - m_Target: {fileID: 630077349}
+        m_TargetAssemblyTypeName: PlayerAttack, Assembly-CSharp
         m_MethodName: Dash
         m_Mode: 1
         m_Arguments:

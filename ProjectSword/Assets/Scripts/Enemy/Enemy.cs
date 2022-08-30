@@ -30,16 +30,18 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
         target = GameObject.FindGameObjectWithTag("Player").transform;
     }
+   
     private void FixedUpdate() {
-        if(agent.remainingDistance <= agent.stoppingDistance + 3){
+        if(health > 0){
+            if(agent.remainingDistance <= agent.stoppingDistance + 3){
                 agent.radius = Mathf.MoveTowards(agent.radius,0.01f,0.01f);
-                agent.height = Mathf.MoveTowards(agent.height,0.01f,0.01f);
-                //agent.radius = 0.01f;
+                agent.height = Mathf.MoveTowards(agent.height,0.01f,0.01f);    
             }else{
                 agent.radius = Mathf.MoveTowards(agent.radius,0.5f,0.01f);
-                agent.height = Mathf.MoveTowards(agent.height,1f,0.02f);
-                //agent.radius = 0.5f;
+                agent.height = Mathf.MoveTowards(agent.height,1f,0.02f);        
             }
+        }
+        
     }
     public void TakeDamage(int damage){
         if(health > 0){
@@ -48,11 +50,29 @@ public class Enemy : MonoBehaviour
             anim.SetBool("Moving", false);
             anim.Play("Idle");
             damaged = true;
+            agent.radius = 0;
+            agent.height = 0;
             takenDamage += damage;
             lastDamageTime = Time.time;
             //StartCoroutine(Hurt(damage));  
         }        
     }
+
+    public void InstantTakeDamage(int damage){
+        if(health > 0){
+            flinch = true;
+            agent.speed = 0;
+            anim.SetBool("Moving", false);
+            damaged = true;
+            agent.radius = 0;
+            agent.height = 0;
+            lastDamageTime = Time.time;
+            
+            
+            Hurt(damage);
+        }        
+    }
+
 
     protected void Hurt(int damage)
     {             
@@ -77,8 +97,6 @@ public class Enemy : MonoBehaviour
     
     private void Death(){
         anim.SetBool("Die", true);
-        agent.radius = 0;
-        agent.height = 0;
         BattleSystem.instance.enemyKilled();
         GetComponent<BoxCollider2D>().enabled = false;
         Destroy(gameObject, 3.0f);
