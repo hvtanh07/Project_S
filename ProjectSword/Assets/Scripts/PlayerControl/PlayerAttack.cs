@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     public TrailRenderer trail;
-    public SpreadKunai specialAttack;
+    public SpecialAttack specialAttack;
     public int damage;
     Player player;
     public float dashDistance;
