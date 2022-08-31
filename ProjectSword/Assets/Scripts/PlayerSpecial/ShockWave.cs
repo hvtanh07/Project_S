@@ -5,8 +5,8 @@ using UnityEngine;
 public class ShockWave : SpecialAttack
 {
     public float radius;
-    public float force;
-    public int Maximumdamage;
+    public int maximumDamage;
+    public LayerMask effectMask;
     public override void Attack(){
         //Instantiate()
 
@@ -15,21 +15,16 @@ public class ShockWave : SpecialAttack
         foreach(Collider2D nearByEnemy in collidersToAttack){
             Enemy enemy = nearByEnemy.GetComponent<Enemy>();
             if(enemy != null){
-                enemy.InstantTakeDamage(Maximumdamage);
-            }
-        }
+                var explosionDistance = (nearByEnemy.transform.position - transform.position).magnitude;
+                float effectiveRange;
+                if(explosionDistance > 1 ){
+                    effectiveRange  = 1 / explosionDistance;
+                }  
+                else{
+                    effectiveRange  = 1;
+                }
 
-        Collider2D[] collidersToPush = Physics2D.OverlapCircleAll(new Vector2(transform.position.x,transform.position.y),radius);
-
-        foreach(Collider2D nearByObject in collidersToPush){
-            Rigidbody2D obj = nearByObject.GetComponent<Rigidbody2D>();
-            if(obj != null){
-                var explosionDir = obj.position - new Vector2(transform.position.x,transform.position.y);
-                var explosionDistance = explosionDir.magnitude;
-                explosionDir /= explosionDistance;
-
-                obj.AddForce(Mathf.Lerp(0, force, (1 - explosionDistance)) * explosionDir);
-                //obj.AddForce(force, transform)
+                enemy.InstantTakeDamage(Mathf.RoundToInt(effectiveRange * maximumDamage));
             }
         }
     }

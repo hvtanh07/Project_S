@@ -63,7 +63,6 @@ public class Enemy : MonoBehaviour
             flinch = true;
             agent.speed = 0;
             anim.SetBool("Moving", false);
-            damaged = true;
             agent.radius = 0;
             agent.height = 0;
             lastDamageTime = Time.time;
