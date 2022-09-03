@@ -11,7 +11,6 @@ public class Shogun : Enemy
     public float rangeAttackRange; 
     public float closeAttackRange; 
     [SerializeField] private float timeBetweenAtack;
-    [SerializeField] private float timeBeforeAttack;
     
     float curentAttackTime;
     // Start is called before the first frame update

@@ -65,15 +65,13 @@ public class Ronin : Enemy
                 }
                 else if(agent.remainingDistance > agent.stoppingDistance)
                 {
-                    //Debug.Log("no longer at player pos");
-                    //stopping = false;
                     if(!stopping){
                         agent.speed = speed;
                         anim.SetBool("Reached", false);
                     }
-                    
                 }
             }  
+            
 
             if ( damaged && Time.time - lastDamageTime >= flinchTime )
             {
