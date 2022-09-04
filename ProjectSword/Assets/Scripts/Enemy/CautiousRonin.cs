@@ -61,15 +61,15 @@ public class CautiousRonin : Enemy
                     anim.SetBool("Moving", true);
                     if (agent.velocity.x > 0 && !m_FacingRight)
 		            {
-			            Flip();
+			            //Flip();
 		            }
 		            else if (agent.velocity.x < 0 && m_FacingRight)
 		            {
-			            Flip();
+			            //Flip();
 		            }
                 } 
                 curentAttackTime += Time.deltaTime;
-                if (agent.remainingDistance <= distanceToAttack && !agent.pathPending && !stopping && !backingUp)
+                if (agent.remainingDistance <= distanceToAttack && !agent.pathPending && !attacking && !backingUp)
                 { 
                     anim.SetBool("Reached", true);
                     if(curentAttackTime > timeBetweenAtack){
@@ -78,7 +78,7 @@ public class CautiousRonin : Enemy
                 }
                 else if(agent.remainingDistance > distanceToAttack || backingUp)
                 {
-                    if(!stopping){
+                    if(!attacking){
                         agent.speed = speed;
                         anim.SetBool("Reached", false);
                     }
@@ -96,7 +96,7 @@ public class CautiousRonin : Enemy
     private void Attack(){ 
         agent.speed = 0;
         curentAttackTime = 0f;
-        stopping = true;
+        attacking = true;
         targetAttackPoint = target.position;
         if(attack != null){
             anim.SetTrigger("Attack");   
@@ -109,7 +109,7 @@ public class CautiousRonin : Enemy
 
     public void FinishAttack(){
         agent.speed = speed;
-        stopping = false;
+        attacking = false;
         //anim.Play("CombatIdle");
     }
     private void OnDrawGizmos() {

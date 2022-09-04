@@ -7,10 +7,10 @@ using UnityEngine.AI;
 //[RequireComponent(typeof(Attack))]
 public class Ronin : Enemy
 {
+    [SerializeField] Navigation navigate;
     [SerializeField] Attack attack;
     [SerializeField] private float distanceToAttack;
     [SerializeField] private float timeBetweenAtack;
-    [SerializeField] private float timeBeforeAttack;
     float curentAttackTime;
 
     
@@ -18,10 +18,11 @@ public class Ronin : Enemy
     // Start is called before the first frame update
     void Start()
     {
+        navigate = GetComponent<Navigation>();
         attack = GetComponent<Attack>();
         if(attack == null){
             Debug.Log("No attack type found");
-        }
+        } 
         anim = GetComponent<Animator>();
         setupAgent();
         StartCoroutine(GetPlayer());
@@ -41,31 +42,22 @@ public class Ronin : Enemy
         if(health > 0){
             if(!flinch)
             {
-                if(target != null){
-                    agent.destination = target.position;
-                    //agent.SetDestination(target.position);
-                
-                    anim.SetBool("Moving", true);
-                    if (agent.velocity.x > 0 && !m_FacingRight)
-		            {
-			            Flip();
-		            }
-		            else if (agent.velocity.x < 0 && m_FacingRight)
-		            {
-			            Flip();
-		            }
-                } 
+                moving = navigate.Navigating(target,distanceToAttack);
+                Debug.Log(moving);
+
+                anim.SetBool("Moving",moving);
+
                 curentAttackTime += Time.deltaTime;
-                if (agent.remainingDistance <= agent.stoppingDistance && !agent.pathPending && !stopping)
+                if (!attacking && !moving)
                 { 
                     anim.SetBool("Reached", true);
                     if(curentAttackTime > timeBetweenAtack){
                         Attack();
                     }      
                 }
-                else if(agent.remainingDistance > agent.stoppingDistance)
+                else if(moving)
                 {
-                    if(!stopping){
+                    if(!attacking){
                         agent.speed = speed;
                         anim.SetBool("Reached", false);
                     }
@@ -83,7 +75,7 @@ public class Ronin : Enemy
     private void Attack(){ 
         agent.speed = 0;
         curentAttackTime = 0f;
-        stopping = true;
+        attacking = true;
         targetAttackPoint = target.position;
         if(attack != null){
             anim.SetTrigger("Attack");   
@@ -96,7 +88,7 @@ public class Ronin : Enemy
 
     public void FinishAttack(){
         agent.speed = speed;
-        stopping = false;
+        attacking = false;
         //anim.Play("CombatIdle");
     }
 }

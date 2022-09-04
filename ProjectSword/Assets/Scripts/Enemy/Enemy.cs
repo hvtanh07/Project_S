@@ -6,8 +6,6 @@ using System;
 
 public class Enemy : MonoBehaviour
 {
-    //state machine
-    private Vector3 startingPosition;
     [HideInInspector] protected Transform target;
     [HideInInspector] protected Vector3 targetAttackPoint;
     protected Animator anim;
@@ -19,7 +17,8 @@ public class Enemy : MonoBehaviour
     protected bool damaged;
     protected float lastDamageTime;
     protected int takenDamage;
-    protected bool stopping;
+    protected bool attacking;
+    protected bool moving;
     protected bool m_FacingRight = false;
 
     //protected NavMeshAgent agent;
@@ -101,16 +100,6 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject, 3.0f);
     }
 
-    protected void Flip()
-	{
-		// Switch the way the player is labelled as facing.
-		m_FacingRight = !m_FacingRight;
-
-		// Multiply the player's x local scale by -1.
-		Vector3 theScale = transform.localScale;
-		theScale.x *= -1;
-		transform.localScale = theScale;
-	}
     public void Spawn(){
         gameObject.SetActive(true);
     }

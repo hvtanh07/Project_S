@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5885249254858063375}
   - component: {fileID: 57266525818197823}
   - component: {fileID: 9028901615447828730}
+  - component: {fileID: 2914192996486768943}
   - component: {fileID: 512678348480647690}
   - component: {fileID: 7749054261810277101}
   m_Layer: 9
@@ -151,11 +152,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   speed: 4
-  attack: {fileID: 0}
   flinchTime: 1.5
+  navigate: {fileID: 0}
+  attack: {fileID: 0}
   distanceToAttack: 0.5
   timeBetweenAtack: 4
-  timeBeforeAttack: 0
 --- !u!114 &9028901615447828730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,6 +170,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
+--- !u!114 &2914192996486768943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6294639946090055600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9a1711d678d3a740b72875cc962555a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!95 &512678348480647690
 Animator:
   serializedVersion: 4
