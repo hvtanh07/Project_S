@@ -12,34 +12,40 @@ public class DashAttack : Attack
     public LayerMask wallmask;
     TrailRenderer trail;
     bool Dashing;
-    private void Start() {
+    private void Start()
+    {
         trail = GetComponent<TrailRenderer>();
-        trail.emitting = false; 
+        trail.emitting = false;
     }
-    public override void Attacking(Vector3 target){
+    public override void Attacking(Vector3 target)
+    {
         Vector3 dir = (target - transform.position).normalized * dashDistance;
         //set target
-        Vector3 finaltarget = new Vector2(transform.position.x + dir.x , transform.position.y + dir.y);
-        
+        Vector3 finaltarget = new Vector2(transform.position.x + dir.x, transform.position.y + dir.y);
+
         //draw line to front to check if dash will hit anything then dash to the target                   
         RaycastHit2D hit = Physics2D.Linecast(transform.position, finaltarget, wallmask);
-        if(hit.collider != null){
+        if (hit.collider != null)
+        {
             finaltarget = hit.point;
         }
-        Dashing = true;       
-        trail.emitting = true;    
-        LeanTween.move(this.gameObject,finaltarget, dashDistance/dashSpeed).setEase(LeanTweenType.easeOutQuart).setOnComplete(FinishedDash);    
+        Dashing = true;
+        trail.emitting = true;
+        LeanTween.move(this.gameObject, finaltarget, dashDistance / dashSpeed).setEase(LeanTweenType.easeOutQuart).setOnComplete(FinishedDash);
     }
-    
-    void FinishedDash(){
+
+    void FinishedDash()
+    {
         Dashing = false;
         trail.emitting = false;
         trail.Clear();
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {       
+    private void OnTriggerEnter2D(Collider2D other)
+    {
         Player player = other.GetComponent<Player>();
-        if(player != null && Dashing){
+        if (player != null && Dashing)
+        {
             player.TakeDamage(damage);
         }
     }

@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     public int health;
     public float speed;
     [SerializeField] protected float flinchTime;
-    protected bool flinch; 
+    protected bool flinch;
     protected bool damaged;
     protected float lastDamageTime;
     protected int takenDamage;
@@ -25,84 +25,117 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
 
     protected IEnumerator GetPlayer()
-    { 
+    {
         yield return new WaitForSeconds(1.0f);
         target = GameObject.FindGameObjectWithTag("Player").transform;
     }
-   
-    private void FixedUpdate() {
-        if(health > 0){
-            if(agent.remainingDistance <= agent.stoppingDistance + 3){
-                agent.radius = Mathf.MoveTowards(agent.radius,0.01f,0.01f);
-                agent.height = Mathf.MoveTowards(agent.height,0.01f,0.01f);    
-            }else{
-                agent.radius = Mathf.MoveTowards(agent.radius,0.5f,0.01f);
-                agent.height = Mathf.MoveTowards(agent.height,1f,0.02f);        
+
+    private void FixedUpdate()
+    {
+        if (health > 0)
+        {
+            if (agent.remainingDistance <= agent.stoppingDistance + 3)
+            {
+                agent.radius = Mathf.MoveTowards(agent.radius, 0.01f, 0.01f);
+                agent.height = Mathf.MoveTowards(agent.height, 0.01f, 0.01f);
+            }
+            else
+            {
+                agent.radius = Mathf.MoveTowards(agent.radius, 0.5f, 0.01f);
+                agent.height = Mathf.MoveTowards(agent.height, 1f, 0.02f);
             }
         }
-        
+
     }
-    public void TakeDamage(int damage){
-        if(health > 0){
-            flinch = true;
-            agent.speed = 0;
-            anim.SetBool("Moving", false);
-            anim.Play("Idle");
-            damaged = true;
-            agent.radius = 0;
-            agent.height = 0;
-            takenDamage += damage;
-            lastDamageTime = Time.time;
-            //StartCoroutine(Hurt(damage));  
-        }        
+    public void TakeDamage(int damage)
+    {
+        if (health > 0)
+        {
+            Shield shield = GetComponent<Shield>();
+            if (shield != null)
+            {
+                //Play anim Block
+                health -= shield.Block(damage);
+            }
+            else
+            {
+                flinch = true;
+                agent.speed = 0;
+                anim.SetBool("Moving", false);
+                anim.Play("Idle");
+                damaged = true;
+                agent.radius = 0;
+                agent.height = 0;
+                takenDamage += damage;
+                lastDamageTime = Time.time;
+            }
+        }
     }
 
-    public void InstantTakeDamage(int damage){
-        if(health > 0){
-            flinch = true;
-            agent.speed = 0;
-            anim.SetBool("Moving", false);
-            agent.radius = 0;
-            agent.height = 0;
-            lastDamageTime = Time.time;
-            
-            
-            Hurt(damage);
-        }        
+    public void InstantTakeDamage(int damage)
+    {
+        if (health > 0)
+        {
+            Shield shield = GetComponent<Shield>();
+            if (shield != null)
+            {
+                //Play Anim Block
+                health -= shield.Block(damage);
+            }
+            else
+            {
+                flinch = true;
+                agent.speed = 0;
+                anim.SetBool("Moving", false);
+                agent.radius = 0;
+                agent.height = 0;
+                lastDamageTime = Time.time;
+                Hurt(damage);
+            }
+
+        }
     }
 
 
     protected void Hurt(int damage)
-    {             
+    {
         //yield return new WaitForSeconds(flinchTime);
         damaged = false;
         Shield shield = GetComponent<Shield>();
-        if (shield != null){
+        if (shield != null)
+        {
             health -= shield.Block(damage);
-        }else{
+        }
+        else
+        {
             health -= damage;
             anim.SetTrigger("Hurt");
         }
         takenDamage = 0;
         //------------------------
-        if(health <= 0){
+        if (health <= 0)
+        {
             Death();
-        }else {
+        }
+        else
+        {
             agent.speed = speed;
             flinch = false;
-        }  
+        }
     }
-    
-    private void Death(){
+
+    private void Death()
+    {
         anim.SetBool("Die", true);
         BattleSystem.instance.enemyKilled();
         GetComponent<BoxCollider2D>().enabled = false;
         Destroy(gameObject, 3.0f);
     }
 
-    public void Spawn(){
+    public void Spawn()
+    {
         gameObject.SetActive(true);
     }
-    
-    
+
+
 }

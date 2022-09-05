@@ -11258,7 +11258,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1286929261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11990,19 +11990,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.1771189}
   m_EdgeRadius: 0
---- !u!114 &1790203407220747275
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3660866859459101505}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83f1a18ca80017e429f056c9f14ce668, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 10
 --- !u!1 &3660866859459101505
 GameObject:
   m_ObjectHideFlags: 0
@@ -12016,8 +12003,8 @@ GameObject:
   - component: {fileID: 1790203407220747274}
   - component: {fileID: 3763203517227186942}
   - component: {fileID: 9134435220370666845}
+  - component: {fileID: 9134435220370666847}
   - component: {fileID: 9134435220370666846}
-  - component: {fileID: 1790203407220747275}
   - component: {fileID: 7100039783767398139}
   - component: {fileID: 1017573162768690716}
   m_Layer: 9
@@ -12152,7 +12139,7 @@ MonoBehaviour:
   flinchTime: 0.8
   navigate: {fileID: 0}
   attack: {fileID: 0}
-  distanceToAttack: 5
+  distanceToAttack: 0
   timeBetweenAtack: 3
 --- !u!114 &9134435220370666846
 MonoBehaviour:
@@ -12163,6 +12150,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 3660866859459101505}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba5b32016c866c84eb5c170590c8df09, type: 3}
+  m_Script: {fileID: 11500000, guid: 47173e5cfe0ca274ea7399d35c4977e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maximumDamage: 10
+  radius: 5
+--- !u!114 &9134435220370666847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3660866859459101505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9a1711d678d3a740b72875cc962555a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

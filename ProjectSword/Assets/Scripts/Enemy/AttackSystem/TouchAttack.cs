@@ -9,19 +9,24 @@ public class TouchAttack : Attack
     public int damage;
 
     bool touchingPlayer;
-    private void OnTriggerEnter2D(Collider2D other) {       
-        
-        if(other.CompareTag("Player")){
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
             player = other.GetComponent<Player>();
         }
     }
-    private void OnTriggerExit2D(Collider2D other) {
-        if(other.CompareTag("Player")){
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
             player = null;
         }
     }
-    public override void Attacking(Vector3 target){
-        if(player != null){
+    public override void Attacking(Vector3 target)
+    {
+        if (player != null)
+        {
             player.TakeDamage(damage);
         }
     }

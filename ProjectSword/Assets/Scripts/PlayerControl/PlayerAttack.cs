@@ -31,30 +31,37 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ( numOfDashs < maxDashs && Time.time - lastDashTime >= dashHealTime )
+        if (numOfDashs < maxDashs && Time.time - lastDashTime >= dashHealTime)
         {
             addDash();
         }
 
-        if(Input.GetKeyDown(KeyCode.W)){
+        if (Input.GetKeyDown(KeyCode.W))
+        {
             specialAttack.Attack();
         }
     }
 
-    private void FixedUpdate() {
-        Collider2D [] colliders = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.y),dashDistance *1.5f,enemies);
-        if (colliders.Length > 0){
+    private void FixedUpdate()
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.y), dashDistance * 1.5f, enemies);
+        if (colliders.Length > 0)
+        {
             enemiesAround = true;
-        }else{
+        }
+        else
+        {
             enemiesAround = false;
         }
     }
 
-    public void Dash(){
+    public void Dash()
+    {
         player.HoldingDown = false;
         anim.SetBool("Running", false);
         player.indicator.SetActive(false);
-        if(numOfDashs > 0 && enemiesAround){
+        if (numOfDashs > 0 && enemiesAround)
+        {
             anim.SetTrigger("Attack");
             float animlength = anim.GetCurrentAnimatorStateInfo(0).length;
             //get trail and prepare to draw
@@ -64,22 +71,24 @@ public class PlayerAttack : MonoBehaviour
 
             player.dir *= dashDistance;
             //set target
-            Vector3 target = new Vector2(transform.position.x + player.dir.x , transform.position.y + player.dir.y);
+            Vector3 target = new Vector2(transform.position.x + player.dir.x, transform.position.y + player.dir.y);
             float dashLength = dashDistance;
             //draw line to front to check if dash will hit anything then dash to the target                   
             RaycastHit2D hit = Physics2D.Raycast(transform.position, player.dir, dashDistance, wallmask);
-            if(hit.collider != null){
+            if (hit.collider != null)
+            {
                 target = hit.point;
                 dashLength = Vector3.Magnitude(transform.position - target);
-            }          
+            }
             player.dashing = true;
             player.walkable = false;
-            anim.speed = (animlength * dashSpeed)/ dashLength;
-            LeanTween.move(this.gameObject,target, dashLength/dashSpeed).setEase(LeanTweenType.easeOutQuart).setOnComplete(FinishedDash);
-        }       
+            anim.speed = (animlength * dashSpeed) / dashLength;
+            LeanTween.move(this.gameObject, target, dashLength / dashSpeed).setEase(LeanTweenType.easeOutQuart).setOnComplete(FinishedDash);
+        }
     }
 
-    private void FinishedDash(){
+    private void FinishedDash()
+    {
         anim.Play("Idle");
         anim.speed = 1;
         trail.transform.SetParent(null);
@@ -90,8 +99,9 @@ public class PlayerAttack : MonoBehaviour
         lastDashTime = Time.time;
     }
 
-    public void addDash(){              
-        numOfDashs++;   
-        lastDashTime = Time.time;      
+    public void addDash()
+    {
+        numOfDashs++;
+        lastDashTime = Time.time;
     }
 }
