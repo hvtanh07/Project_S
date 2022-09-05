@@ -45,8 +45,10 @@ public class Ronin : Enemy
         {
             if (!flinch)
             {
-                moving = navigate.Navigating(target, distanceToAttack);
-
+                if (!attacking){
+                    moving = navigate.Navigating(target, distanceToAttack);
+                }
+                
                 anim.SetBool("Moving", moving);
 
                 curentAttackTime += Time.deltaTime;
