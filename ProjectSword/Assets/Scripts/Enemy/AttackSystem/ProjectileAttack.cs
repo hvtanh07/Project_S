@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class ProjectileAttack : Attack
 {
-    [SerializeField] GameObject objBullet;
+    public GameObject objBullet;
     public float Force;
-    public int damage;
 
     [Range(0, 3)]
     public int numOfSideProjectiles;

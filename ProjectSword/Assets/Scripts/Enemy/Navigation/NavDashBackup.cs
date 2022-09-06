@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class NavDashBackup : Navigation
 {
-    public float SpeedMultiplier;
-    public float distanceToEvade;
+    private float SpeedMultiplier;
     public LayerMask wallMask;
+    public float dashCoolDown;
     Vector3 finalTarget;
     bool Dashing;
+    float lastDash;
 
     private void Start()
     {
@@ -32,16 +33,18 @@ public class NavDashBackup : Navigation
     }
     void FinishedDash()
     {
+        lastDash = 0f;
         Dashing = false;
     }
     public override bool Navigating(Transform target, float distanceToAttack)
     {
+        lastDash += Time.deltaTime;
         if (target != null)
         {
             var dir = transform.position - target.position;
             var distance = dir.magnitude;
             finalTarget = target.position;
-            if (distance < distanceToEvade && !Dashing)
+            if (distance < 4f && !Dashing && lastDash > dashCoolDown)
             {
                 Dashing = true;
                 finalTarget = target.position + dir.normalized * (distanceToAttack + 2f);

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public abstract class Attack : MonoBehaviour
 {
+    public int damage;
     public abstract void Attacking(Vector3 target);
     //public abstract void DrawAttackPatern(Vector3 target);
 }
+
+

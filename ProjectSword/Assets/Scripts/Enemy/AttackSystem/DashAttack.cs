@@ -4,10 +4,10 @@ using UnityEngine;
 
 [RequireComponent(typeof(TrailRenderer))]
 [RequireComponent(typeof(Collider2D))]
+
 public class DashAttack : Attack
 {
     public float dashDistance;
-    public int damage;
     public float dashSpeed;
     public LayerMask wallmask;
     TrailRenderer trail;
@@ -49,4 +49,8 @@ public class DashAttack : Attack
             player.TakeDamage(damage);
         }
     }
+
+
 }
+
+

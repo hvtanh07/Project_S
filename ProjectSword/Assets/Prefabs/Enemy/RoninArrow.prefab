@@ -169,9 +169,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1441d78f8f2d2c44ad7148dd97da7b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 10
   objBullet: {fileID: 7743424670256140933, guid: 64d390ea453d6fb489c7ca6095f3f522, type: 3}
   Force: 30
-  damage: 1
   numOfSideProjectiles: 1
   spreadAngle: 15
 --- !u!114 &-8601171441713753024

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Shield : MonoBehaviour
 {
     public int maximumBlockHealth;
-    public int blockingHealth;
+    int blockingHealth;
     public int healAmount;
     public float blockHealTime = 1;
     private float lastBlockTime = -1;
