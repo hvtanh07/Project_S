@@ -99,6 +99,7 @@ public class Ronin : Enemy
     {
         agent.speed = speed;
         attacking = false;
+        Debug.Log("Finished Attack");
         //anim.Play("CombatIdle");
     }
 }

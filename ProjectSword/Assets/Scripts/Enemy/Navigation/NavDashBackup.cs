@@ -5,6 +5,7 @@ using UnityEngine;
 public class NavDashBackup : Navigation
 {
     private float SpeedMultiplier;
+    public float distanceToEvade;
     public LayerMask wallMask;
     public float dashCoolDown;
     Vector3 finalTarget;
@@ -17,6 +18,7 @@ public class NavDashBackup : Navigation
     }
     private void Dash(Vector3 target)
     {
+        Debug.Log("Called Dash");
         float speed = SpeedMultiplier * GetComponent<Enemy>().speed;
         //set target
         Vector3 finaltarget = target;
@@ -25,14 +27,16 @@ public class NavDashBackup : Navigation
         RaycastHit2D hit = Physics2D.Linecast(transform.position, finaltarget, wallMask);
         if (hit.collider != null)
         {
+            Debug.Log(hit.collider.gameObject.name);
             finaltarget = hit.point;
         }
         float dashDistance = (finalTarget - transform.position).magnitude;
-
+        Debug.Log("Started to Dash");
         LeanTween.move(this.gameObject, finaltarget, dashDistance / speed).setEase(LeanTweenType.easeOutQuart).setOnComplete(FinishedDash);
     }
     void FinishedDash()
     {
+        Debug.Log("Finished Dash");
         lastDash = 0f;
         Dashing = false;
     }
@@ -44,16 +48,17 @@ public class NavDashBackup : Navigation
             var dir = transform.position - target.position;
             var distance = dir.magnitude;
             finalTarget = target.position;
-            if (distance < 4f && !Dashing && lastDash > dashCoolDown)
+            if (distance < distanceToEvade && !Dashing && lastDash > dashCoolDown)
             {
+                Debug.Log("Dash!");
                 Dashing = true;
                 finalTarget = target.position + dir.normalized * (distanceToAttack + 2f);
                 Dash(finalTarget);
             }
-            else
-            {
-                Dashing = false;
-            }
+            //else
+            //{
+            //    Dashing = false;
+            //}
 
             agent.destination = finalTarget;
 
@@ -88,5 +93,8 @@ public class NavDashBackup : Navigation
         {
             return false;
         }
+    }
+    private void OnDrawGizmos() {
+        Gizmos.DrawSphere(finalTarget,0.5f);
     }
 }
