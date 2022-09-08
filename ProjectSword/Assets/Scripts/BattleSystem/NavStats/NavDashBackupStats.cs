@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class NavDashBackupStats : NavStats
 {
-    private float SpeedMultiplier;
+    public float SpeedMultiplier;
+    public float distanceToEvade;
     public LayerMask wallMask;
     public float dashCoolDown;
+
+
+    
+
 }

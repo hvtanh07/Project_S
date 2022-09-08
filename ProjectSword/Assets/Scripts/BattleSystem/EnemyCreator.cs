@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyCreator : MonoBehaviour
 {
-    public GameObject baseEnemy;
+    //public GameObject baseEnemy;
 
     int RandAttack;
     [Space]
@@ -23,23 +23,32 @@ public class EnemyCreator : MonoBehaviour
     [Header("Defend System")]
     public bool DefendEnable;
     [SerializeField] private DefendStats DefendStats;
-    private void Start() {
+    private void Start()
+    {
         UpdateUnlockedTypes();
     }
 
-    public void UpdateUnlockedTypes(){
-        unlockedAttackType.Clear();
-        foreach(AttackStats AttackType in allAttackType){
-            if(AttackType.unlocked){
-                unlockedAttackType.Add(AttackType);
-            }
-        }
-        unlockedNavType.Clear();
-        foreach(NavStats NavType in allNavType){
-            if(NavType.unlocked){
-                unlockedNavType.Add(NavType);
-            }
-        }
+    public void UpdateUnlockedTypes()
+    {
+        //unlockedAttackType.Clear();
+        //foreach(AttackStats AttackType in allAttackType){
+        //    if(AttackType.unlocked){
+        //        unlockedAttackType.Add(AttackType);
+        //    }
+        //}
+
+
+        //unlockedNavType.Clear();
+        //foreach(NavStats NavType in allNavType){
+        //    if(NavType.unlocked){
+        //        unlockedNavType.Add(NavType);
+        //    }
+        //}
+
+
+        unlockedAttackType = allAttackType.FindAll(x => x.unlocked && !unlockedAttackType.Contains(x));
+        unlockedNavType = allNavType.FindAll(x => x.unlocked && allNavType.Contains(x));
+
     }
 
     private void AssignAttack(GameObject enemy)
@@ -51,7 +60,7 @@ public class EnemyCreator : MonoBehaviour
                 {
                     DashAttack attack = enemy.AddComponent<DashAttack>();
                     DashAttackStats stats = unlockedAttackType[RandAttack] as DashAttackStats;
-                    attack.damage = currentEnemyDamage;
+                    attack.damage = stats.damage;
                     attack.dashDistance = stats.dashDistance;
                     attack.dashSpeed = stats.dashSpeed;
                     attack.wallmask = stats.wallmask;
@@ -62,7 +71,7 @@ public class EnemyCreator : MonoBehaviour
                 {
                     MultipleDashAttack attack = enemy.AddComponent<MultipleDashAttack>();
                     MultipleDashAttackStats stats = unlockedAttackType[RandAttack] as MultipleDashAttackStats;
-                    attack.damage = currentEnemyDamage;
+                    attack.damage = stats.damage;
                     attack.dashSpeed = stats.dashSpeed;
                     attack.patern = stats.patern;
                     break;
@@ -71,7 +80,7 @@ public class EnemyCreator : MonoBehaviour
                 {
                     MagicAttack attack = enemy.AddComponent<MagicAttack>();
                     MagicAttackStats stats = unlockedAttackType[RandAttack] as MagicAttackStats;
-                    attack.damage = currentEnemyDamage;
+                    attack.damage = stats.damage;
                     attack.lightning = stats.lightning;//replace with current type of magic function()
                     attack.spotWidth = stats.spotWidth;
                     attack.spotSpreadRange = stats.spotSpreadRange;
@@ -84,7 +93,7 @@ public class EnemyCreator : MonoBehaviour
                 {
                     ProjectileAttack attack = enemy.AddComponent<ProjectileAttack>();
                     ProjectileAttackStats stats = unlockedAttackType[RandAttack] as ProjectileAttackStats;
-                    attack.damage = currentEnemyDamage;
+                    attack.damage = stats.damage;
                     attack.objBullet = stats.objBullet;
                     attack.Force = stats.Force;
                     attack.numOfSideProjectiles = stats.numOfSideProjectiles;
@@ -95,7 +104,7 @@ public class EnemyCreator : MonoBehaviour
                 {
                     SuicideBomb attack = enemy.AddComponent<SuicideBomb>();
                     SuicideBombStats stats = unlockedAttackType[RandAttack] as SuicideBombStats;
-                    attack.damage = currentEnemyDamage;
+                    attack.damage = stats.damage;
                     attack.explosion = stats.explosion;
                     break;
                 }
@@ -103,7 +112,7 @@ public class EnemyCreator : MonoBehaviour
                 {
                     TouchAttack attack = enemy.AddComponent<TouchAttack>();
                     TouchAttackStats stats = unlockedAttackType[RandAttack] as TouchAttackStats;
-                    attack.damage = currentEnemyDamage;
+                    attack.damage = stats.damage;
                     break;
                 }
         }
@@ -124,7 +133,9 @@ public class EnemyCreator : MonoBehaviour
                     {
                         NavDashBackup nav = enemy.AddComponent<NavDashBackup>();
                         NavDashBackupStats stats = unlockedNavType[navType] as NavDashBackupStats;
+                        nav.SpeedMultiplier = stats.SpeedMultiplier;
                         nav.dashCoolDown = stats.dashCoolDown;
+                        nav.distanceToEvade = stats.distanceToEvade;
                         nav.wallMask = stats.wallMask;
                         break;
                     }
@@ -138,24 +149,24 @@ public class EnemyCreator : MonoBehaviour
                         NavRunToTarget nav = enemy.AddComponent<NavRunToTarget>();
                         break;
                     }
-
             }
         }
 
     }
 
-    public GameObject GetEnemy()
+    public GameObject GetEnemy(GameObject baseEnemy)
     {
         GameObject enemy = Instantiate(baseEnemy);
-        AssignAttack(enemy);
-        AssignNav(enemy);
+        //GameObject enemy = new GameObject("baseEnemy");
+        AssignAttack(baseEnemy);
+        AssignNav(baseEnemy);
         if (unlockedAttackType[RandAttack].type != AttackType.Suicide && DefendEnable && Random.value > 0.5f)
         {
-            Shield shield = enemy.AddComponent<Shield>();
+            Shield shield = baseEnemy.AddComponent<Shield>();
             shield.blockHealTime = DefendStats.blockHealTime;
             shield.maximumBlockHealth = DefendStats.maximumBlockHealth;
             shield.maximumBlockHealth = DefendStats.maximumBlockHealth;
         }
-        return enemy;
+        return baseEnemy;
     }
 }

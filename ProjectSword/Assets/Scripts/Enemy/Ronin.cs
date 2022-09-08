@@ -18,7 +18,24 @@ public class Ronin : Enemy
     // Start is called before the first frame update
     void Start()
     {
+        //navigate = GetComponent<Navigation>();
+        //attack = GetComponent<Attack>();
+        //if (attack == null)
+        //{
+        //    Debug.Log("No attack type found");
+        //}
+        //anim = GetComponent<Animator>();
+        //setupAgent();
+        //StartCoroutine(GetPlayer());
+        SetupComponent();
+    }
+    
+    public void SetupComponent(){
         navigate = GetComponent<Navigation>();
+        if (navigate == null)
+        {
+            Debug.Log("No navigate type found");
+        }
         attack = GetComponent<Attack>();
         if (attack == null)
         {
