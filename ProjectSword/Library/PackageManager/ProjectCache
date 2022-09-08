@@ -5,7 +5,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637982175391388128
+      ticks: 637982193885687070
     m_Hash: 2228961090
   m_LockFileStatus:
     m_FilePath: C:/Git/Project_S/ProjectSword/Packages/packages-lock.json
@@ -13,7 +13,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637982175391398100
+      ticks: 637982193885697039
     m_Hash: 2345241728
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}

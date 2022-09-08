@@ -10,6 +10,6 @@ public class MagicAttackStats : AttackStats
     public float spotWidth;
     public float spotSpreadRange;
     public int numberOfAttackPoint;   
-    //public MagicType typeOfMagic;
+    public MagicAttack.MagicType typeOfMagic;
     public LayerMask playerMask;
 }

@@ -76,7 +76,7 @@ public class EnemyCreator : MonoBehaviour
                     attack.spotWidth = stats.spotWidth;
                     attack.spotSpreadRange = stats.spotSpreadRange;
                     attack.numberOfAttackPoint = stats.numberOfAttackPoint;
-                    //attack.typeOfMagic = stats.typeOfMagic;
+                    attack.typeOfMagic = stats.typeOfMagic;
                     attack.playerMask = stats.playerMask;
                     break;
                 }
@@ -85,7 +85,7 @@ public class EnemyCreator : MonoBehaviour
                     ProjectileAttack attack = enemy.AddComponent<ProjectileAttack>();
                     ProjectileAttackStats stats = unlockedAttackType[RandAttack] as ProjectileAttackStats;
                     attack.damage = currentEnemyDamage;
-                    //attack.objBullet = stats.objBullet;
+                    attack.objBullet = stats.objBullet;
                     attack.Force = stats.Force;
                     attack.numOfSideProjectiles = stats.numOfSideProjectiles;
                     attack.spreadAngle = stats.spreadAngle;
@@ -95,8 +95,8 @@ public class EnemyCreator : MonoBehaviour
                 {
                     SuicideBomb attack = enemy.AddComponent<SuicideBomb>();
                     SuicideBombStats stats = unlockedAttackType[RandAttack] as SuicideBombStats;
-                    //attack.damage = currentEnemyDamage;
-                    //attack.explosion = stats.explosion;
+                    attack.damage = currentEnemyDamage;
+                    attack.explosion = stats.explosion;
                     break;
                 }
             case AttackType.Touch:

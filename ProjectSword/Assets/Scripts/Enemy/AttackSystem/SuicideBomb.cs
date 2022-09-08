@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class SuicideBomb : Attack
 {
-    [SerializeField] GameObject explosion;
-    public int maximumDamage;
+    public GameObject explosion;
     public float radius;
 
     public override void Attacking(Vector3 target)
@@ -33,7 +32,7 @@ public class SuicideBomb : Attack
                             {
                                 effectiveRange = 1;
                             }
-                            player.TakeDamage(Mathf.RoundToInt(effectiveRange * maximumDamage));
+                            player.TakeDamage(Mathf.RoundToInt(effectiveRange * damage));
                         }
                         break;
                     }
@@ -51,7 +50,7 @@ public class SuicideBomb : Attack
                             {
                                 effectiveRange = 1;
                             }
-                            enemy.InstantTakeDamage(Mathf.RoundToInt(effectiveRange * maximumDamage));
+                            enemy.InstantTakeDamage(Mathf.RoundToInt(effectiveRange * damage));
                         }
                         break;
                     }

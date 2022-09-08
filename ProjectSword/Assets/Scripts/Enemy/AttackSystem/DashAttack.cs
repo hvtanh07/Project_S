@@ -7,7 +7,6 @@ using UnityEngine;
 public class DashAttack : Attack
 {
     public float dashDistance;
-    public int damage;
     public float dashSpeed;
     public LayerMask wallmask;
     TrailRenderer trail;

@@ -6,7 +6,6 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class MultipleDashAttack : Attack
 {
-    public int damage;
     public float dashSpeed;
     public List<Vector3> patern;
     TrailRenderer trail;

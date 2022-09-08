@@ -6,7 +6,6 @@ using UnityEngine;
 public class TouchAttack : Attack
 {
     Player player;
-    public int damage;
 
     bool touchingPlayer;
     private void OnTriggerEnter2D(Collider2D other)

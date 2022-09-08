@@ -4,17 +4,16 @@ using UnityEngine;
 
 public class MagicAttack : Attack
 {
-    private enum MagicType{
+    public enum MagicType{
         circle,
         random,
         line
     }
     public GameObject lightning;
-    public int damage;
     public float spotWidth;
     public float spotSpreadRange;
     public int numberOfAttackPoint;   
-    [SerializeField] private MagicType typeOfMagic;
+    public MagicType typeOfMagic;
     public LayerMask playerMask;
     // Start is called before the first frame update
     public override void Attacking(Vector3 target){
