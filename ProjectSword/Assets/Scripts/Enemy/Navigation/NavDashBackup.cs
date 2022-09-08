@@ -9,8 +9,9 @@ public class NavDashBackup : Navigation
     public LayerMask wallMask;
     public float dashCoolDown;
     Vector3 finalTarget;
+    Vector3 dashTarget;
     bool Dashing;
-    float lastDash;
+    [SerializeField] float lastDash;
 
     private void Start()
     {
@@ -18,21 +19,20 @@ public class NavDashBackup : Navigation
     }
     private void Dash(Vector3 target)
     {
-        Debug.Log("Called Dash");
         float speed = SpeedMultiplier * GetComponent<Enemy>().speed;
         //set target
-        Vector3 finaltarget = target;
+        dashTarget = target;
 
         //draw line to front to check if dash will hit anything then dash to the target                   
-        RaycastHit2D hit = Physics2D.Linecast(transform.position, finaltarget, wallMask);
+        RaycastHit2D hit = Physics2D.Linecast(transform.position, dashTarget, wallMask);
         if (hit.collider != null)
         {
             Debug.Log(hit.collider.gameObject.name);
-            finaltarget = hit.point;
+            dashTarget = hit.point;
         }
-        float dashDistance = (finalTarget - transform.position).magnitude;
-        Debug.Log("Started to Dash");
-        LeanTween.move(this.gameObject, finaltarget, dashDistance / speed).setEase(LeanTweenType.easeOutQuart).setOnComplete(FinishedDash);
+        float dashDistance = (dashTarget - transform.position).magnitude;
+        LeanTween.move(gameObject, dashTarget, dashDistance / speed).setOnComplete(FinishedDash);
+        //FinishedDash();
     }
     void FinishedDash()
     {
@@ -50,7 +50,6 @@ public class NavDashBackup : Navigation
             finalTarget = target.position;
             if (distance < distanceToEvade && !Dashing && lastDash > dashCoolDown)
             {
-                Debug.Log("Dash!");
                 Dashing = true;
                 finalTarget = target.position + dir.normalized * (distanceToAttack + 2f);
                 Dash(finalTarget);
@@ -95,6 +94,6 @@ public class NavDashBackup : Navigation
         }
     }
     private void OnDrawGizmos() {
-        Gizmos.DrawSphere(finalTarget,0.5f);
+        Gizmos.DrawSphere(dashTarget,0.5f);
     }
 }
