@@ -294,6 +294,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a562895f64823645b01cfd6ba84b4bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  distanceToAttack: 5
+  timeBetweenAtack: 3
   damage: 20
   type: 0
   unlocked: 0
@@ -347,6 +349,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b8b7f8be42919a4ab502542277303a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  distanceToAttack: 4
+  timeBetweenAtack: 7
   damage: 10
   type: 1
   unlocked: 0
@@ -9006,9 +9010,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90d7492f924c871438fddede5d5206e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  distanceToAttack: 0
+  timeBetweenAtack: 2
   damage: 10
   type: 5
-  unlocked: 1
+  unlocked: 0
 --- !u!4 &645852337
 Transform:
   m_ObjectHideFlags: 0
@@ -9053,9 +9059,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06a52b1aef5af9c45812b25d84689d2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  distanceToAttack: 6
+  timeBetweenAtack: 3
   damage: 10
   type: 3
-  unlocked: 0
+  unlocked: 1
   objBullet: {fileID: 7743424670256140933, guid: 64d390ea453d6fb489c7ca6095f3f522, type: 3}
   Force: 70
   numOfSideProjectiles: 0
@@ -11373,7 +11381,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  unlocked: 0
+  unlocked: 1
   SpeedMultiplier: 5
   distanceToEvade: 3
   wallMask:
@@ -11808,6 +11816,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ecc16c555bcc3140ac82bd784b6b64c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  distanceToAttack: 7
+  timeBetweenAtack: 4
   damage: 20
   type: 2
   unlocked: 0
@@ -11866,7 +11876,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
-  unlocked: 1
+  unlocked: 0
 --- !u!4 &1546747821
 Transform:
   m_ObjectHideFlags: 0
@@ -12202,6 +12212,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b136b0d0fdeb4b946bf0579dbeb14f82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  distanceToAttack: 0
+  timeBetweenAtack: 1
   damage: 10
   type: 4
   unlocked: 0
@@ -12665,5 +12677,3 @@ MonoBehaviour:
   flinchTime: 0.8
   navigate: {fileID: 0}
   attack: {fileID: 0}
-  distanceToAttack: 5
-  timeBetweenAtack: 3

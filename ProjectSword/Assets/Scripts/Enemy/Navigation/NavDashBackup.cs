@@ -71,6 +71,7 @@ public class NavDashBackup : Navigation
 
             if (agent.remainingDistance <= agent.stoppingDistance && !agent.pathPending && !Dashing)
             {
+                agent.SetDestination(gameObject.transform.position);
                 if (target.position.x - transform.position.x > 0 && !m_FacingRight)
                 {
                     Flip();

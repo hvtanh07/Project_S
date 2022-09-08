@@ -27,7 +27,9 @@ public class EnemySpawner : MonoBehaviour
         }
         
         if(!isPlayerInRange && Time.time - SpawnTime > enemySpawnTime && BattleSystem.instance.AllowedToSpawn){
-            BattleSystem.instance.GetEnemySpawn().transform.position = transform.position;
+            var newEnemy = BattleSystem.instance.GetEnemySpawn();
+            newEnemy.transform.position = transform.position;
+            newEnemy.GetComponent<Ronin>().Setup();
             //Instantiate(BattleSystem.instance.GetEnemySpawn(), transform.position, Quaternion.identity);
             SpawnTime = Time.time;
         }

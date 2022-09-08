@@ -23,6 +23,7 @@ public class NavRunToTarget : Navigation
 		    }
 
             if (agent.remainingDistance <= agent.stoppingDistance && !agent.pathPending){
+                agent.SetDestination(gameObject.transform.position);
                 return false;
             }
             else if (agent.remainingDistance > agent.stoppingDistance){

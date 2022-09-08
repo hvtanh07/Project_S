@@ -60,6 +60,8 @@ public class EnemyCreator : MonoBehaviour
                 {
                     DashAttack attack = enemy.AddComponent<DashAttack>();
                     DashAttackStats stats = unlockedAttackType[RandAttack] as DashAttackStats;
+                    attack.distanceToAttack = stats.distanceToAttack;
+                    attack.timeBetweenAtack = stats.timeBetweenAtack;
                     attack.damage = stats.damage;
                     attack.dashDistance = stats.dashDistance;
                     attack.dashSpeed = stats.dashSpeed;
@@ -71,6 +73,8 @@ public class EnemyCreator : MonoBehaviour
                 {
                     MultipleDashAttack attack = enemy.AddComponent<MultipleDashAttack>();
                     MultipleDashAttackStats stats = unlockedAttackType[RandAttack] as MultipleDashAttackStats;
+                    attack.distanceToAttack = stats.distanceToAttack;
+                    attack.timeBetweenAtack = stats.timeBetweenAtack;
                     attack.damage = stats.damage;
                     attack.dashSpeed = stats.dashSpeed;
                     attack.patern = stats.patern;
@@ -80,6 +84,8 @@ public class EnemyCreator : MonoBehaviour
                 {
                     MagicAttack attack = enemy.AddComponent<MagicAttack>();
                     MagicAttackStats stats = unlockedAttackType[RandAttack] as MagicAttackStats;
+                    attack.distanceToAttack = stats.distanceToAttack;
+                    attack.timeBetweenAtack = stats.timeBetweenAtack;
                     attack.damage = stats.damage;
                     attack.lightning = stats.lightning;//replace with current type of magic function()
                     attack.spotWidth = stats.spotWidth;
@@ -93,6 +99,8 @@ public class EnemyCreator : MonoBehaviour
                 {
                     ProjectileAttack attack = enemy.AddComponent<ProjectileAttack>();
                     ProjectileAttackStats stats = unlockedAttackType[RandAttack] as ProjectileAttackStats;
+                    attack.distanceToAttack = stats.distanceToAttack;
+                    attack.timeBetweenAtack = stats.timeBetweenAtack;
                     attack.damage = stats.damage;
                     attack.objBullet = stats.objBullet;
                     attack.Force = stats.Force;
@@ -104,6 +112,8 @@ public class EnemyCreator : MonoBehaviour
                 {
                     SuicideBomb attack = enemy.AddComponent<SuicideBomb>();
                     SuicideBombStats stats = unlockedAttackType[RandAttack] as SuicideBombStats;
+                    attack.distanceToAttack = stats.distanceToAttack;
+                    attack.timeBetweenAtack = stats.timeBetweenAtack;
                     attack.damage = stats.damage;
                     attack.explosion = stats.explosion;
                     break;
@@ -112,6 +122,8 @@ public class EnemyCreator : MonoBehaviour
                 {
                     TouchAttack attack = enemy.AddComponent<TouchAttack>();
                     TouchAttackStats stats = unlockedAttackType[RandAttack] as TouchAttackStats;
+                    attack.distanceToAttack = stats.distanceToAttack;
+                    attack.timeBetweenAtack = stats.timeBetweenAtack;
                     attack.damage = stats.damage;
                     break;
                 }
@@ -158,15 +170,15 @@ public class EnemyCreator : MonoBehaviour
     {
         GameObject enemy = Instantiate(baseEnemy);
         //GameObject enemy = new GameObject("baseEnemy");
-        AssignAttack(baseEnemy);
-        AssignNav(baseEnemy);
+        AssignAttack(enemy);
+        AssignNav(enemy);
         if (unlockedAttackType[RandAttack].type != AttackType.Suicide && DefendEnable && Random.value > 0.5f)
         {
-            Shield shield = baseEnemy.AddComponent<Shield>();
+            Shield shield = enemy.AddComponent<Shield>();
             shield.blockHealTime = DefendStats.blockHealTime;
             shield.maximumBlockHealth = DefendStats.maximumBlockHealth;
             shield.maximumBlockHealth = DefendStats.maximumBlockHealth;
         }
-        return baseEnemy;
+        return enemy;
     }
 }

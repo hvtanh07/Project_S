@@ -9,33 +9,14 @@ public class Ronin : Enemy
 {
     [SerializeField] Navigation navigate;
     [SerializeField] Attack attack;
-    [SerializeField] private float distanceToAttack;
-    [SerializeField] private float timeBetweenAtack;
     float curentAttackTime;
 
 
 
     // Start is called before the first frame update
-    void Start()
+    public void Setup()
     {
-        //navigate = GetComponent<Navigation>();
-        //attack = GetComponent<Attack>();
-        //if (attack == null)
-        //{
-        //    Debug.Log("No attack type found");
-        //}
-        //anim = GetComponent<Animator>();
-        //setupAgent();
-        //StartCoroutine(GetPlayer());
-        SetupComponent();
-    }
-    
-    public void SetupComponent(){
         navigate = GetComponent<Navigation>();
-        if (navigate == null)
-        {
-            Debug.Log("No navigate type found");
-        }
         attack = GetComponent<Attack>();
         if (attack == null)
         {
@@ -49,7 +30,7 @@ public class Ronin : Enemy
     private void setupAgent()
     {
         agent = GetComponent<NavMeshAgent>();
-        agent.stoppingDistance = distanceToAttack;
+        agent.stoppingDistance = attack.distanceToAttack;
         agent.speed = speed;
         agent.updateRotation = false;
         agent.updateUpAxis = false;
@@ -62,17 +43,18 @@ public class Ronin : Enemy
         {
             if (!flinch)
             {
-                if (!attacking){
-                    moving = navigate.Navigating(target, distanceToAttack);
+                if (!attacking)
+                {
+                    moving = navigate.Navigating(target, attack.distanceToAttack);
                 }
-                
+
                 anim.SetBool("Moving", moving);
 
                 curentAttackTime += Time.deltaTime;
                 if (!attacking && !moving)
                 {
                     anim.SetBool("Reached", true);
-                    if (curentAttackTime > timeBetweenAtack)
+                    if (curentAttackTime > attack.timeBetweenAtack)
                     {
                         Attack();
                     }

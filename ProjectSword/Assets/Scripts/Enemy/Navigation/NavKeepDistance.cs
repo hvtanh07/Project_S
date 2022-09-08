@@ -44,6 +44,7 @@ public class NavKeepDistance : Navigation
 
             if (agent.remainingDistance <= agent.stoppingDistance && !agent.pathPending && !backingUp)
             {
+                agent.SetDestination(gameObject.transform.position);
                 return false;
             }
             else if (agent.remainingDistance > agent.stoppingDistance || backingUp)

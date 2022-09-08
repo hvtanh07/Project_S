@@ -76,6 +76,7 @@ public class Enemy : MonoBehaviour
     {
         if (health > 0)
         {
+            agent.SetDestination(gameObject.transform.position);
             Shield shield = GetComponent<Shield>();
             if (shield != null)
             {
@@ -99,18 +100,9 @@ public class Enemy : MonoBehaviour
 
     protected void Hurt(int damage)
     {
-        //yield return new WaitForSeconds(flinchTime);
         damaged = false;
-        Shield shield = GetComponent<Shield>();
-        if (shield != null)
-        {
-            health -= shield.Block(damage);
-        }
-        else
-        {
-            health -= damage;
-            anim.SetTrigger("Hurt");
-        }
+        health -= damage;
+        anim.SetTrigger("Hurt");
         takenDamage = 0;
         //------------------------
         if (health <= 0)
