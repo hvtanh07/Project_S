@@ -10,7 +10,7 @@ public class NavDashBackup : Navigation
     public float dashCoolDown;
     Vector3 finalTarget;
     bool Dashing;
-    float lastDash;
+    [SerializeField] float lastDash;
     private void Update() {
         lastDash += Time.deltaTime;
     }
@@ -37,6 +37,7 @@ public class NavDashBackup : Navigation
     }
     void FinishedDash()
     {
+        lastDash = 0f;
         Dashing = false;
     }
     public override bool Navigating(Transform target, float distanceToAttack)
