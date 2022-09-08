@@ -7,8 +7,13 @@ public class NavDashBackup : Navigation
     public float SpeedMultiplier;
     public float distanceToEvade;
     public LayerMask wallMask;
+    public float dashCoolDown;
     Vector3 finalTarget;
     bool Dashing;
+    float lastDash;
+    private void Update() {
+        lastDash += Time.deltaTime;
+    }
 
     private void Start()
     {
@@ -41,16 +46,16 @@ public class NavDashBackup : Navigation
             var dir = transform.position - target.position;
             var distance = dir.magnitude;
             finalTarget = target.position;
-            if (distance < distanceToEvade && !Dashing)
+            if (distance < distanceToEvade && !Dashing && lastDash > dashCoolDown)
             {
                 Dashing = true;
                 finalTarget = target.position + dir.normalized * (distanceToAttack + 2f);
                 Dash(finalTarget);
             }
-            else
-            {
-                Dashing = false;
-            }
+            //else
+            //{
+            //    Dashing = false;
+            //}
 
             agent.destination = finalTarget;
 

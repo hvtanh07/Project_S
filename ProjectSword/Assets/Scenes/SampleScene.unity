@@ -12002,12 +12002,12 @@ GameObject:
   - component: {fileID: 9134435220370666843}
   - component: {fileID: 1790203407220747274}
   - component: {fileID: 3763203517227186942}
-  - component: {fileID: 9134435220370666845}
-  - component: {fileID: 9134435220370666849}
-  - component: {fileID: 9134435220370666847}
   - component: {fileID: 7100039783767398139}
   - component: {fileID: 1017573162768690716}
   - component: {fileID: 9134435220370666848}
+  - component: {fileID: 9134435220370666845}
+  - component: {fileID: 9134435220370666847}
+  - component: {fileID: 9134435220370666849}
   m_Layer: 9
   m_Name: RoninChaser
   m_TagString: Enemy
@@ -12159,6 +12159,7 @@ MonoBehaviour:
   wallMask:
     serializedVersion: 2
     m_Bits: 8
+  dashCoolDown: 2
 --- !u!96 &9134435220370666848
 TrailRenderer:
   serializedVersion: 2
