@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyCreator : MonoBehaviour
 {
     //public GameObject baseEnemy;
-
+    public static BattleSystem instance {get; private set;}
     int RandAttack;
     [Space]
     [Header("Attack System")]

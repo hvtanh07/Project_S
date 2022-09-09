@@ -249,7 +249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
-  unlocked: 1
+  unlocked: 0
 --- !u!4 &72065993
 Transform:
   m_ObjectHideFlags: 0
@@ -298,7 +298,7 @@ MonoBehaviour:
   timeBetweenAtack: 3
   damage: 20
   type: 0
-  unlocked: 1
+  unlocked: 0
   dashDistance: 7
   dashSpeed: 50
   wallmask:
@@ -353,7 +353,7 @@ MonoBehaviour:
   timeBetweenAtack: 7
   damage: 10
   type: 1
-  unlocked: 1
+  unlocked: 0
   dashSpeed: 50
   patern:
   - {x: 2, y: 2, z: 0}
@@ -492,7 +492,7 @@ MonoBehaviour:
   timeBetweenAtack: 4
   damage: 10
   type: 4
-  unlocked: 1
+  unlocked: 0
   circle: {fileID: 8034503730720908276, guid: 6dbb6d81144ce564289336eae9e4d251, type: 3}
   spotWidth: 1
   spotSpreadRange: 5
@@ -9017,7 +9017,7 @@ MonoBehaviour:
   dashDistance: 7
   dashSpeed: 100
   maxDashs: 4
-  dashHealTime: 1
+  dashHealTime: 0
   wallmask:
     serializedVersion: 2
     m_Bits: 8
@@ -9123,7 +9123,7 @@ MonoBehaviour:
   timeBetweenAtack: 3
   damage: 10
   type: 5
-  unlocked: 1
+  unlocked: 0
   objBullet: {fileID: 7743424670256140933, guid: 64d390ea453d6fb489c7ca6095f3f522, type: 3}
   Force: 70
   numOfSideProjectiles: 0
@@ -11441,7 +11441,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  unlocked: 1
+  unlocked: 0
   SpeedMultiplier: 5
   distanceToEvade: 3
   wallMask:
@@ -11899,7 +11899,7 @@ MonoBehaviour:
   timeBetweenAtack: 4
   damage: 15
   type: 3
-  unlocked: 1
+  unlocked: 0
   rock: {fileID: 8034503730720908276, guid: 6dbb6d81144ce564289336eae9e4d251, type: 3}
   spotWidth: 1
   spotSpreadRange: 5
@@ -12246,7 +12246,7 @@ MonoBehaviour:
   timeBetweenAtack: 4
   damage: 20
   type: 2
-  unlocked: 1
+  unlocked: 0
   lightning: {fileID: 8034503730720908276, guid: 6dbb6d81144ce564289336eae9e4d251, type: 3}
   spotWidth: 1
   spotSpreadRange: 5
@@ -12333,7 +12333,7 @@ MonoBehaviour:
   timeBetweenAtack: 1
   damage: 10
   type: 6
-  unlocked: 1
+  unlocked: 0
   explosion: {fileID: 0}
   radius: 5
 --- !u!4 &1910834158
