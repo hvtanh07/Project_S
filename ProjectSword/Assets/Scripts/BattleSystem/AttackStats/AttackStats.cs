@@ -5,7 +5,9 @@ public enum AttackType
 {
     Dash,
     MultipleDash,
-    Magic,
+    Lightning,
+    Rock,
+    Circle,
     Projectile,
     Suicide,
     Touch

@@ -139,7 +139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1425661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,7 +187,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &6098134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,7 +249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
-  unlocked: 0
+  unlocked: 1
 --- !u!4 &72065993
 Transform:
   m_ObjectHideFlags: 0
@@ -263,7 +263,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1286929262}
-  m_RootOrder: 7
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &95696642
 GameObject:
@@ -298,13 +298,13 @@ MonoBehaviour:
   timeBetweenAtack: 3
   damage: 20
   type: 0
-  unlocked: 0
-  dashDistance: 5
+  unlocked: 1
+  dashDistance: 7
   dashSpeed: 50
   wallmask:
     serializedVersion: 2
     m_Bits: 8
-  trail: {fileID: 0}
+  trail: {fileID: 1841785908489286593, guid: 047eb60927ae4a847af5891cd733ddf3, type: 3}
 --- !u!4 &95696644
 Transform:
   m_ObjectHideFlags: 0
@@ -353,10 +353,14 @@ MonoBehaviour:
   timeBetweenAtack: 7
   damage: 10
   type: 1
-  unlocked: 0
+  unlocked: 1
   dashSpeed: 50
-  patern: []
-  trail: {fileID: 0}
+  patern:
+  - {x: 2, y: 2, z: 0}
+  - {x: -2, y: -2, z: 0}
+  - {x: 2, y: -2, z: 0}
+  - {x: -2, y: 2, z: 0}
+  trail: {fileID: 1841785908489286593, guid: 047eb60927ae4a847af5891cd733ddf3, type: 3}
 --- !u!4 &232602513
 Transform:
   m_ObjectHideFlags: 0
@@ -370,7 +374,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1286929262}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &273299676
 GameObject:
@@ -440,6 +444,62 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &297117096
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 297117097}
+  - component: {fileID: 297117098}
+  m_Layer: 0
+  m_Name: CircleAttack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &297117097
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 297117096}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1286929262}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &297117098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 297117096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4adce8af368194f44a3f94d1383f91f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distanceToAttack: 4
+  timeBetweenAtack: 4
+  damage: 10
+  type: 4
+  unlocked: 1
+  circle: {fileID: 8034503730720908276, guid: 6dbb6d81144ce564289336eae9e4d251, type: 3}
+  spotWidth: 1
+  spotSpreadRange: 5
+  numberOfAttackPoint: 3
+  playerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -9010,11 +9070,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90d7492f924c871438fddede5d5206e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distanceToAttack: 0
+  distanceToAttack: 1
   timeBetweenAtack: 2
-  damage: 10
-  type: 5
-  unlocked: 0
+  damage: 5
+  type: 7
+  unlocked: 1
 --- !u!4 &645852337
 Transform:
   m_ObjectHideFlags: 0
@@ -9062,7 +9122,7 @@ MonoBehaviour:
   distanceToAttack: 6
   timeBetweenAtack: 3
   damage: 10
-  type: 3
+  type: 5
   unlocked: 1
   objBullet: {fileID: 7743424670256140933, guid: 64d390ea453d6fb489c7ca6095f3f522, type: 3}
   Force: 70
@@ -11401,7 +11461,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1286929262}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &887674584
 GameObject:
@@ -11593,7 +11653,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1286929260}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 44, y: 7.6, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11601,6 +11661,8 @@ Transform:
   - {fileID: 686408590}
   - {fileID: 95696644}
   - {fileID: 1545053457}
+  - {fileID: 1719755910}
+  - {fileID: 297117097}
   - {fileID: 232602513}
   - {fileID: 1910834158}
   - {fileID: 846396532}
@@ -11625,7 +11687,9 @@ MonoBehaviour:
   currentEnemyDamage: 0
   allAttackType:
   - {fileID: 95696643}
-  - {fileID: 1545053456}
+  - {fileID: 1719755911}
+  - {fileID: 1545053458}
+  - {fileID: 297117098}
   - {fileID: 232602512}
   - {fileID: 686408589}
   - {fileID: 1910834157}
@@ -11796,41 +11860,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1545053457}
-  - component: {fileID: 1545053456}
+  - component: {fileID: 1545053458}
   m_Layer: 0
-  m_Name: MagicAttack
+  m_Name: RockAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1545053456
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1545053455}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ecc16c555bcc3140ac82bd784b6b64c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  distanceToAttack: 7
-  timeBetweenAtack: 4
-  damage: 20
-  type: 2
-  unlocked: 0
-  lightning: {fileID: 8034503730720908276, guid: 6dbb6d81144ce564289336eae9e4d251, type: 3}
-  rock: {fileID: 8034503730720908276, guid: 6dbb6d81144ce564289336eae9e4d251, type: 3}
-  electric: {fileID: 8034503730720908276, guid: 6dbb6d81144ce564289336eae9e4d251, type: 3}
-  spotWidth: 1
-  spotSpreadRange: 5
-  numberOfAttackPoint: 3
-  typeOfMagic: 0
-  playerMask:
-    serializedVersion: 2
-    m_Bits: 128
 --- !u!4 &1545053457
 Transform:
   m_ObjectHideFlags: 0
@@ -11846,6 +11883,30 @@ Transform:
   m_Father: {fileID: 1286929262}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1545053458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545053455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74bc898292e964743b59deeb9c08f563, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distanceToAttack: 7
+  timeBetweenAtack: 4
+  damage: 15
+  type: 3
+  unlocked: 1
+  rock: {fileID: 8034503730720908276, guid: 6dbb6d81144ce564289336eae9e4d251, type: 3}
+  spotWidth: 1
+  spotSpreadRange: 5
+  numberOfAttackPoint: 3
+  playerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &1546747819
 GameObject:
   m_ObjectHideFlags: 0
@@ -11876,7 +11937,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
-  unlocked: 0
+  unlocked: 1
 --- !u!4 &1546747821
 Transform:
   m_ObjectHideFlags: 0
@@ -11890,7 +11951,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1286929262}
-  m_RootOrder: 8
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1582584138
 GameObject:
@@ -12058,7 +12119,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1616079114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12120,7 +12181,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1286929262}
-  m_RootOrder: 9
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1686582091
 MonoBehaviour:
@@ -12137,6 +12198,62 @@ MonoBehaviour:
   maximumBlockHealth: 30
   healAmount: 5
   blockHealTime: 3
+--- !u!1 &1719755909
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1719755910}
+  - component: {fileID: 1719755911}
+  m_Layer: 0
+  m_Name: LightningAttack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1719755910
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1719755909}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1286929262}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1719755911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1719755909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82060246d0a211446a39b3197bb951f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distanceToAttack: 7
+  timeBetweenAtack: 4
+  damage: 20
+  type: 2
+  unlocked: 1
+  lightning: {fileID: 8034503730720908276, guid: 6dbb6d81144ce564289336eae9e4d251, type: 3}
+  spotWidth: 1
+  spotSpreadRange: 5
+  numberOfAttackPoint: 3
+  playerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &1761266363
 GameObject:
   m_ObjectHideFlags: 0
@@ -12215,8 +12332,8 @@ MonoBehaviour:
   distanceToAttack: 0
   timeBetweenAtack: 1
   damage: 10
-  type: 4
-  unlocked: 0
+  type: 6
+  unlocked: 1
   explosion: {fileID: 0}
   radius: 5
 --- !u!4 &1910834158
@@ -12232,7 +12349,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1286929262}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2098974244 stripped
 GameObject:
@@ -12672,6 +12789,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3409ac67c5c271845b6de9e333c72785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agent: {fileID: 0}
   health: 10
   speed: 5
   flinchTime: 0.8

@@ -24,7 +24,7 @@ public class Ronin : Enemy
         }
         anim = GetComponent<Animator>();
         setupAgent();
-        StartCoroutine(GetPlayer());
+        target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     private void setupAgent()

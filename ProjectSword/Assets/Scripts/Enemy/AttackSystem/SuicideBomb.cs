@@ -55,9 +55,7 @@ public class SuicideBomb : Attack
                         break;
                     }
             }
-
         }
-        Debug.Log("ran here");
         BattleSystem.instance.enemyKilled();
         Destroy(gameObject);
     }

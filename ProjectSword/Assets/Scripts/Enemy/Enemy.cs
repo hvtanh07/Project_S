@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     [HideInInspector] protected Transform target;
     [HideInInspector] protected Vector3 targetAttackPoint;
     protected Animator anim;
-    protected NavMeshAgent agent;
+    [SerializeField] protected NavMeshAgent agent;
     public int health;
     public float speed;
     [SerializeField] protected float flinchTime;
@@ -20,15 +20,6 @@ public class Enemy : MonoBehaviour
     protected bool attacking;
     protected bool moving;
     protected bool m_FacingRight = false;
-
-    //protected NavMeshAgent agent;
-    // Start is called before the first frame update
-
-    protected IEnumerator GetPlayer()
-    {
-        yield return new WaitForSeconds(1.0f);
-        target = GameObject.FindGameObjectWithTag("Player").transform;
-    }
 
     private void FixedUpdate()
     {

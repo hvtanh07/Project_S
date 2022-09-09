@@ -66,6 +66,8 @@ public class EnemyCreator : MonoBehaviour
                     attack.dashDistance = stats.dashDistance;
                     attack.dashSpeed = stats.dashSpeed;
                     attack.wallmask = stats.wallmask;
+                    Instantiate(stats.trail,enemy.transform).transform.parent = enemy.transform;
+                    attack.GetTrail();
                     break;
                 }
 
@@ -78,20 +80,49 @@ public class EnemyCreator : MonoBehaviour
                     attack.damage = stats.damage;
                     attack.dashSpeed = stats.dashSpeed;
                     attack.patern = stats.patern;
+                    Instantiate(stats.trail,enemy.transform).transform.parent = enemy.transform;
+                    attack.GetTrail();
                     break;
                 }
-            case AttackType.Magic:
+            case AttackType.Lightning:
                 {
-                    MagicAttack attack = enemy.AddComponent<MagicAttack>();
-                    MagicAttackStats stats = unlockedAttackType[RandAttack] as MagicAttackStats;
+                    LighningAttack attack = enemy.AddComponent<LighningAttack>();
+                    LightningAttackStats stats = unlockedAttackType[RandAttack] as LightningAttackStats;
                     attack.distanceToAttack = stats.distanceToAttack;
                     attack.timeBetweenAtack = stats.timeBetweenAtack;
                     attack.damage = stats.damage;
-                    attack.lightning = stats.lightning;//replace with current type of magic function()
+                    attack.lightning = stats.lightning;
                     attack.spotWidth = stats.spotWidth;
                     attack.spotSpreadRange = stats.spotSpreadRange;
                     attack.numberOfAttackPoint = stats.numberOfAttackPoint;
-                    attack.typeOfMagic = stats.typeOfMagic;
+                    attack.playerMask = stats.playerMask;
+                    break;
+                }
+            case AttackType.Rock:
+                {
+                    RockAttack attack = enemy.AddComponent<RockAttack>();
+                    RockAttackStats stats = unlockedAttackType[RandAttack] as RockAttackStats;
+                    attack.distanceToAttack = stats.distanceToAttack;
+                    attack.timeBetweenAtack = stats.timeBetweenAtack;
+                    attack.damage = stats.damage;
+                    attack.spell = stats.rock;
+                    attack.spotWidth = stats.spotWidth;
+                    attack.spotSpreadRange = stats.spotSpreadRange;
+                    attack.numberOfAttackPoint = stats.numberOfAttackPoint;
+                    attack.playerMask = stats.playerMask;
+                    break;
+                }
+            case AttackType.Circle:
+                {
+                    CircleAttack attack = enemy.AddComponent<CircleAttack>();
+                    CircleAttackStats stats = unlockedAttackType[RandAttack] as CircleAttackStats;
+                    attack.distanceToAttack = stats.distanceToAttack;
+                    attack.timeBetweenAtack = stats.timeBetweenAtack;
+                    attack.damage = stats.damage;
+                    attack.spell = stats.circle;
+                    attack.spotWidth = stats.spotWidth;
+                    attack.spotSpreadRange = stats.spotSpreadRange;
+                    attack.numberOfAttackPoint = stats.numberOfAttackPoint;
                     attack.playerMask = stats.playerMask;
                     break;
                 }

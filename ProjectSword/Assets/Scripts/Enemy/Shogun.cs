@@ -20,7 +20,7 @@ public class Shogun : Enemy
         navigate = GetComponent<Navigation>();
         anim = GetComponent<Animator>();
         setupAgent();
-        StartCoroutine(GetPlayer());
+        //StartCoroutine(GetPlayer());
     }
     private void setupAgent(){
         agent = GetComponent<NavMeshAgent>();

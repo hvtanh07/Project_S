@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(TrailRenderer))]
+//[RequireComponent(typeof(TrailRenderer))]
 [RequireComponent(typeof(Collider2D))]
 public class DashAttack : Attack
 {
@@ -11,9 +11,9 @@ public class DashAttack : Attack
     public LayerMask wallmask;
     TrailRenderer trail;
     bool Dashing;
-    private void Start()
+    public void GetTrail()
     {
-        trail = GetComponent<TrailRenderer>();
+        trail = GetComponentInChildren<TrailRenderer>();
         trail.emitting = false;
     }
     public override void Attacking(Vector3 target)

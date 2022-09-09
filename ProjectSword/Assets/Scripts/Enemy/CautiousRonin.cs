@@ -21,7 +21,7 @@ public class CautiousRonin : Enemy
         }
         anim = GetComponent<Animator>();
         setupAgent();
-        StartCoroutine(GetPlayer());
+        //StartCoroutine(GetPlayer());
     }
 
     private void setupAgent(){

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(TrailRenderer))]
+//[RequireComponent(typeof(TrailRenderer))]
 [RequireComponent(typeof(Collider2D))]
 public class MultipleDashAttack : Attack
 {
@@ -13,9 +13,9 @@ public class MultipleDashAttack : Attack
     int CurrentPaternIndex;
     Vector3 targetAnchor;
     Vector3 originalPos;
-    private void Start() {
-        trail = GetComponent<TrailRenderer>();
-        //patern.Add(transform.position);
+    public void GetTrail() {
+        trail = GetComponentInChildren<TrailRenderer>();
+        trail.emitting = false;
         CurrentPaternIndex = 0;
     }
     public override void Attacking(Vector3 target){
