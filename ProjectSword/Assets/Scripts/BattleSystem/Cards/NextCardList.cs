@@ -28,4 +28,11 @@ public class NextCardList : MonoBehaviour
             }
         }
     }
+
+    public UnlockPoint GetRandomPoint(){
+        int index = Random.Range(0,unlockPoints.Count-1);
+        UnlockPoint result = unlockPoints[index];
+        unlockPoints.Remove(unlockPoints[index]);
+        return result;
+    }
 }
