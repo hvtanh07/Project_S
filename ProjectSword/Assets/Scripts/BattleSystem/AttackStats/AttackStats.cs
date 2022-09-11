@@ -14,6 +14,8 @@ public enum AttackType
 }
 public abstract class AttackStats : MonoBehaviour
 {
+    public int health;
+    public float speed;
     public float distanceToAttack;
     public float timeBetweenAtack;
     public int damage;
