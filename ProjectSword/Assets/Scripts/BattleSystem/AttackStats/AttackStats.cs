@@ -21,4 +21,5 @@ public abstract class AttackStats : MonoBehaviour
     public int damage;
     public AttackType type;
     public bool unlocked = false;
+    //public RuntimeAnimatorController anim;
 }

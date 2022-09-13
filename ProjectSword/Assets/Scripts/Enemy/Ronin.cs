@@ -22,7 +22,7 @@ public class Ronin : Enemy
         {
             Debug.Log("No attack type found");
         }
-        anim = GetComponent<Animator>();
+        animR = GetComponent<Animator>();
         setupAgent();
         target = GameObject.FindGameObjectWithTag("Player").transform;
     }
@@ -48,12 +48,12 @@ public class Ronin : Enemy
                     moving = navigate.Navigating(target, attack.distanceToAttack);
                 }
 
-                anim.SetBool("Moving", moving);
+                animR.SetBool("Moving", moving);
 
                 curentAttackTime += Time.deltaTime;
                 if (!attacking && !moving)
                 {
-                    anim.SetBool("Reached", true);
+                    animR.SetBool("Reached", true);
                     if (curentAttackTime > attack.timeBetweenAtack)
                     {
                         Attack();
@@ -64,7 +64,7 @@ public class Ronin : Enemy
                     if (!attacking)
                     {
                         agent.speed = speed;
-                        anim.SetBool("Reached", false);
+                        animR.SetBool("Reached", false);
                     }
                 }
             }
@@ -85,7 +85,7 @@ public class Ronin : Enemy
         targetAttackPoint = target.position;
         if (attack != null)
         {
-            anim.SetTrigger("Attack");
+            animR.SetTrigger("Attack");
         }
     }
 

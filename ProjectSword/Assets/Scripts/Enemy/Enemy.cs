@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour
 {
     [HideInInspector] protected Transform target;
     [HideInInspector] protected Vector3 targetAttackPoint;
-    protected Animator anim;
+    public Animator animR;
     [SerializeField] protected NavMeshAgent agent;
     public int health;
     public float speed;
@@ -52,8 +52,8 @@ public class Enemy : MonoBehaviour
             {
                 flinch = true;
                 agent.speed = 0;
-                anim.SetBool("Moving", false);
-                anim.Play("Idle");
+                animR.SetBool("Moving", false);
+                animR.Play("Idle");
                 damaged = true;
                 agent.radius = 0;
                 agent.height = 0;
@@ -78,7 +78,7 @@ public class Enemy : MonoBehaviour
             {
                 flinch = true;
                 agent.speed = 0;
-                anim.SetBool("Moving", false);
+                animR.SetBool("Moving", false);
                 agent.radius = 0;
                 agent.height = 0;
                 lastDamageTime = Time.time;
@@ -93,7 +93,7 @@ public class Enemy : MonoBehaviour
     {
         damaged = false;
         health -= damage;
-        anim.SetTrigger("Hurt");
+        animR.SetTrigger("Hurt");
         takenDamage = 0;
         //------------------------
         if (health <= 0)
@@ -109,7 +109,7 @@ public class Enemy : MonoBehaviour
 
     private void Death()
     {
-        anim.SetBool("Die", true);
+        animR.SetBool("Die", true);
         BattleSystem.instance.enemyKilled();
         GetComponent<BoxCollider2D>().enabled = false;
         Destroy(gameObject, 3.0f);
