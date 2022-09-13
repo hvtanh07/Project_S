@@ -6,10 +6,10 @@ public class UnlockPoint : MonoBehaviour
 {
     public bool unlocked;
     public bool activated;
-    [SerializeField] EnemyCardFunc func;
+    [SerializeField] CardFunc func;
     public List<UnlockPoint> nextUnlockPoint;
     private void Start() {
-        func = GetComponent<EnemyCardFunc>();
+        func = GetComponent<CardFunc>();
     }
     public void ActivatePoint(){
         if(unlocked && !activated){
