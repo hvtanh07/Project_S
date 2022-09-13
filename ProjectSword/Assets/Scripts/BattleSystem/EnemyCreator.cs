@@ -61,7 +61,7 @@ public class EnemyCreator : MonoBehaviour
                 {
                     DashAttack attack = enemy.AddComponent<DashAttack>();
                     DashAttackStats stats = unlockedAttackType[RandAttack] as DashAttackStats;
-                    //enemy.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Assets/Bandits - Pixel Art/Animations/Light Bandit/RoninChase") as RuntimeAnimatorController;
+                    enemy.GetComponent<Animator>().runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("EnemyAnimController/RoninChase");
                     attack.distanceToAttack = stats.distanceToAttack;
                     attack.timeBetweenAtack = stats.timeBetweenAtack;
                     attack.damage = stats.damage;
@@ -77,7 +77,7 @@ public class EnemyCreator : MonoBehaviour
                 {
                     MultipleDashAttack attack = enemy.AddComponent<MultipleDashAttack>();
                     MultipleDashAttackStats stats = unlockedAttackType[RandAttack] as MultipleDashAttackStats;
-                    enemy.GetComponent<Ronin>().animR.runtimeAnimatorController = Resources.Load("Assets/Bandits - Pixel Art/Animations/Light Bandit/RoninChase") as RuntimeAnimatorController;
+                    enemy.GetComponent<Ronin>().animR.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("EnemyAnimController/RoninChase");
                     attack.distanceToAttack = stats.distanceToAttack;
                     attack.timeBetweenAtack = stats.timeBetweenAtack;
                     attack.damage = stats.damage;
@@ -91,7 +91,7 @@ public class EnemyCreator : MonoBehaviour
                 {
                     LighningAttack attack = enemy.AddComponent<LighningAttack>();
                     LightningAttackStats stats = unlockedAttackType[RandAttack] as LightningAttackStats;
-                    enemy.GetComponent<Ronin>().animR.runtimeAnimatorController = Resources.Load("Assets/Bandits - Pixel Art/Animations/Light Bandit/RoninChase") as RuntimeAnimatorController;
+                    enemy.GetComponent<Ronin>().animR.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("EnemyAnimController/RoninChase");
                     attack.distanceToAttack = stats.distanceToAttack;
                     attack.timeBetweenAtack = stats.timeBetweenAtack;
                     attack.damage = stats.damage;
@@ -106,7 +106,7 @@ public class EnemyCreator : MonoBehaviour
                 {
                     RockAttack attack = enemy.AddComponent<RockAttack>();
                     RockAttackStats stats = unlockedAttackType[RandAttack] as RockAttackStats;
-                    enemy.GetComponent<Ronin>().animR.runtimeAnimatorController = Resources.Load("Assets/Bandits - Pixel Art/Animations/Light Bandit/RoninChase") as RuntimeAnimatorController;
+                    enemy.GetComponent<Ronin>().animR.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("EnemyAnimController/RoninChase");
                     attack.distanceToAttack = stats.distanceToAttack;
                     attack.timeBetweenAtack = stats.timeBetweenAtack;
                     attack.damage = stats.damage;
@@ -121,7 +121,7 @@ public class EnemyCreator : MonoBehaviour
                 {
                     CircleAttack attack = enemy.AddComponent<CircleAttack>();
                     CircleAttackStats stats = unlockedAttackType[RandAttack] as CircleAttackStats;
-                    enemy.GetComponent<Ronin>().animR.runtimeAnimatorController = Resources.Load("Assets/Bandits - Pixel Art/Animations/Light Bandit/RoninChase") as RuntimeAnimatorController;
+                    enemy.GetComponent<Ronin>().animR.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("EnemyAnimController/RoninChase");
                     attack.distanceToAttack = stats.distanceToAttack;
                     attack.timeBetweenAtack = stats.timeBetweenAtack;
                     attack.damage = stats.damage;
@@ -136,7 +136,7 @@ public class EnemyCreator : MonoBehaviour
                 {
                     ProjectileAttack attack = enemy.AddComponent<ProjectileAttack>();
                     ProjectileAttackStats stats = unlockedAttackType[RandAttack] as ProjectileAttackStats;
-                    enemy.GetComponent<Ronin>().animR.runtimeAnimatorController = Resources.Load("Assets/Bandits - Pixel Art/Animations/Light Bandit/RoninChase") as RuntimeAnimatorController;
+                    enemy.GetComponent<Ronin>().animR.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("EnemyAnimController/RoninChase");
                     attack.distanceToAttack = stats.distanceToAttack;
                     attack.timeBetweenAtack = stats.timeBetweenAtack;
                     attack.damage = stats.damage;
@@ -150,7 +150,7 @@ public class EnemyCreator : MonoBehaviour
                 {
                     SuicideBomb attack = enemy.AddComponent<SuicideBomb>();
                     SuicideBombStats stats = unlockedAttackType[RandAttack] as SuicideBombStats;
-                    enemy.GetComponent<Ronin>().animR.runtimeAnimatorController = Resources.Load("Assets/Bandits - Pixel Art/Animations/Light Bandit/RoninChase") as RuntimeAnimatorController;
+                    //enemy.GetComponent<Ronin>().animR.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("EnemyAnimController/RoninChase");
                     attack.distanceToAttack = stats.distanceToAttack;
                     attack.timeBetweenAtack = stats.timeBetweenAtack;
                     attack.damage = stats.damage;
@@ -161,7 +161,7 @@ public class EnemyCreator : MonoBehaviour
                 {
                     TouchAttack attack = enemy.AddComponent<TouchAttack>();
                     TouchAttackStats stats = unlockedAttackType[RandAttack] as TouchAttackStats;
-                    enemy.GetComponent<Ronin>().animR.runtimeAnimatorController = Resources.Load("Assets/Bandits - Pixel Art/Animations/Light Bandit/RoninChase") as RuntimeAnimatorController;
+                    enemy.GetComponent<Ronin>().animR.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("EnemyAnimController/RoninChase");
                     attack.distanceToAttack = stats.distanceToAttack;
                     attack.timeBetweenAtack = stats.timeBetweenAtack;
                     attack.damage = stats.damage;
