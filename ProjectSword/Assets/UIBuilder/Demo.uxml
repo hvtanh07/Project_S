@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <ui:VisualElement style="flex-direction: column; flex-wrap: nowrap; align-items: auto; height: 35%; width: 100%; background-image: url(&apos;project://database/Assets/Martial%20Hero/Sprites/Attack1.png?fileID=1409549213185883415&amp;guid=c50b517797d93614aac4ca58aaf97355&amp;type=3#Attack1_2&apos;); background-color: rgba(255, 255, 255, 0); -unity-slice-left: 0; -unity-slice-top: 0; -unity-slice-right: 0; -unity-slice-bottom: 0;" />
+    <ui:VisualElement style="height: 65%; width: 100%;">
+        <ui:Button text="Button" display-tooltip-when-elided="true" style="width: 870px;" />
+        <ui:Button text="Button" display-tooltip-when-elided="true" style="width: 858px; align-items: center;" />
+    </ui:VisualElement>
+</ui:UXML>

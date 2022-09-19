@@ -1,0 +1,30 @@
+{
+    "UxmlGuid": "108ce9d41ba27bd42ad3f594b812c543",
+    "UxmlPath": "Assets/UIBuilder/Demo.uxml",
+    "CanvasX": 0,
+    "CanvasY": -104,
+    "CanvasWidth": 1080,
+    "CanvasHeight": 1920,
+    "MatchGameView": true,
+    "ZoomScale": 0.5,
+    "PanOffset": {
+        "x": 262.9260559082031,
+        "y": 143.62368774414063
+    },
+    "ColorModeBackgroundOpacity": 1.0,
+    "ImageModeCanvasBackgroundOpacity": 1.0,
+    "CameraModeCanvasBackgroundOpacity": 1.0,
+    "EnableCanvasBackground": false,
+    "CanvasBackgroundMode": 0,
+    "CanvasBackgroundColor": {
+        "r": 0.0,
+        "g": 0.0,
+        "b": 0.0,
+        "a": 255.0
+    },
+    "CanvasBackgroundImage": {
+        "instanceID": 0
+    },
+    "CanvasBackgroundImageScaleMode": 1,
+    "CanvasBackgroundCameraName": ""
+}
