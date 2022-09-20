@@ -7,7 +7,10 @@ public class BattleSystem : MonoBehaviour
 {
     public GameObject baseEnemy;
     [SerializeField] private EnemyCreator enemyCreator;
-    public static BattleSystem instance {get; private set;}
+    [SerializeField] private PowerUpManagement powerUpManagement;
+    public static BattleSystem instance { get; private set; }
+    public int numOfEnemyBeforeNextUpgrade;
+    public int numOfkillForNextUpgrade;
     public int numOfEnemyOnMap;
     public int maxEnemyOnMap;
     public int killedEnemy;
@@ -15,34 +18,50 @@ public class BattleSystem : MonoBehaviour
 
 
 
-    private void Awake() 
-    { 
+    private void Awake()
+    {
+        numOfEnemyBeforeNextUpgrade += numOfkillForNextUpgrade;
         enemyCreator = GetComponent<EnemyCreator>();
-        if (instance != null && instance != this) 
-        { 
-            Destroy(this); 
-        } 
-        else 
-        { 
-            instance = this; 
-        } 
+        if (instance != null && instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            instance = this;
+        }
     }
-    private void Update() {
-        if(numOfEnemyOnMap >= maxEnemyOnMap){
+    private void Update()
+    {
+        if (numOfEnemyOnMap >= maxEnemyOnMap)
+        {
             AllowedToSpawn = false;
-        }else{
+        }
+        else
+        {
             AllowedToSpawn = true;
+        }
+
+        if (killedEnemy >= numOfEnemyBeforeNextUpgrade)
+        {
+            //stop time
+            //open update panel
+            Time.timeScale = 0f;
+            powerUpManagement.gameObject.SetActive(true);
+            numOfEnemyBeforeNextUpgrade += numOfkillForNextUpgrade;
         }
     }
 
-    public void enemyKilled(){
+    public void enemyKilled()
+    {
         killedEnemy++;
         numOfEnemyOnMap--;
-        
+
     }
 
-    public GameObject GetEnemySpawn(){
+    public GameObject GetEnemySpawn()
+    {
         numOfEnemyOnMap++;
-        return enemyCreator.GetEnemy(baseEnemy); 
+        return enemyCreator.GetEnemy(baseEnemy);
     }
 }

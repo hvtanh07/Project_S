@@ -18,6 +18,7 @@ public class PowerUpManagement : MonoBehaviour
             card.cardInfo = playerCardList.GetRandomPoint().cardInfo;
             card.ApplyCardInfo();
         }
+        playerCardList.GetlistOnnextUnlockedPoint();
     }
 
     public void GetRandomEnemyPowerUpFromList(){
@@ -25,5 +26,10 @@ public class PowerUpManagement : MonoBehaviour
             card.cardInfo = enemyCardList.GetRandomPoint().cardInfo;
             card.ApplyCardInfo();
         }
+        enemyCardList.GetlistOnnextUnlockedPoint();
+    }
+    public void ActivateCard(){
+        Time.timeScale = 1f;
+        gameObject.SetActive(false);
     }
 }

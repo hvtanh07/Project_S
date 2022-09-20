@@ -12,7 +12,7 @@ public class NextCardList : MonoBehaviour
         GetlistOnnextUnlockedPoint();
     }
     
-    void GetlistOnnextUnlockedPoint(){
+    public void GetlistOnnextUnlockedPoint(){
         unlockPoints.Clear();
         checkPoint(startingPoint);
     }

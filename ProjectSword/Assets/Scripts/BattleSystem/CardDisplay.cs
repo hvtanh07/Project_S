@@ -22,9 +22,10 @@ public class CardDisplay : MonoBehaviour
         artWorkImage.sprite = cardInfo.artWork;
     }
 
-    public void ActivateCard(){
+    public void ActivateCard()
+    {
         pointOfFunction.ActivatePoint();
     }
 
-    
+
 }
