@@ -14508,7 +14508,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1431107227}
   m_Layer: 0
-  m_Name: PlayerCardTree------------------
+  m_Name: PlayerUpgradeTree------------------
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16211,7 +16211,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1923841547}
   m_Layer: 0
-  m_Name: EnemyCardTree------------------
+  m_Name: EnemyUpgradeTree------------------
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
