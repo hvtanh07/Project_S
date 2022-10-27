@@ -122,6 +122,7 @@ namespace UnityEngine.Rendering.Universal
         DeferredLights m_DeferredLights;
         RenderingMode m_RenderingMode;
         DepthPrimingMode m_DepthPrimingMode;
+        CopyDepthMode m_CopyDepthMode;
         bool m_DepthPrimingRecommended;
         StencilState m_DefaultStencilState;
         LightCookieManager m_LightCookieManager;
@@ -143,6 +144,27 @@ namespace UnityEngine.Rendering.Universal
         internal PostProcessPass finalPostProcessPass { get => m_PostProcessPasses.finalPostProcessPass; }
         internal RenderTargetHandle colorGradingLut { get => m_PostProcessPasses.colorGradingLut; }
         internal DeferredLights deferredLights { get => m_DeferredLights; }
+
+#if ENABLE_VR && ENABLE_VR_MODULE
+#if PLATFORM_WINRT || PLATFORM_ANDROID
+        // XRTODO: Remove this platform specific code(runs on Quest and HL).
+        static List<XR.XRDisplaySubsystem> displaySubsystemList = new List<XR.XRDisplaySubsystem>();
+        internal static bool IsRunningXRMobile()
+        {
+            var platform = Application.platform;
+            if (platform == RuntimePlatform.WSAPlayerX86 || platform == RuntimePlatform.WSAPlayerARM || platform == RuntimePlatform.WSAPlayerX64 || platform == RuntimePlatform.Android)
+            {
+                XR.XRDisplaySubsystem display = null;
+                SubsystemManager.GetInstances(displaySubsystemList);
+                if (displaySubsystemList.Count > 0)
+                    display = displaySubsystemList[0];
+                if (display != null)
+                    return true;
+            }
+            return false;
+        }
+#endif
+#endif
 
         public UniversalRenderer(UniversalRendererData data) : base(data)
         {
@@ -186,6 +208,12 @@ namespace UnityEngine.Rendering.Universal
 
             this.stripShadowsOffVariants = true;
             this.stripAdditionalLightOffVariants = true;
+#if ENABLE_VR && ENABLE_VR_MODULE
+#if PLATFORM_WINRT || PLATFORM_ANDROID
+            // AdditionalLightOff variant is available on HL&Quest platform due to performance consideration.
+            this.stripAdditionalLightOffVariants = !IsRunningXRMobile();
+#endif
+#endif
 
             ForwardLights.InitParams forwardInitParams;
             forwardInitParams.lightCookieManager = m_LightCookieManager;
@@ -195,6 +223,7 @@ namespace UnityEngine.Rendering.Universal
             //m_DeferredLights.LightCulling = data.lightCulling;
             this.m_RenderingMode = data.renderingMode;
             this.m_DepthPrimingMode = data.depthPrimingMode;
+            this.m_CopyDepthMode = data.copyDepthMode;
             useRenderPassEnabled = data.useNativeRenderPass && SystemInfo.graphicsDeviceType != GraphicsDeviceType.OpenGLES2;
 
 #if UNITY_ANDROID || UNITY_IOS || UNITY_TVOS
@@ -459,12 +488,13 @@ namespace UnityEngine.Rendering.Universal
             bool mainLightShadows = m_MainLightShadowCasterPass.Setup(ref renderingData);
             bool additionalLightShadows = m_AdditionalLightsShadowCasterPass.Setup(ref renderingData);
             bool transparentsNeedSettingsPass = m_TransparentSettingsPass.Setup(ref renderingData);
+            bool forcePrepass = (m_CopyDepthMode == CopyDepthMode.ForcePrepass);
 
             // Depth prepass is generated in the following cases:
             // - If game or offscreen camera requires it we check if we can copy the depth from the rendering opaques pass and use that instead.
             // - Scene or preview cameras always require a depth texture. We do a depth pre-pass to simplify it and it shouldn't matter much for editor.
             // - Render passes require it
-            bool requiresDepthPrepass = (requiresDepthTexture || cameraHasPostProcessingWithDepth) && !CanCopyDepth(ref renderingData.cameraData);
+            bool requiresDepthPrepass = (requiresDepthTexture || cameraHasPostProcessingWithDepth) && (!CanCopyDepth(ref renderingData.cameraData) || forcePrepass);
             requiresDepthPrepass |= isSceneViewCamera;
             requiresDepthPrepass |= isGizmosEnabled;
             requiresDepthPrepass |= isPreviewCamera;
@@ -506,6 +536,7 @@ namespace UnityEngine.Rendering.Universal
 
             createColorTexture |= RequiresIntermediateColorTexture(ref cameraData);
             createColorTexture |= renderPassInputs.requiresColorTexture;
+            createColorTexture |= renderPassInputs.requiresColorTextureCreated;
             createColorTexture &= !isPreviewCamera;
 
             // If camera requires depth and there's no depth pre-pass we create a depth texture that can be read later by effect requiring it.
@@ -817,7 +848,7 @@ namespace UnityEngine.Rendering.Universal
                 {
                     // if resolving to screen we need to be able to perform sRGBConversion in post-processing if necessary
                     bool doSRGBConversion = resolvePostProcessingToCameraTarget;
-                    postProcessPass.Setup(cameraTargetDescriptor, m_ActiveCameraColorAttachment, resolvePostProcessingToCameraTarget, m_ActiveCameraDepthAttachment, colorGradingLut, applyFinalPostProcessing, doSRGBConversion, hasPassesAfterPostProcessing);
+                    postProcessPass.Setup(cameraTargetDescriptor, m_ActiveCameraColorAttachment, resolvePostProcessingToCameraTarget, m_ActiveCameraDepthAttachment, colorGradingLut, applyFinalPostProcessing, doSRGBConversion);
                     EnqueuePass(postProcessPass);
                 }
 
@@ -826,7 +857,7 @@ namespace UnityEngine.Rendering.Universal
                 // Do FXAA or any other final post-processing effect that might need to run after AA.
                 if (applyFinalPostProcessing)
                 {
-                    finalPostProcessPass.SetupFinalPass(sourceForFinalPass, true, hasPassesAfterPostProcessing);
+                    finalPostProcessPass.SetupFinalPass(sourceForFinalPass, true);
                     EnqueuePass(finalPostProcessPass);
                 }
 
@@ -871,7 +902,7 @@ namespace UnityEngine.Rendering.Universal
             // stay in RT so we resume rendering on stack after post-processing
             else if (applyPostProcessing)
             {
-                postProcessPass.Setup(cameraTargetDescriptor, m_ActiveCameraColorAttachment, false, m_ActiveCameraDepthAttachment, colorGradingLut, false, false, true);
+                postProcessPass.Setup(cameraTargetDescriptor, m_ActiveCameraColorAttachment, false, m_ActiveCameraDepthAttachment, colorGradingLut, false, false);
                 EnqueuePass(postProcessPass);
             }
 
@@ -1009,6 +1040,7 @@ namespace UnityEngine.Rendering.Universal
             internal bool requiresDepthPrepass;
             internal bool requiresNormalsTexture;
             internal bool requiresColorTexture;
+            internal bool requiresColorTextureCreated;
             internal bool requiresMotionVectors;
             internal RenderPassEvent requiresDepthNormalAtEvent;
             internal RenderPassEvent requiresDepthTextureEarliestEvent;
@@ -1029,6 +1061,13 @@ namespace UnityEngine.Rendering.Universal
                 bool needsColor = (pass.input & ScriptableRenderPassInput.Color) != ScriptableRenderPassInput.None;
                 bool needsMotion = (pass.input & ScriptableRenderPassInput.Motion) != ScriptableRenderPassInput.None;
                 bool eventBeforeMainRendering = pass.renderPassEvent <= beforeMainRenderingEvent;
+
+                // TODO: Need a better way to handle this, probably worth to recheck after render graph
+                // DBuffer requires color texture created as it does not handle y flip correctly
+                if (pass is DBufferRenderPass dBufferRenderPass)
+                {
+                    inputSummary.requiresColorTextureCreated = true;
+                }
 
                 inputSummary.requiresDepthTexture |= needsDepth;
                 inputSummary.requiresDepthPrepass |= needsNormals || needsDepth && eventBeforeMainRendering;
@@ -1170,7 +1209,7 @@ namespace UnityEngine.Rendering.Universal
             bool msaaDepthResolve = msaaEnabledForCamera && SystemInfo.supportsMultisampledTextures != 0;
 
             // copying depth on GLES3 is giving invalid results. Needs investigation (Fogbugz issue 1339401)
-            if (IsGLESDevice())
+            if (IsGLESDevice() && msaaDepthResolve)
                 return false;
 
             return supportsDepthCopy || msaaDepthResolve;
