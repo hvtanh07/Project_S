@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class EnemyCreator : MonoBehaviour
 {
-    //public GameObject baseEnemy;
+
     public static BattleSystem instance {get; private set;}
-    int RandAttack;
+    private int RandAttack;
+    public GameObject baseEnemy;
     [Space]
     [Header("Attack System")]
     public int currentEnemyDamage;
@@ -206,7 +207,7 @@ public class EnemyCreator : MonoBehaviour
 
     }
 
-    public GameObject GetEnemy(GameObject baseEnemy)
+    public GameObject GetEnemy()
     {
         GameObject enemy = Instantiate(baseEnemy);
         //GameObject enemy = new GameObject("baseEnemy");

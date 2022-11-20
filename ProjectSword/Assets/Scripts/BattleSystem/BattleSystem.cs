@@ -5,7 +5,7 @@ using System;
 
 public class BattleSystem : MonoBehaviour
 {
-    public GameObject baseEnemy;
+    //public GameObject baseEnemy;
     [SerializeField] private EnemyCreator enemyCreator;
     [SerializeField] private PowerUpManagement powerUpManagement;
     public static BattleSystem instance { get; private set; }
@@ -62,6 +62,6 @@ public class BattleSystem : MonoBehaviour
     public GameObject GetEnemySpawn()
     {
         numOfEnemyOnMap++;
-        return enemyCreator.GetEnemy(baseEnemy);
+        return enemyCreator.GetEnemy();
     }
 }
