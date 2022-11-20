@@ -10,7 +10,7 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] private PowerUpManagement powerUpManagement;
     public static BattleSystem instance { get; private set; }
     public int numOfEnemyBeforeNextUpgrade;
-    public int numOfkillForNextUpgrade;
+    public int numOfKillForNextUpgradeIncrement;
     public int numOfEnemyOnMap;
     public int maxEnemyOnMap;
     public int killedEnemy;
@@ -20,7 +20,7 @@ public class BattleSystem : MonoBehaviour
 
     private void Awake()
     {
-        numOfEnemyBeforeNextUpgrade += numOfkillForNextUpgrade;
+        numOfEnemyBeforeNextUpgrade += numOfKillForNextUpgradeIncrement;
         enemyCreator = GetComponent<EnemyCreator>();
         if (instance != null && instance != this)
         {
@@ -48,7 +48,7 @@ public class BattleSystem : MonoBehaviour
             //open update panel
             Time.timeScale = 0f;
             powerUpManagement.gameObject.SetActive(true);
-            numOfEnemyBeforeNextUpgrade += numOfkillForNextUpgrade;
+            numOfEnemyBeforeNextUpgrade += numOfKillForNextUpgradeIncrement;
         }
     }
 
