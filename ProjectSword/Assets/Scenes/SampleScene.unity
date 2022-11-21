@@ -10071,7 +10071,7 @@ MonoBehaviour:
   dashDistance: 7
   dashSpeed: 100
   maxDashs: 4
-  dashHealTime: 0
+  dashHealTime: 2
   wallmask:
     serializedVersion: 2
     m_Bits: 8
@@ -14340,11 +14340,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyCreator: {fileID: 0}
   powerUpManagement: {fileID: 1498583249}
-  numOfEnemyBeforeNextUpgrade: 0
-  numOfkillForNextUpgrade: 2
-  numOfEnemyOnMap: 0
+  numOfEnemyBeforeNextUpgrade: 100
   maxEnemyOnMap: 20
-  killedEnemy: 0
   AllowedToSpawn: 0
 --- !u!4 &1286929262
 Transform:

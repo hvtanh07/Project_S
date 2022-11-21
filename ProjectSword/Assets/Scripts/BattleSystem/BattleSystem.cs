@@ -10,10 +10,10 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] private PowerUpManagement powerUpManagement;
     public static BattleSystem instance { get; private set; }
     public int numOfEnemyBeforeNextUpgrade;
-    public int numOfKillForNextUpgradeIncrement;
-    public int numOfEnemyOnMap;
+    private int numOfKillForNextUpgradeIncrement;
+    private int numOfEnemyOnMap;
     public int maxEnemyOnMap;
-    public int killedEnemy;
+    private int killedEnemy;
     public bool AllowedToSpawn;
 
 
