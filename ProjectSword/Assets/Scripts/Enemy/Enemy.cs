@@ -63,6 +63,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
+
     public void InstantTakeDamage(int damage)
     {
         if (health > 0)
@@ -88,6 +89,11 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public void TakeDamageFinished (){
+        agent.speed = speed;
+        flinch = false;
+    }
+
 
     protected void Hurt(int damage)
     {
@@ -99,11 +105,6 @@ public class Enemy : MonoBehaviour
         if (health <= 0)
         {
             Death();
-        }
-        else
-        {
-            agent.speed = speed;
-            flinch = false;
         }
     }
 

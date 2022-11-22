@@ -1004,7 +1004,6 @@ MonoBehaviour:
   additionalDamage: 10
   additionalDashDistance: 0
   additionalDashSpeed: 0
-  additionalMaxDashs: 0
   additionalDashHealTime: 0
   stats: {fileID: 0}
 --- !u!4 &253852963
@@ -9900,6 +9899,7 @@ GameObject:
   - component: {fileID: 630077347}
   - component: {fileID: 630077348}
   - component: {fileID: 630077350}
+  - component: {fileID: 630077351}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -10070,7 +10070,6 @@ MonoBehaviour:
   damage: 10
   dashDistance: 7
   dashSpeed: 100
-  maxDashs: 4
   dashHealTime: 2
   wallmask:
     serializedVersion: 2
@@ -10095,6 +10094,22 @@ MonoBehaviour:
   effectMask:
     serializedVersion: 2
     m_Bits: 768
+--- !u!114 &630077351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630077342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baec6262922e9f94d806f0ef6b32a49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numOfKunai: 3
+  throwForce: 50
+  damage: 1
+  kunai: {fileID: 7743424670256140933, guid: 005667e96f3fdb243b142f2cb4c7550b, type: 3}
 --- !u!1 &643035445
 GameObject:
   m_ObjectHideFlags: 0
@@ -10439,7 +10454,6 @@ MonoBehaviour:
   additionalDamage: 0
   additionalDashDistance: 0
   additionalDashSpeed: 10
-  additionalMaxDashs: 0
   additionalDashHealTime: 0
   stats: {fileID: 0}
 --- !u!4 &744327233

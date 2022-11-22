@@ -10,7 +10,6 @@ public class PlayerAttack : MonoBehaviour
     Player player;
     public float dashDistance;
     public float dashSpeed;
-    public float maxDashs;
     private float numOfDashs;
     public float dashHealTime = 1;
     public LayerMask wallmask;
@@ -23,7 +22,6 @@ public class PlayerAttack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        numOfDashs = maxDashs;
         player = GetComponent<Player>();
         anim = GetComponent<Animator>();
     }
@@ -31,7 +29,7 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (numOfDashs < maxDashs && Time.time - lastDashTime >= dashHealTime)
+        if (Time.time - lastDashTime >= dashHealTime)
         {
             addDash();
         }
