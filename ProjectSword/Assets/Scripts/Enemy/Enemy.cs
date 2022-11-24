@@ -40,6 +40,9 @@ public class Enemy : MonoBehaviour
     }
     public void TakeDamage(int damage)
     {
+        if(attacking){
+            //play clank sound
+        }
         if (health > 0)
         {
             Shield shield = GetComponent<Shield>();
@@ -51,12 +54,15 @@ public class Enemy : MonoBehaviour
             else
             {
                 flinch = true;
+
                 agent.speed = 0;
-                animR.SetBool("Moving", false);
-                animR.Play("Idle");
-                damaged = true;
                 agent.radius = 0;
                 agent.height = 0;
+
+                animR.SetBool("Moving", false);
+                animR.Play("Idle");
+
+                damaged = true;
                 takenDamage += damage;
                 lastDamageTime = Time.time;
             }
@@ -66,6 +72,9 @@ public class Enemy : MonoBehaviour
 
     public void InstantTakeDamage(int damage)
     {
+        if(attacking){
+            //play clank sound
+        }
         if (health > 0)
         {
             agent.SetDestination(gameObject.transform.position);
@@ -79,18 +88,21 @@ public class Enemy : MonoBehaviour
             {
                 flinch = true;
                 agent.speed = 0;
-                animR.SetBool("Moving", false);
                 agent.radius = 0;
                 agent.height = 0;
+
+                animR.SetBool("Moving", false);
+
                 lastDamageTime = Time.time;
                 Hurt(damage);
             }
-
         }
     }
 
-    public void TakeDamageFinished (){
-        agent.speed = speed;
+    public void TakeDamageFinished()
+    {
+        if (health > 0)
+            agent.speed = speed;
         flinch = false;
     }
 
@@ -110,6 +122,8 @@ public class Enemy : MonoBehaviour
 
     private void Death()
     {
+        agent.radius = 0f;
+        agent.height = 0f;
         animR.SetBool("Die", true);
         BattleSystem.instance.enemyKilled();
         GetComponent<BoxCollider2D>().enabled = false;
@@ -120,6 +134,4 @@ public class Enemy : MonoBehaviour
     {
         gameObject.SetActive(true);
     }
-
-
 }

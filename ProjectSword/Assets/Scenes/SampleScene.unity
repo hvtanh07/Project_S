@@ -10066,7 +10066,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trail: {fileID: 1326369206500403533}
-  specialAttack: {fileID: 630077350}
+  specialAttack: {fileID: 630077351}
   damage: 10
   dashDistance: 7
   dashSpeed: 100
@@ -10107,6 +10107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numOfKunai: 3
+  angleBetween: 10
   throwForce: 50
   damage: 1
   kunai: {fileID: 7743424670256140933, guid: 005667e96f3fdb243b142f2cb4c7550b, type: 3}
@@ -14355,7 +14356,7 @@ MonoBehaviour:
   enemyCreator: {fileID: 0}
   powerUpManagement: {fileID: 1498583249}
   numOfEnemyBeforeNextUpgrade: 100
-  maxEnemyOnMap: 20
+  maxEnemyOnMap: 0
   AllowedToSpawn: 0
 --- !u!4 &1286929262
 Transform:

@@ -25,12 +25,17 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        
         if (HoldingDown && !dashing)
         {
+            
             anim.ResetTrigger("Attack");
             indicator.SetActive(true);
             dir = joystick.Direction.normalized;
             Walk();
+
+            //Quaternion rotation = Quaternion.LookRotation(transform.forward, new Vector3(dir.x, dir.y, 0));
+            //print(rotation);
         }
         if (Input.GetKeyDown(KeyCode.R))
         {

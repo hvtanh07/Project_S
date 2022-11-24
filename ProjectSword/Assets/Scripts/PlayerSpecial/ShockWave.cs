@@ -7,7 +7,7 @@ public class ShockWave : SpecialAttack
     public float radius;
     public int maximumDamage;
     public LayerMask effectMask;
-    public override void Attack()
+    public override void Attack(Vector2 dir)
     {
         Collider2D[] collidersToAttack = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.y), radius);
 

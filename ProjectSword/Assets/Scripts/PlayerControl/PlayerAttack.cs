@@ -36,7 +36,7 @@ public class PlayerAttack : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.W))
         {
-            specialAttack.Attack();
+            specialAttack.Attack(player.dir);
         }
     }
 
