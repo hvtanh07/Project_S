@@ -10,11 +10,11 @@ public class PlayerAttack : MonoBehaviour
     Player player;
     public float dashDistance;
     public float dashSpeed;
-    private float numOfDashs;
+    public float maxDashs;
+    [SerializeField] private float numOfDashs;
     public float dashHealTime = 1;
     public LayerMask wallmask;
     public LayerMask enemies;
-    //Vector2 dir;
     private bool enemiesAround;
     private Animator anim;
     private float timer;
@@ -22,6 +22,7 @@ public class PlayerAttack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        numOfDashs = maxDashs;
         player = GetComponent<Player>();
         anim = GetComponent<Animator>();
     }
@@ -29,7 +30,7 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.time - lastDashTime >= dashHealTime)
+        if (numOfDashs < maxDashs && Time.time - lastDashTime >= dashHealTime)
         {
             addDash();
         }
@@ -58,7 +59,7 @@ public class PlayerAttack : MonoBehaviour
         player.HoldingDown = false;
         anim.SetBool("Running", false);
         player.indicator.SetActive(false);
-        if (numOfDashs > 0 && enemiesAround)
+        if (numOfDashs > 0)
         {
             anim.SetTrigger("Attack");
             float animlength = anim.GetCurrentAnimatorStateInfo(0).length;

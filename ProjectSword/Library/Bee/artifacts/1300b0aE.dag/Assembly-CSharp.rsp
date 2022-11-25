@@ -465,6 +465,7 @@
 "Assets/Scripts/PlayerControl/JoystickEvent.cs"
 "Assets/Scripts/PlayerControl/Player.cs"
 "Assets/Scripts/PlayerControl/PlayerAttack.cs"
+"Assets/Scripts/PlayerSpecial/Healing.cs"
 "Assets/Scripts/PlayerSpecial/ShockWave.cs"
 "Assets/Scripts/PlayerSpecial/SpecialAttack.cs"
 "Assets/Scripts/PlayerSpecial/SpreadKunai.cs"

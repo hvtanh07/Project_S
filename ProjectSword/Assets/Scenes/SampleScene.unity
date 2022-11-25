@@ -10070,6 +10070,8 @@ MonoBehaviour:
   damage: 10
   dashDistance: 7
   dashSpeed: 100
+  maxDashs: 4
+  numOfDashs: 0
   dashHealTime: 2
   wallmask:
     serializedVersion: 2
