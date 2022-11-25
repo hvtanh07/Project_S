@@ -9,12 +9,14 @@ public class PlayerAttackModify : CardFunc
     public float additionalDashDistance;
     public float additionalDashSpeed;
     public float additionalDashHealTime;
+    public float additionalMaxDashs;
     [SerializeField] PlayerAttack stats;
     public override void GiveAdditionalStats()
     {
         stats.damage += additionalDamage;
         stats.dashDistance += additionalDashDistance;
         stats.dashSpeed += additionalDashSpeed;
+        stats.maxDashs += additionalMaxDashs;
         stats.dashHealTime -= additionalDashHealTime;
     }
 }

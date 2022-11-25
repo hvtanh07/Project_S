@@ -1005,7 +1005,8 @@ MonoBehaviour:
   additionalDashDistance: 0
   additionalDashSpeed: 0
   additionalDashHealTime: 0
-  stats: {fileID: 0}
+  additionalMaxDashs: 0
+  stats: {fileID: 630077349}
 --- !u!4 &253852963
 Transform:
   m_ObjectHideFlags: 0
@@ -10458,7 +10459,8 @@ MonoBehaviour:
   additionalDashDistance: 0
   additionalDashSpeed: 10
   additionalDashHealTime: 0
-  stats: {fileID: 0}
+  additionalMaxDashs: 0
+  stats: {fileID: 630077349}
 --- !u!4 &744327233
 Transform:
   m_ObjectHideFlags: 0
