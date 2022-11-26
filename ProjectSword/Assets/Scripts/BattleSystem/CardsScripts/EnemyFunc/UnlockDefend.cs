@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class UnlockDefend : CardFunc
 {
-    [SerializeField] EnemyCreator stats;
+    [SerializeField] DefendStats stats;
     public override void GiveAdditionalStats()
     {
-        if (!stats.DefendEnable)
+        if (!stats.unlocked)
         {
             stats.enabled = true;
         }

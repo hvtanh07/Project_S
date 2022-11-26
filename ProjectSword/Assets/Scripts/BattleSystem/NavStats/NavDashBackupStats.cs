@@ -8,8 +8,4 @@ public class NavDashBackupStats : NavStats
     public float distanceToEvade;
     public LayerMask wallMask;
     public float dashCoolDown;
-
-
-    
-
 }

@@ -6,7 +6,7 @@ using System;
 
 public class Enemy : MonoBehaviour
 {
-    [HideInInspector] protected Transform target;
+    public Transform target;
     [HideInInspector] protected Vector3 targetAttackPoint;
     public Animator animR;
     [SerializeField] protected NavMeshAgent agent;
@@ -45,11 +45,11 @@ public class Enemy : MonoBehaviour
         }
         if (health > 0)
         {
-            Shield shield = GetComponent<Shield>();
-            if (shield != null)
+            Defend defend = GetComponent<Defend>();
+            if (defend != null)
             {
                 //Play anim Block
-                health -= shield.Block(damage);
+                health -= defend.Defending(damage);
             }
             else
             {
@@ -82,7 +82,7 @@ public class Enemy : MonoBehaviour
             if (shield != null)
             {
                 //Play Anim Block
-                health -= shield.Block(damage);
+                health -= shield.Defending(damage);
             }
             else
             {

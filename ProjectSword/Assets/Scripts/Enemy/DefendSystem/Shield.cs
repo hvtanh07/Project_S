@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shield : MonoBehaviour
+public class Shield : Defend
 {
     public int maximumBlockHealth;
     public int blockingHealth;
@@ -25,7 +25,7 @@ public class Shield : MonoBehaviour
         }
     }
 
-    public int Block(int damage){
+    public override int Defending(int damage){
         if (blockingHealth <=0){
             return damage;
             //StartCoroutine(Hurt(damage));  

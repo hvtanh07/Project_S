@@ -39,42 +39,42 @@ public class Ronin : Enemy
     // Update is called once per frame
     void Update()
     {
-        if (health > 0)
+        if (health <= 0) return;
+
+        if (!flinch)
         {
-            if (!flinch)
+            if (!attacking)
+            {
+                moving = navigate.Navigating(target, attack.distanceToAttack);
+            }
+
+            animR.SetBool("Moving", moving);
+
+            curentAttackTime += Time.deltaTime;
+            if (!attacking && !moving)
+            {
+                animR.SetBool("Reached", true);
+                if (curentAttackTime > attack.timeBetweenAtack)
+                {
+                    Attack();
+                }
+            }
+            else if (moving)
             {
                 if (!attacking)
                 {
-                    moving = navigate.Navigating(target, attack.distanceToAttack);
+                    agent.speed = speed;
+                    animR.SetBool("Reached", false);
                 }
-
-                animR.SetBool("Moving", moving);
-
-                curentAttackTime += Time.deltaTime;
-                if (!attacking && !moving)
-                {
-                    animR.SetBool("Reached", true);
-                    if (curentAttackTime > attack.timeBetweenAtack)
-                    {
-                        Attack();
-                    }
-                }
-                else if (moving)
-                {
-                    if (!attacking)
-                    {
-                        agent.speed = speed;
-                        animR.SetBool("Reached", false);
-                    }
-                }
-            }
-
-
-            if (damaged && Time.time - lastDamageTime >= flinchTime)
-            {
-                Hurt(takenDamage);
             }
         }
+
+
+        if (damaged && Time.time - lastDamageTime >= flinchTime)
+        {
+            Hurt(takenDamage);
+        }
+
     }
 
     private void Attack()

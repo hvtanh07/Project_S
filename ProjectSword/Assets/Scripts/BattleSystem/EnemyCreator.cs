@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyCreator : MonoBehaviour
 {
 
-    public static BattleSystem instance {get; private set;}
+    public static BattleSystem instance { get; private set; }
     private int RandAttack;
     public GameObject baseEnemy;
     [Space]
@@ -18,12 +18,13 @@ public class EnemyCreator : MonoBehaviour
     [Header("Nav System")]
     [SerializeField] private List<NavStats> allNavType;
     [SerializeField] private List<NavStats> unlockedNavType;
-    //[SerializeField] private 
 
     [Space]
-    [Header("Defend System")]
-    public bool DefendEnable;
-    [SerializeField] private DefendStats DefendStats;
+    [Header("Def System")]
+    [SerializeField] private List<DefendStats> allDefType;
+    [SerializeField] private List<DefendStats> unlockedDefType;
+    //[SerializeField] private 
+
     private void Start()
     {
         UpdateUnlockedTypes();
@@ -31,25 +32,9 @@ public class EnemyCreator : MonoBehaviour
 
     public void UpdateUnlockedTypes()
     {
-        //unlockedAttackType.Clear();
-        //foreach(AttackStats AttackType in allAttackType){
-        //    if(AttackType.unlocked){
-        //        unlockedAttackType.Add(AttackType);
-        //    }
-        //}
-
-
-        //unlockedNavType.Clear();
-        //foreach(NavStats NavType in allNavType){
-        //    if(NavType.unlocked){
-        //        unlockedNavType.Add(NavType);
-        //    }
-        //}
-
-
         unlockedAttackType = allAttackType.FindAll(x => x.unlocked && !unlockedAttackType.Contains(x));
-        unlockedNavType = allNavType.FindAll(x => x.unlocked && allNavType.Contains(x));
-
+        unlockedNavType = allNavType.FindAll(x => x.unlocked && !unlockedNavType.Contains(x));
+        unlockedDefType = allDefType.FindAll(x => x.unlocked && !unlockedDefType.Contains(x));
     }
 
     private void AssignAttack(GameObject enemy)
@@ -69,7 +54,7 @@ public class EnemyCreator : MonoBehaviour
                     attack.dashDistance = stats.dashDistance;
                     attack.dashSpeed = stats.dashSpeed;
                     attack.wallmask = stats.wallmask;
-                    Instantiate(stats.trail,enemy.transform).transform.parent = enemy.transform;
+                    Instantiate(stats.trail, enemy.transform).transform.parent = enemy.transform;
                     attack.GetTrail();
                     break;
                 }
@@ -84,7 +69,7 @@ public class EnemyCreator : MonoBehaviour
                     attack.damage = stats.damage;
                     attack.dashSpeed = stats.dashSpeed;
                     attack.patern = stats.patern;
-                    Instantiate(stats.trail,enemy.transform).transform.parent = enemy.transform;
+                    Instantiate(stats.trail, enemy.transform).transform.parent = enemy.transform;
                     attack.GetTrail();
                     break;
                 }
@@ -206,6 +191,37 @@ public class EnemyCreator : MonoBehaviour
         }
 
     }
+    private void AssignDef(GameObject enemy)
+    {
+        if ((unlockedAttackType[RandAttack].type == AttackType.Lightning || 
+        unlockedAttackType[RandAttack].type == AttackType.Rock || 
+        unlockedAttackType[RandAttack].type == AttackType.Touch || 
+        unlockedAttackType[RandAttack].type == AttackType.Circle)
+        )
+        {
+            int defType = Random.Range(0, unlockedDefType.Count);
+            switch (unlockedDefType[defType].type)
+            {
+                case DefendType.Block:
+                    {
+                        Shield shield = enemy.AddComponent<Shield>();
+                        BlockStats stats = unlockedDefType[defType] as BlockStats;
+                        shield.blockHealTime = stats.blockHealTime;
+                        shield.maximumBlockHealth = stats.maximumBlockHealth;
+                        shield.healAmount = stats.healAmount;
+                        break;
+                    }
+                case DefendType.Decoy:
+                    {
+                        Decoy decoy = enemy.AddComponent<Decoy>();
+                        DecoyStats stats = unlockedDefType[defType] as DecoyStats;
+                        decoy.decoyObj = stats.decoyObj;
+                        break;
+                    }
+            }
+        }
+    }
+
 
     public GameObject GetEnemy()
     {
@@ -213,13 +229,8 @@ public class EnemyCreator : MonoBehaviour
         //GameObject enemy = new GameObject("baseEnemy");
         AssignAttack(enemy);
         AssignNav(enemy);
-        if (unlockedAttackType[RandAttack].type != AttackType.Suicide && DefendEnable && Random.value > 0.5f)
-        {
-            Shield shield = enemy.AddComponent<Shield>();
-            shield.blockHealTime = DefendStats.blockHealTime;
-            shield.maximumBlockHealth = DefendStats.maximumBlockHealth;
-            shield.maximumBlockHealth = DefendStats.maximumBlockHealth;
-        }
+        AssignDef(enemy);
+
         return enemy;
     }
 }
