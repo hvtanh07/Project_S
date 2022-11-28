@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     public GameObject indicator;
     public Joystick joystick;
+    public int maxHealth;
     public int health;
     public float turnningSpeed;
     public float walkingSpeed;
@@ -18,6 +19,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        health = maxHealth;
         walkable = true;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
@@ -25,10 +27,8 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        
         if (HoldingDown && !dashing)
         {
-            
             anim.ResetTrigger("Attack");
             indicator.SetActive(true);
             dir = joystick.Direction.normalized;
@@ -50,6 +50,14 @@ public class Player : MonoBehaviour
     public void GetDir()
     {
         HoldingDown = true;
+    }
+
+    public void Healing(int healAmount){
+        if(health <= 0) return;
+        health += healAmount;
+        if (health > maxHealth){
+            health = maxHealth;
+        }
     }
 
 
