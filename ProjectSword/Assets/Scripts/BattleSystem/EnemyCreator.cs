@@ -193,11 +193,10 @@ public class EnemyCreator : MonoBehaviour
     }
     private void AssignDef(GameObject enemy)
     {
-        if ((unlockedAttackType[RandAttack].type == AttackType.Lightning || 
+        if (unlockedDefType.Count > 0 && (unlockedAttackType[RandAttack].type == AttackType.Lightning || 
         unlockedAttackType[RandAttack].type == AttackType.Rock || 
         unlockedAttackType[RandAttack].type == AttackType.Touch || 
-        unlockedAttackType[RandAttack].type == AttackType.Circle)
-        )
+        unlockedAttackType[RandAttack].type == AttackType.Circle))
         {
             int defType = Random.Range(0, unlockedDefType.Count);
             switch (unlockedDefType[defType].type)
@@ -219,6 +218,13 @@ public class EnemyCreator : MonoBehaviour
                         break;
                     }
             }
+        }
+        else if(unlockedAttackType[RandAttack].type == AttackType.Suicide){
+            ExplodeOnDeath explosion = enemy.AddComponent<ExplodeOnDeath>();
+            ExplodeStats stats = unlockedDefType[2] as ExplodeStats;
+            explosion.explosion = stats.explosion;
+            explosion.maximumDamage = stats.damage;
+            explosion.radius = stats.radius;
         }
     }
 
