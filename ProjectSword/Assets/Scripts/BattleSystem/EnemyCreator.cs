@@ -21,8 +21,9 @@ public class EnemyCreator : MonoBehaviour
 
     [Space]
     [Header("Def System")]
-    [SerializeField] private List<DefendStats> allDefType;
-    [SerializeField] private List<DefendStats> unlockedDefType;
+    [SerializeField] private BlockStats blockStats;
+    [SerializeField] private DecoyStats decoyStats;
+    [SerializeField] private ExplodeStats explodeStats;
     //[SerializeField] private 
 
     private void Start()
@@ -34,19 +35,17 @@ public class EnemyCreator : MonoBehaviour
     {
         unlockedAttackType = allAttackType.FindAll(x => x.unlocked && !unlockedAttackType.Contains(x));
         unlockedNavType = allNavType.FindAll(x => x.unlocked && !unlockedNavType.Contains(x));
-        unlockedDefType = allDefType.FindAll(x => x.unlocked && !unlockedDefType.Contains(x));
     }
 
     private void AssignAttack(GameObject enemy)
     {
         RandAttack = Random.Range(0, unlockedAttackType.Count);
-        //enemy.GetComponent<Ronin>().animR.runtimeAnimatorController  =  unlockedAttackType[RandAttack].anim;
         switch (unlockedAttackType[RandAttack].type)
         {
-            case AttackType.Dash:
+            case AttackType.Doggo:
                 {
-                    DashAttack attack = enemy.AddComponent<DashAttack>();
-                    DashAttackStats stats = unlockedAttackType[RandAttack] as DashAttackStats;
+                    DoggoAttack attack = enemy.AddComponent<DoggoAttack>();
+                    DoggoAttackStats stats = unlockedAttackType[RandAttack] as DoggoAttackStats;
                     enemy.GetComponent<Animator>().runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("EnemyAnimController/RoninChase");
                     attack.distanceToAttack = stats.distanceToAttack;
                     attack.timeBetweenAtack = stats.timeBetweenAtack;
@@ -59,10 +58,10 @@ public class EnemyCreator : MonoBehaviour
                     break;
                 }
 
-            case AttackType.MultipleDash:
+            case AttackType.Hound:
                 {
-                    MultipleDashAttack attack = enemy.AddComponent<MultipleDashAttack>();
-                    MultipleDashAttackStats stats = unlockedAttackType[RandAttack] as MultipleDashAttackStats;
+                    HoundAttack attack = enemy.AddComponent<HoundAttack>();
+                    HoundAttackStats stats = unlockedAttackType[RandAttack] as HoundAttackStats;
                     enemy.GetComponent<Ronin>().animR.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("EnemyAnimController/RoninChase");
                     attack.distanceToAttack = stats.distanceToAttack;
                     attack.timeBetweenAtack = stats.timeBetweenAtack;
@@ -73,10 +72,10 @@ public class EnemyCreator : MonoBehaviour
                     attack.GetTrail();
                     break;
                 }
-            case AttackType.Lightning:
+            case AttackType.LightningHare:
                 {
-                    LighningAttack attack = enemy.AddComponent<LighningAttack>();
-                    LightningAttackStats stats = unlockedAttackType[RandAttack] as LightningAttackStats;
+                    LightningHareAttack attack = enemy.AddComponent<LightningHareAttack>();
+                    LightningHareAttackStats stats = unlockedAttackType[RandAttack] as LightningHareAttackStats;
                     enemy.GetComponent<Ronin>().animR.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("EnemyAnimController/RoninChase");
                     attack.distanceToAttack = stats.distanceToAttack;
                     attack.timeBetweenAtack = stats.timeBetweenAtack;
@@ -88,10 +87,10 @@ public class EnemyCreator : MonoBehaviour
                     attack.playerMask = stats.playerMask;
                     break;
                 }
-            case AttackType.Rock:
+            case AttackType.RockHare:
                 {
-                    RockAttack attack = enemy.AddComponent<RockAttack>();
-                    RockAttackStats stats = unlockedAttackType[RandAttack] as RockAttackStats;
+                    RockHareAttack attack = enemy.AddComponent<RockHareAttack>();
+                    RockHareAttackStats stats = unlockedAttackType[RandAttack] as RockHareAttackStats;
                     enemy.GetComponent<Ronin>().animR.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("EnemyAnimController/RoninChase");
                     attack.distanceToAttack = stats.distanceToAttack;
                     attack.timeBetweenAtack = stats.timeBetweenAtack;
@@ -103,10 +102,10 @@ public class EnemyCreator : MonoBehaviour
                     attack.playerMask = stats.playerMask;
                     break;
                 }
-            case AttackType.Circle:
+            case AttackType.SpearHare:
                 {
-                    CircleAttack attack = enemy.AddComponent<CircleAttack>();
-                    CircleAttackStats stats = unlockedAttackType[RandAttack] as CircleAttackStats;
+                    SpearHareAttack attack = enemy.AddComponent<SpearHareAttack>();
+                    SpearHareAttackStats stats = unlockedAttackType[RandAttack] as SpearHareAttackStats;
                     enemy.GetComponent<Ronin>().animR.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("EnemyAnimController/RoninChase");
                     attack.distanceToAttack = stats.distanceToAttack;
                     attack.timeBetweenAtack = stats.timeBetweenAtack;
@@ -118,10 +117,10 @@ public class EnemyCreator : MonoBehaviour
                     attack.playerMask = stats.playerMask;
                     break;
                 }
-            case AttackType.Projectile:
+            case AttackType.Porcupine:
                 {
-                    ProjectileAttack attack = enemy.AddComponent<ProjectileAttack>();
-                    ProjectileAttackStats stats = unlockedAttackType[RandAttack] as ProjectileAttackStats;
+                    PorcupineAttack attack = enemy.AddComponent<PorcupineAttack>();
+                    PorcupineAttackStats stats = unlockedAttackType[RandAttack] as PorcupineAttackStats;
                     enemy.GetComponent<Ronin>().animR.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("EnemyAnimController/RoninChase");
                     attack.distanceToAttack = stats.distanceToAttack;
                     attack.timeBetweenAtack = stats.timeBetweenAtack;
@@ -132,21 +131,21 @@ public class EnemyCreator : MonoBehaviour
                     attack.spreadAngle = stats.spreadAngle;
                     break;
                 }
-            case AttackType.Suicide:
+            case AttackType.Baboom:
                 {
-                    SuicideBomb attack = enemy.AddComponent<SuicideBomb>();
-                    SuicideBombStats stats = unlockedAttackType[RandAttack] as SuicideBombStats;
-                    //enemy.GetComponent<Ronin>().animR.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("EnemyAnimController/RoninChase");
+                    BaboomAttack attack = enemy.AddComponent<BaboomAttack>();
+                    BaboomAttackStats stats = unlockedAttackType[RandAttack] as BaboomAttackStats;
+                    enemy.GetComponent<Ronin>().animR.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("EnemyAnimController/RoninChase");
                     attack.distanceToAttack = stats.distanceToAttack;
                     attack.timeBetweenAtack = stats.timeBetweenAtack;
                     attack.damage = stats.damage;
                     attack.explosion = stats.explosion;
                     break;
                 }
-            case AttackType.Touch:
+            case AttackType.Mousey:
                 {
-                    TouchAttack attack = enemy.AddComponent<TouchAttack>();
-                    TouchAttackStats stats = unlockedAttackType[RandAttack] as TouchAttackStats;
+                    MouseyAttack attack = enemy.AddComponent<MouseyAttack>();
+                    MouseyAttackStats stats = unlockedAttackType[RandAttack] as MouseyAttackStats;
                     enemy.GetComponent<Ronin>().animR.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("EnemyAnimController/RoninChase");
                     attack.distanceToAttack = stats.distanceToAttack;
                     attack.timeBetweenAtack = stats.timeBetweenAtack;
@@ -158,11 +157,11 @@ public class EnemyCreator : MonoBehaviour
     private void AssignNav(GameObject enemy)
     {
 
-        if (unlockedAttackType[RandAttack].type == AttackType.Suicide || unlockedAttackType[RandAttack].type == AttackType.Touch)
+        if (unlockedAttackType[RandAttack].type == AttackType.Baboom || unlockedAttackType[RandAttack].type == AttackType.Mousey)
         {
             NavRunToTarget nav = enemy.AddComponent<NavRunToTarget>();
         }
-        else
+        else if (unlockedAttackType[RandAttack].type == AttackType.Doggo || unlockedAttackType[RandAttack].type == AttackType.Hound)
         {
             int navType = Random.Range(0, unlockedNavType.Count);
             switch (unlockedNavType[navType].type)
@@ -177,6 +176,18 @@ public class EnemyCreator : MonoBehaviour
                         nav.wallMask = stats.wallMask;
                         break;
                     }
+                case NavType.Walk:
+                    {
+                        NavRunToTarget nav = enemy.AddComponent<NavRunToTarget>();
+                        break;
+                    }
+            }
+        }
+        else
+        {
+            int navType = Random.Range(0, unlockedNavType.Count);
+            switch (unlockedNavType[navType].type)
+            {
                 case NavType.KeepDistance:
                     {
                         NavKeepDistance nav = enemy.AddComponent<NavKeepDistance>();
@@ -193,38 +204,36 @@ public class EnemyCreator : MonoBehaviour
     }
     private void AssignDef(GameObject enemy)
     {
-        if (unlockedDefType.Count > 0 && (unlockedAttackType[RandAttack].type == AttackType.Lightning || 
-        unlockedAttackType[RandAttack].type == AttackType.Rock || 
-        unlockedAttackType[RandAttack].type == AttackType.Touch || 
-        unlockedAttackType[RandAttack].type == AttackType.Circle))
+        switch (unlockedAttackType[RandAttack].type)
         {
-            int defType = Random.Range(0, unlockedDefType.Count);
-            switch (unlockedDefType[defType].type)
-            {
-                case DefendType.Block:
-                    {
-                        Shield shield = enemy.AddComponent<Shield>();
-                        BlockStats stats = unlockedDefType[defType] as BlockStats;
-                        shield.blockHealTime = stats.blockHealTime;
-                        shield.maximumBlockHealth = stats.maximumBlockHealth;
-                        shield.healAmount = stats.healAmount;
-                        break;
-                    }
-                case DefendType.Decoy:
-                    {
-                        Decoy decoy = enemy.AddComponent<Decoy>();
-                        DecoyStats stats = unlockedDefType[defType] as DecoyStats;
-                        decoy.decoyObj = stats.decoyObj;
-                        break;
-                    }
-            }
-        }
-        else if(unlockedAttackType[RandAttack].type == AttackType.Suicide){
-            ExplodeOnDeath explosion = enemy.AddComponent<ExplodeOnDeath>();
-            ExplodeStats stats = unlockedDefType[2] as ExplodeStats;
-            explosion.explosion = stats.explosion;
-            explosion.maximumDamage = stats.damage;
-            explosion.radius = stats.radius;
+            case AttackType.Baboom: //def = explode
+                {
+                    ExplodeOnDeath explosion = enemy.AddComponent<ExplodeOnDeath>();
+                    explosion.explosion = explodeStats.explosion;
+                    explosion.maximumDamage = explodeStats.damage;
+                    explosion.radius = explodeStats.radius;
+                    break;
+                }
+            case AttackType.Porcupine:  //Block
+            case AttackType.Doggo: 
+            case AttackType.Hound:
+                {
+                    if(!blockStats.unlocked || Random.value < 0.5f) break;
+                    Block shield = enemy.AddComponent<Block>();
+                    shield.blockHealTime = blockStats.blockHealTime;
+                    shield.maximumBlockHealth = blockStats.maximumBlockHealth;
+                    shield.healAmount = blockStats.healAmount;
+                    break;
+                }
+            case AttackType.LightningHare:  //spawn decoy
+            case AttackType.RockHare:
+            case AttackType.SpearHare:
+                {
+                    if(!decoyStats.unlocked || Random.value < 0.5f) break;
+                    Decoy decoy = enemy.AddComponent<Decoy>();
+                    decoy.decoyObj = decoyStats.decoyObj;
+                    break;
+                }
         }
     }
 
@@ -232,7 +241,7 @@ public class EnemyCreator : MonoBehaviour
     public GameObject GetEnemy()
     {
         GameObject enemy = Instantiate(baseEnemy);
-        //GameObject enemy = new GameObject("baseEnemy");
+
         AssignAttack(enemy);
         AssignNav(enemy);
         AssignDef(enemy);

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class NextCardList : MonoBehaviour
 {
+    //Search through the tree for unlocked and !activated node to add to unlockPoints list
     [SerializeField] List<UnlockPoint> unlockPoints;
     UnlockPoint startingPoint;
 
@@ -29,6 +30,7 @@ public class NextCardList : MonoBehaviour
         }
     }
 
+    //get a random node from list and delete it
     public UnlockPoint GetRandomPoint(){
         int index = Random.Range(0,unlockPoints.Count);
         UnlockPoint result = unlockPoints[index];

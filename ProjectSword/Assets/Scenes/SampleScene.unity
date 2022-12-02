@@ -423,7 +423,7 @@ MonoBehaviour:
   unlocked: 1
   activated: 0
   cardInfo: {fileID: 11400000, guid: b52d7e546059a6b4eb6203fdce74a9d2, type: 2}
-  func: {fileID: 0}
+  funcs: []
   nextUnlockPoint: []
 --- !u!4 &56595170
 Transform:
@@ -510,7 +510,7 @@ GameObject:
   - component: {fileID: 95696644}
   - component: {fileID: 95696643}
   m_Layer: 0
-  m_Name: DashAttack
+  m_Name: Doggo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -528,10 +528,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a562895f64823645b01cfd6ba84b4bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 20
-  speed: 5
+  health: 15
+  speed: 7
   distanceToAttack: 5
-  timeBetweenAtack: 3
+  timeBetweenAtack: 4
   damage: 20
   type: 0
   unlocked: 0
@@ -964,7 +964,7 @@ GameObject:
   - component: {fileID: 232602513}
   - component: {fileID: 232602512}
   m_Layer: 0
-  m_Name: MultipleDashAttack
+  m_Name: Hound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -982,8 +982,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b8b7f8be42919a4ab502542277303a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 25
-  speed: 7
+  health: 20
+  speed: 9
   distanceToAttack: 4
   timeBetweenAtack: 7
   damage: 10
@@ -1009,7 +1009,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1286929262}
-  m_RootOrder: 6
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &253852960
 GameObject:
@@ -1044,7 +1044,7 @@ MonoBehaviour:
   unlocked: 1
   activated: 0
   cardInfo: {fileID: 11400000, guid: c672451ca6f351840a06c632fbb94287, type: 2}
-  func: {fileID: 0}
+  funcs: []
   nextUnlockPoint: []
 --- !u!114 &253852962
 MonoBehaviour:
@@ -1158,7 +1158,7 @@ GameObject:
   - component: {fileID: 297117097}
   - component: {fileID: 297117098}
   m_Layer: 0
-  m_Name: CircleAttack
+  m_Name: SpearHare
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1177,7 +1177,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1286929262}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &297117098
 MonoBehaviour:
@@ -1192,16 +1192,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 15
-  speed: 2
-  distanceToAttack: 4
+  speed: 6
+  distanceToAttack: 7
   timeBetweenAtack: 4
-  damage: 10
+  damage: 15
   type: 4
   unlocked: 0
   circle: {fileID: 8034503730720908276, guid: 6dbb6d81144ce564289336eae9e4d251, type: 3}
   spotWidth: 1
   spotSpreadRange: 5
-  numberOfAttackPoint: 3
+  numberOfAttackPoint: 6
   playerMask:
     serializedVersion: 2
     m_Bits: 128
@@ -1216,7 +1216,7 @@ GameObject:
   - component: {fileID: 323056745}
   - component: {fileID: 323056746}
   m_Layer: 0
-  m_Name: Explode
+  m_Name: DefExplode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10323,7 +10323,7 @@ GameObject:
   - component: {fileID: 645852337}
   - component: {fileID: 645852336}
   m_Layer: 0
-  m_Name: TouchAttack
+  m_Name: Mousey
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10342,9 +10342,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
-  speed: 3
+  speed: 5
   distanceToAttack: 1
-  timeBetweenAtack: 2
+  timeBetweenAtack: 1
   damage: 5
   type: 7
   unlocked: 1
@@ -10374,7 +10374,7 @@ GameObject:
   - component: {fileID: 686408590}
   - component: {fileID: 686408589}
   m_Layer: 0
-  m_Name: ProjectileAttack
+  m_Name: Porcupine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10392,17 +10392,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06a52b1aef5af9c45812b25d84689d2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 15
+  health: 10
   speed: 2
   distanceToAttack: 6
   timeBetweenAtack: 3
-  damage: 10
+  damage: 5
   type: 5
   unlocked: 0
   objBullet: {fileID: 7743424670256140933, guid: 64d390ea453d6fb489c7ca6095f3f522, type: 3}
   Force: 70
   numOfSideProjectiles: 0
-  spreadAngle: 0
+  spreadAngle: 10
 --- !u!4 &686408590
 Transform:
   m_ObjectHideFlags: 0
@@ -10429,7 +10429,7 @@ GameObject:
   - component: {fileID: 713196592}
   - component: {fileID: 713196593}
   m_Layer: 0
-  m_Name: Decoy
+  m_Name: DefDecoy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10595,7 +10595,7 @@ MonoBehaviour:
   unlocked: 1
   activated: 0
   cardInfo: {fileID: 11400000, guid: 1c0993686434ef9489a3838f6a1d64cf, type: 2}
-  func: {fileID: 0}
+  funcs: []
   nextUnlockPoint: []
 --- !u!114 &744327232
 MonoBehaviour:
@@ -13090,7 +13090,7 @@ MonoBehaviour:
   unlocked: 1
   activated: 1
   cardInfo: {fileID: 0}
-  func: {fileID: 0}
+  funcs: []
   nextUnlockPoint:
   - {fileID: 1090132939}
   - {fileID: 1814593823}
@@ -13219,7 +13219,7 @@ GameObject:
   - component: {fileID: 846396532}
   - component: {fileID: 846396531}
   m_Layer: 0
-  m_Name: NavDash
+  m_Name: NavDashBackUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13581,7 +13581,7 @@ MonoBehaviour:
   unlocked: 1
   activated: 0
   cardInfo: {fileID: 11400000, guid: 37aa8892f60cbd74bb02cb74ce0d7a28, type: 2}
-  func: {fileID: 0}
+  funcs: []
   nextUnlockPoint: []
 --- !u!1 &1028379020
 GameObject:
@@ -13707,7 +13707,7 @@ MonoBehaviour:
   unlocked: 1
   activated: 0
   cardInfo: {fileID: 11400000, guid: e0e0d293bd2ebff4ea5ba3bb9e5bf4c0, type: 2}
-  func: {fileID: 0}
+  funcs: []
   nextUnlockPoint: []
 --- !u!4 &1071945688
 Transform:
@@ -13785,7 +13785,7 @@ MonoBehaviour:
   unlocked: 1
   activated: 0
   cardInfo: {fileID: 11400000, guid: 1f54f48be18467c4487cbb8ecd1396e4, type: 2}
-  func: {fileID: 0}
+  funcs: []
   nextUnlockPoint: []
 --- !u!114 &1090132940
 MonoBehaviour:
@@ -13993,7 +13993,7 @@ MonoBehaviour:
   unlocked: 1
   activated: 0
   cardInfo: {fileID: 11400000, guid: 688e359ac0946ea49a5fa373dda5efa1, type: 2}
-  func: {fileID: 0}
+  funcs: []
   nextUnlockPoint: []
 --- !u!4 &1111252322
 Transform:
@@ -14470,6 +14470,7 @@ MonoBehaviour:
   powerUpManagement: {fileID: 1498583249}
   numOfEnemyBeforeNextUpgrade: 100
   maxEnemyOnMap: 1
+  killedEnemy: 0
   AllowedToSpawn: 0
 --- !u!4 &1286929262
 Transform:
@@ -14486,10 +14487,10 @@ Transform:
   - {fileID: 645852337}
   - {fileID: 686408590}
   - {fileID: 95696644}
+  - {fileID: 232602513}
   - {fileID: 1545053457}
   - {fileID: 1719755910}
   - {fileID: 297117097}
-  - {fileID: 232602513}
   - {fileID: 1910834158}
   - {fileID: 1546747821}
   - {fileID: 72065993}
@@ -14515,25 +14516,23 @@ MonoBehaviour:
   baseEnemy: {fileID: 7087380735518338055, guid: dbb30a7a40dc32d4584a1f47b7141d3a, type: 3}
   currentEnemyDamage: 0
   allAttackType:
-  - {fileID: 95696643}
-  - {fileID: 1719755911}
-  - {fileID: 1545053458}
-  - {fileID: 297117098}
-  - {fileID: 232602512}
-  - {fileID: 686408589}
-  - {fileID: 1910834157}
   - {fileID: 645852336}
+  - {fileID: 686408589}
+  - {fileID: 95696643}
+  - {fileID: 232602512}
+  - {fileID: 1545053458}
+  - {fileID: 1719755911}
+  - {fileID: 297117098}
+  - {fileID: 1910834157}
   unlockedAttackType: []
   allNavType:
   - {fileID: 846396531}
   - {fileID: 72065992}
   - {fileID: 1546747820}
   unlockedNavType: []
-  allDefType:
-  - {fileID: 1686582091}
-  - {fileID: 713196593}
-  - {fileID: 323056746}
-  unlockedDefType: []
+  blockStats: {fileID: 1686582091}
+  decoyStats: {fileID: 713196593}
+  explodeStats: {fileID: 323056746}
 --- !u!1 &1289687736
 GameObject:
   m_ObjectHideFlags: 0
@@ -14567,7 +14566,7 @@ MonoBehaviour:
   unlocked: 1
   activated: 0
   cardInfo: {fileID: 11400000, guid: 1e73e29ad46b1de43b88a9ffb124ffce, type: 2}
-  func: {fileID: 0}
+  funcs: []
   nextUnlockPoint: []
 --- !u!4 &1289687738
 Transform:
@@ -15120,7 +15119,7 @@ GameObject:
   - component: {fileID: 1545053457}
   - component: {fileID: 1545053458}
   m_Layer: 0
-  m_Name: RockAttack
+  m_Name: RockHare
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15139,7 +15138,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1286929262}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1545053458
 MonoBehaviour:
@@ -15154,7 +15153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 15
-  speed: 2
+  speed: 6
   distanceToAttack: 7
   timeBetweenAtack: 4
   damage: 15
@@ -15163,7 +15162,7 @@ MonoBehaviour:
   rock: {fileID: 8034503730720908276, guid: 6dbb6d81144ce564289336eae9e4d251, type: 3}
   spotWidth: 1
   spotSpreadRange: 5
-  numberOfAttackPoint: 3
+  numberOfAttackPoint: 6
   playerMask:
     serializedVersion: 2
     m_Bits: 128
@@ -15690,7 +15689,7 @@ GameObject:
   - component: {fileID: 1686582090}
   - component: {fileID: 1686582091}
   m_Layer: 0
-  m_Name: Block
+  m_Name: DefBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15739,7 +15738,7 @@ GameObject:
   - component: {fileID: 1719755910}
   - component: {fileID: 1719755911}
   m_Layer: 0
-  m_Name: LightningAttack
+  m_Name: LightningHare
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15758,7 +15757,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1286929262}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1719755911
 MonoBehaviour:
@@ -15773,16 +15772,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 15
-  speed: 2
+  speed: 6
   distanceToAttack: 7
   timeBetweenAtack: 4
-  damage: 20
+  damage: 15
   type: 2
   unlocked: 0
   lightning: {fileID: 8034503730720908276, guid: 6dbb6d81144ce564289336eae9e4d251, type: 3}
   spotWidth: 1
   spotSpreadRange: 5
-  numberOfAttackPoint: 3
+  numberOfAttackPoint: 6
   playerMask:
     serializedVersion: 2
     m_Bits: 128
@@ -15945,7 +15944,7 @@ MonoBehaviour:
   unlocked: 1
   activated: 0
   cardInfo: {fileID: 11400000, guid: ab34d3dcd0022f0479f2a5bcac1cdfa9, type: 2}
-  func: {fileID: 0}
+  funcs: []
   nextUnlockPoint: []
 --- !u!4 &1814593824
 Transform:
@@ -16040,7 +16039,7 @@ MonoBehaviour:
   unlocked: 1
   activated: 1
   cardInfo: {fileID: 0}
-  func: {fileID: 0}
+  funcs: []
   nextUnlockPoint:
   - {fileID: 989580220}
   - {fileID: 2047341083}
@@ -16137,7 +16136,7 @@ GameObject:
   - component: {fileID: 1910834158}
   - component: {fileID: 1910834157}
   m_Layer: 0
-  m_Name: SuicideBombAttack
+  m_Name: Baboom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16156,14 +16155,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
-  speed: 4
+  speed: 10
   distanceToAttack: 0
   timeBetweenAtack: 1
-  damage: 10
+  damage: 20
   type: 6
   unlocked: 0
   explosion: {fileID: 0}
-  radius: 5
+  radius: 3
 --- !u!4 &1910834158
 Transform:
   m_ObjectHideFlags: 0
@@ -16309,7 +16308,7 @@ MonoBehaviour:
   unlocked: 1
   activated: 0
   cardInfo: {fileID: 11400000, guid: 0409c7efb8afac743b59094e81122aee, type: 2}
-  func: {fileID: 0}
+  funcs: []
   nextUnlockPoint: []
 --- !u!114 &2047341084
 MonoBehaviour:

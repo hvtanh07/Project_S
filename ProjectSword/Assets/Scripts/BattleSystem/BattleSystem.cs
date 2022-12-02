@@ -13,7 +13,7 @@ public class BattleSystem : MonoBehaviour
     private int numOfKillForNextUpgradeIncrement;
     private int numOfEnemyOnMap;
     public int maxEnemyOnMap;
-    private int killedEnemy;
+    public int killedEnemy;
     public bool AllowedToSpawn;
 
 

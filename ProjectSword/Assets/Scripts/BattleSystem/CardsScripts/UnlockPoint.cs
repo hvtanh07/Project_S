@@ -7,17 +7,24 @@ public class UnlockPoint : MonoBehaviour
     public bool unlocked;
     public bool activated;
     public Cards cardInfo;
-    [SerializeField] CardFunc func;
+    [SerializeField] CardFunc[] funcs;
     public List<UnlockPoint> nextUnlockPoint;
-    private void Start() {
-        func = GetComponent<CardFunc>();
+    private void Start()
+    {
+        funcs = GetComponents<CardFunc>();
     }
-    public void ActivatePoint(){
-        if(unlocked && !activated){
+    public void ActivatePoint()
+    {
+        if (unlocked && !activated)
+        {
             activated = true;
-            func.GiveAdditionalStats();
+            foreach (CardFunc func in funcs)
+            {
+                func.GiveAdditionalStats();
+            }
         }
-        foreach(UnlockPoint point in nextUnlockPoint){
+        foreach (UnlockPoint point in nextUnlockPoint)
+        {
             point.unlocked = true;
         }
     }

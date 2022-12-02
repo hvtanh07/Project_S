@@ -78,7 +78,7 @@ public class Enemy : MonoBehaviour
         if (health > 0)
         {
             agent.SetDestination(gameObject.transform.position);
-            Shield shield = GetComponent<Shield>();
+            Defend shield = GetComponent<Defend>();
             if (shield != null)
             {
                 //Play Anim Block

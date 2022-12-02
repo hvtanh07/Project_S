@@ -3,14 +3,14 @@ using UnityEngine;
 
 public enum AttackType
 {
-    Dash,
-    MultipleDash,
-    Lightning,
-    Rock,
-    Circle,
-    Projectile,
-    Suicide,
-    Touch
+    Doggo,
+    Hound,
+    LightningHare,
+    RockHare,
+    SpearHare,
+    Porcupine,
+    Baboom,
+    Mousey
 }
 public abstract class AttackStats : MonoBehaviour
 {
@@ -21,5 +21,4 @@ public abstract class AttackStats : MonoBehaviour
     public int damage;
     public AttackType type;
     public bool unlocked = false;
-    //public RuntimeAnimatorController anim;
 }
