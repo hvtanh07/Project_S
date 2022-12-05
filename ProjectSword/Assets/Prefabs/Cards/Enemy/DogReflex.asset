@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ddf396721bba154bad7e96795fda272, type: 3}
   m_Name: DogReflex
   m_EditorClassIdentifier: 
-  cardName: 
+  cardName: DogReflex
   description: 
   artWork: {fileID: 0}

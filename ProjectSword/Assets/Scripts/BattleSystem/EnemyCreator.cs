@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyCreator : MonoBehaviour
 {
 
-    public static BattleSystem instance { get; private set; }
+    public static EnemyCreator instance { get; private set; }
     private int RandAttack;
     public GameObject baseEnemy;
     [Space]
@@ -33,8 +33,18 @@ public class EnemyCreator : MonoBehaviour
 
     public void UpdateUnlockedTypes()
     {
-        unlockedAttackType = allAttackType.FindAll(x => x.unlocked && !unlockedAttackType.Contains(x));
-        unlockedNavType = allNavType.FindAll(x => x.unlocked && !unlockedNavType.Contains(x));
+        foreach (AttackStats attac in allAttackType){
+            if (attac.unlocked && !unlockedAttackType.Contains(attac)){
+                unlockedAttackType.Add(attac);
+            }
+        }
+        foreach (NavStats nav in allNavType){
+            if (nav.unlocked && !unlockedNavType.Contains(nav)){
+                unlockedNavType.Add(nav);
+            }
+        }
+        //unlockedAttackType = allAttackType.FindAll(x => x.unlocked && !unlockedAttackType.Contains(x));
+        //unlockedNavType = allNavType.FindAll(x => x.unlocked && !unlockedNavType.Contains(x));
     }
 
     private void AssignAttack(GameObject enemy)

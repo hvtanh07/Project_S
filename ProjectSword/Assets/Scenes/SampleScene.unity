@@ -469,74 +469,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 72065992}
---- !u!1 &35759083
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 35759086}
-  - component: {fileID: 35759084}
-  - component: {fileID: 35759085}
-  m_Layer: 0
-  m_Name: AddDamage (2)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &35759084
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 35759083}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95461b324d5d06a4a90462184dd63df6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  unlocked: 1
-  activated: 0
-  cardInfo: {fileID: 11400000, guid: c672451ca6f351840a06c632fbb94287, type: 2}
-  funcs: []
-  nextUnlockPoint: []
---- !u!114 &35759085
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 35759083}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5801fc3f1d027684cbad55a76c1a6a31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  additionalDamage: 10
-  additionalDashDistance: 0
-  additionalDashSpeed: 0
-  additionalDashHealTime: 0
-  additionalMaxDashs: 0
-  stats: {fileID: 630077349}
---- !u!4 &35759086
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 35759083}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1871551615}
-  m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &41711753
 GameObject:
   m_ObjectHideFlags: 0
@@ -1635,6 +1567,71 @@ PrefabInstance:
       objectReference: {fileID: 736070447}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1cafbf48bbd56ae488a6c1d5c7939261, type: 3}
+--- !u!1 &385690463
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 385690466}
+  - component: {fileID: 385690464}
+  - component: {fileID: 385690465}
+  m_Layer: 0
+  m_Name: AddSpeed 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &385690464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 385690463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95461b324d5d06a4a90462184dd63df6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 1
+  activated: 0
+  cardInfo: {fileID: 11400000, guid: 0409c7efb8afac743b59094e81122aee, type: 2}
+  funcs: []
+  nextUnlockPoint: []
+--- !u!114 &385690465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 385690463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31088313d625e6544b261a9ec4f84b15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  additionalHealth: 0
+  additionalWalkingSpeed: 0
+  stats: {fileID: 630077343}
+--- !u!4 &385690466
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 385690463}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1871551615}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &422144462
 GameObject:
   m_ObjectHideFlags: 0
@@ -1950,71 +1947,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1cafbf48bbd56ae488a6c1d5c7939261, type: 3}
---- !u!1 &467909491
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 467909492}
-  - component: {fileID: 467909494}
-  - component: {fileID: 467909493}
-  m_Layer: 0
-  m_Name: AddSpeed (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &467909492
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 467909491}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1871551615}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &467909493
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 467909491}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31088313d625e6544b261a9ec4f84b15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  additionalHealth: 0
-  additionalWalkingSpeed: 0
-  stats: {fileID: 630077343}
---- !u!114 &467909494
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 467909491}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95461b324d5d06a4a90462184dd63df6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  unlocked: 1
-  activated: 0
-  cardInfo: {fileID: 11400000, guid: 0409c7efb8afac743b59094e81122aee, type: 2}
-  funcs: []
-  nextUnlockPoint: []
 --- !u!1 &501964071
 GameObject:
   m_ObjectHideFlags: 0
@@ -10866,71 +10798,6 @@ Transform:
   m_Father: {fileID: 1286929262}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &647634128
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 647634131}
-  - component: {fileID: 647634129}
-  - component: {fileID: 647634130}
-  m_Layer: 0
-  m_Name: AddHealth (2)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &647634129
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 647634128}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95461b324d5d06a4a90462184dd63df6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  unlocked: 1
-  activated: 0
-  cardInfo: {fileID: 11400000, guid: 37aa8892f60cbd74bb02cb74ce0d7a28, type: 2}
-  funcs: []
-  nextUnlockPoint: []
---- !u!114 &647634130
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 647634128}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31088313d625e6544b261a9ec4f84b15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  additionalHealth: 0
-  additionalWalkingSpeed: 0
-  stats: {fileID: 630077343}
---- !u!4 &647634131
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 647634128}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1871551615}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &686408588
 GameObject:
   m_ObjectHideFlags: 0
@@ -13735,6 +13602,74 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &797664231
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 797664234}
+  - component: {fileID: 797664232}
+  - component: {fileID: 797664233}
+  m_Layer: 0
+  m_Name: AddDamage 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &797664232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 797664231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95461b324d5d06a4a90462184dd63df6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 1
+  activated: 0
+  cardInfo: {fileID: 11400000, guid: c672451ca6f351840a06c632fbb94287, type: 2}
+  funcs: []
+  nextUnlockPoint: []
+--- !u!114 &797664233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 797664231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5801fc3f1d027684cbad55a76c1a6a31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  additionalDamage: 10
+  additionalDashDistance: 0
+  additionalDashSpeed: 0
+  additionalDashHealTime: 0
+  additionalMaxDashs: 0
+  stats: {fileID: 630077349}
+--- !u!4 &797664234
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 797664231}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1871551615}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &799419056
 GameObject:
   m_ObjectHideFlags: 0
@@ -13886,6 +13821,74 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 812089164}
   m_CullTransparentMesh: 1
+--- !u!1 &844628806
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 844628809}
+  - component: {fileID: 844628807}
+  - component: {fileID: 844628808}
+  m_Layer: 0
+  m_Name: AddDashSpeed 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &844628807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 844628806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95461b324d5d06a4a90462184dd63df6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 1
+  activated: 0
+  cardInfo: {fileID: 11400000, guid: 1c0993686434ef9489a3838f6a1d64cf, type: 2}
+  funcs: []
+  nextUnlockPoint: []
+--- !u!114 &844628808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 844628806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5801fc3f1d027684cbad55a76c1a6a31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  additionalDamage: 0
+  additionalDashDistance: 0
+  additionalDashSpeed: 10
+  additionalDashHealTime: 0
+  additionalMaxDashs: 0
+  stats: {fileID: 630077349}
+--- !u!4 &844628809
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 844628806}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1871551615}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &846396530
 GameObject:
   m_ObjectHideFlags: 0
@@ -14120,74 +14123,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &911030234
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 911030235}
-  - component: {fileID: 911030237}
-  - component: {fileID: 911030236}
-  m_Layer: 0
-  m_Name: AddDashSpeed (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &911030235
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 911030234}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1871551615}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &911030236
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 911030234}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5801fc3f1d027684cbad55a76c1a6a31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  additionalDamage: 0
-  additionalDashDistance: 0
-  additionalDashSpeed: 10
-  additionalDashHealTime: 0
-  additionalMaxDashs: 0
-  stats: {fileID: 630077349}
---- !u!114 &911030237
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 911030234}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95461b324d5d06a4a90462184dd63df6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  unlocked: 1
-  activated: 0
-  cardInfo: {fileID: 11400000, guid: 1c0993686434ef9489a3838f6a1d64cf, type: 2}
-  funcs: []
-  nextUnlockPoint: []
 --- !u!1 &924873380
 GameObject:
   m_ObjectHideFlags: 0
@@ -14454,71 +14389,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95461b324d5d06a4a90462184dd63df6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1078448030
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1078448031}
-  - component: {fileID: 1078448033}
-  - component: {fileID: 1078448032}
-  m_Layer: 0
-  m_Name: AddSpeed (2)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1078448031
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1078448030}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1871551615}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1078448032
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1078448030}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31088313d625e6544b261a9ec4f84b15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  additionalHealth: 0
-  additionalWalkingSpeed: 0
-  stats: {fileID: 630077343}
---- !u!114 &1078448033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1078448030}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95461b324d5d06a4a90462184dd63df6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  unlocked: 1
-  activated: 0
-  cardInfo: {fileID: 11400000, guid: 0409c7efb8afac743b59094e81122aee, type: 2}
-  funcs: []
-  nextUnlockPoint: []
 --- !u!1 &1090132936 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 739456599232480797, guid: 1cafbf48bbd56ae488a6c1d5c7939261, type: 3}
@@ -15403,8 +15273,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyCreator: {fileID: 0}
   powerUpManagement: {fileID: 1498583249}
-  numOfEnemyBeforeNextUpgrade: 5
-  numOfKillForNextUpgradeIncrement: 5
+  numOfEnemyBeforeNextUpgrade: 2
+  numOfKillForNextUpgradeIncrement: 2
   maxEnemyOnMap: 6
   killedEnemy: 0
   AllowedToSpawn: 0
@@ -15469,74 +15339,6 @@ MonoBehaviour:
   blockStats: {fileID: 1686582091}
   decoyStats: {fileID: 713196593}
   explodeStats: {fileID: 323056746}
---- !u!1 &1333138272
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1333138273}
-  - component: {fileID: 1333138275}
-  - component: {fileID: 1333138274}
-  m_Layer: 0
-  m_Name: AddDashSpeed (2)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1333138273
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1333138272}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1871551615}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1333138274
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1333138272}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5801fc3f1d027684cbad55a76c1a6a31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  additionalDamage: 0
-  additionalDashDistance: 0
-  additionalDashSpeed: 10
-  additionalDashHealTime: 0
-  additionalMaxDashs: 0
-  stats: {fileID: 630077349}
---- !u!114 &1333138275
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1333138272}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95461b324d5d06a4a90462184dd63df6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  unlocked: 1
-  activated: 0
-  cardInfo: {fileID: 11400000, guid: 1c0993686434ef9489a3838f6a1d64cf, type: 2}
-  funcs: []
-  nextUnlockPoint: []
 --- !u!1001 &1399529088
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16063,6 +15865,7 @@ MonoBehaviour:
   - {fileID: 1180366614}
   - {fileID: 226932654}
   enemyCardList: {fileID: 799419059}
+  enemyCreator: {fileID: 1286929263}
 --- !u!1001 &1513908880
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16763,71 +16566,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1678605593}
   m_CullTransparentMesh: 1
---- !u!1 &1685149308
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1685149309}
-  - component: {fileID: 1685149311}
-  - component: {fileID: 1685149310}
-  m_Layer: 0
-  m_Name: AddHealth (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1685149309
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1685149308}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1871551615}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1685149310
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1685149308}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31088313d625e6544b261a9ec4f84b15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  additionalHealth: 0
-  additionalWalkingSpeed: 0
-  stats: {fileID: 630077343}
---- !u!114 &1685149311
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1685149308}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95461b324d5d06a4a90462184dd63df6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  unlocked: 1
-  activated: 0
-  cardInfo: {fileID: 11400000, guid: 37aa8892f60cbd74bb02cb74ce0d7a28, type: 2}
-  funcs: []
-  nextUnlockPoint: []
 --- !u!1 &1686582089
 GameObject:
   m_ObjectHideFlags: 0
@@ -16981,74 +16719,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1795740025
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1795740028}
-  - component: {fileID: 1795740026}
-  - component: {fileID: 1795740027}
-  m_Layer: 0
-  m_Name: AddDamage (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1795740026
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1795740025}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95461b324d5d06a4a90462184dd63df6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  unlocked: 1
-  activated: 0
-  cardInfo: {fileID: 11400000, guid: c672451ca6f351840a06c632fbb94287, type: 2}
-  funcs: []
-  nextUnlockPoint: []
---- !u!114 &1795740027
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1795740025}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5801fc3f1d027684cbad55a76c1a6a31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  additionalDamage: 10
-  additionalDashDistance: 0
-  additionalDashSpeed: 0
-  additionalDashHealTime: 0
-  additionalMaxDashs: 0
-  stats: {fileID: 630077349}
---- !u!4 &1795740028
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1795740025}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1871551615}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1812946060
 GameObject:
   m_ObjectHideFlags: 0
@@ -17194,6 +16864,71 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1cafbf48bbd56ae488a6c1d5c7939261, type: 3}
+--- !u!1 &1858748064
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1858748067}
+  - component: {fileID: 1858748065}
+  - component: {fileID: 1858748066}
+  m_Layer: 0
+  m_Name: AddHealth 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1858748065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858748064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95461b324d5d06a4a90462184dd63df6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 1
+  activated: 0
+  cardInfo: {fileID: 11400000, guid: 37aa8892f60cbd74bb02cb74ce0d7a28, type: 2}
+  funcs: []
+  nextUnlockPoint: []
+--- !u!114 &1858748066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858748064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31088313d625e6544b261a9ec4f84b15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  additionalHealth: 0
+  additionalWalkingSpeed: 0
+  stats: {fileID: 630077343}
+--- !u!4 &1858748067
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858748064}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1871551615}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1871551613
 GameObject:
   m_ObjectHideFlags: 0
@@ -17228,14 +16963,10 @@ Transform:
   - {fileID: 2047341085}
   - {fileID: 253852963}
   - {fileID: 744327233}
-  - {fileID: 1685149309}
-  - {fileID: 467909492}
-  - {fileID: 1795740028}
-  - {fileID: 911030235}
-  - {fileID: 647634131}
-  - {fileID: 1078448031}
-  - {fileID: 35759086}
-  - {fileID: 1333138273}
+  - {fileID: 1858748067}
+  - {fileID: 385690466}
+  - {fileID: 797664234}
+  - {fileID: 844628809}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -17273,10 +17004,10 @@ MonoBehaviour:
   - {fileID: 2047341083}
   - {fileID: 253852961}
   - {fileID: 744327231}
-  - {fileID: 1795740026}
-  - {fileID: 647634129}
-  - {fileID: 35759084}
-  - {fileID: 35759084}
+  - {fileID: 1858748065}
+  - {fileID: 385690464}
+  - {fileID: 797664232}
+  - {fileID: 844628807}
 --- !u!1 &1875843852
 GameObject:
   m_ObjectHideFlags: 0
