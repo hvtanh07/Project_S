@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: DogReflex
   m_EditorClassIdentifier: 
   cardName: DogReflex
-  description: 
+  description: Dog have 50% chance of Dashing from your you
   artWork: {fileID: 0}
