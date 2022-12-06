@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: ArmorEquiped
   m_EditorClassIdentifier: 
   cardName: Armor Equiped
-  description: All enemies gain 10% health
+  description: All enemies gain +20% health
   artWork: {fileID: 0}

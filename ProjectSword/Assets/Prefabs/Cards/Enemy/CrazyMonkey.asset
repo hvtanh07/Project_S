@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: CrazyMonkey
   m_EditorClassIdentifier: 
   cardName: Crazy Monkey
-  description: Baboom explosion gain 30% size & 50% damage
+  description: Baboom explosion gain +30% size & +50% damage
   artWork: {fileID: 0}

@@ -9,7 +9,7 @@ public class PorcupineAttack : Attack
 
     [Range(0, 3)]
     public int numOfSideProjectiles;
-    public int spreadAngle;
+    public float spreadAngle;
 
     // Update is called once per frame
     public override void Attacking(Vector3 target){

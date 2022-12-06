@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: ScarletCarrot
   m_EditorClassIdentifier: 
   cardName: Scarlet Carrot
-  description: Hare Enemies extra 3 damage & 2 extra attack point
+  description: Hare Enemies deal +25% damage & 2 extra attack point
   artWork: {fileID: 0}

@@ -5,9 +5,9 @@ using UnityEngine;
 public class DefBlockModify : CardFunc
 {
     [SerializeField] BlockStats stats;
-    public float additionalBlockHealTime;
+    public float additionalPercentageBlockHealTime;
     public override void GiveAdditionalStats()
     {
-        stats.blockHealTime += additionalBlockHealTime;
+        stats.blockHealTime += (int)Mathf.Round(stats.blockHealTime*additionalPercentageBlockHealTime);
     }
 }

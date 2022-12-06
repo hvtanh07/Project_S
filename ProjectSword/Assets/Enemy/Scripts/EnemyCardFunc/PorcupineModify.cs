@@ -4,12 +4,15 @@ using UnityEngine;
 public class PorcupineModify : CardFunc
 {
     [SerializeField] PorcupineAttackStats stats;
-    public float additionalForce;
+    public float additionalPercentageHealth;
+    public float additionalPercentageDamage;
     public int additionalNumOfSideProjectiles;
-    public int additionalSpreadAngle;
-    public override void GiveAdditionalStats(){
-        stats.Force += additionalForce;
+    public float additionalPercentageSpreadAngle;
+    public override void GiveAdditionalStats()
+    {
+        stats.health += (int)Mathf.Round(stats.health * additionalPercentageHealth);
+        stats.damage += (int)Mathf.Round(stats.damage * additionalPercentageDamage);
         stats.numOfSideProjectiles += additionalNumOfSideProjectiles;
-        stats.spreadAngle += additionalSpreadAngle;
+        stats.spreadAngle += (int)Mathf.Round(stats.spreadAngle * additionalPercentageSpreadAngle);
     }
 }

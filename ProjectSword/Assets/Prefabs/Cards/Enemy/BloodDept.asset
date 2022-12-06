@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: BloodDept
   m_EditorClassIdentifier: 
   cardName: Blood Dept
-  description: Every enemies when being hit, if not dead will gain 150% DMG
+  description: Every enemies when being hit, if not dead will deal +50% DMG
   artWork: {fileID: 0}

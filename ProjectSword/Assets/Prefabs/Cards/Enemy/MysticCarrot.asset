@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: MysticCarrot
   m_EditorClassIdentifier: 
   cardName: Mystic Carrot
-  description: Hare Enemies Have 10% damage & 2 extra attack point
+  description: Hare Enemies deal +20% damage & 2 extra attack point
   artWork: {fileID: 0}

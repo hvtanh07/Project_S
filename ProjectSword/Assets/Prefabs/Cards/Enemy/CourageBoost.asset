@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: CourageBoost
   m_EditorClassIdentifier: 
   cardName: Courage Boost
-  description: If any enemies able to hit you it will gain 200% damage for each hit
+  description: If any enemies able to hit you it will gain +100% damage for each
+    hit
   artWork: {fileID: 0}

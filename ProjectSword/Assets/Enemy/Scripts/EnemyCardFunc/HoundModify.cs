@@ -5,14 +5,14 @@ using UnityEngine;
 public class HoundModify : CardFunc
 {
     [SerializeField] HoundAttackStats stats;
-    public float AdditionalDashSpeed;
-    public Vector3 dashPoint;
+    public float additionalPercentageHealth;
+    public float additionalPercentageDamage;
+    public float additionalPercentageTimeBetweenAtack;
 
     public override void GiveAdditionalStats()
     {
-        stats.dashSpeed += AdditionalDashSpeed;
-        if(dashPoint != Vector3.zero){
-            stats.patern.Add(dashPoint);
-        }
+        stats.health += (int)Mathf.Round(stats.health*additionalPercentageHealth);
+        stats.damage += (int)Mathf.Round(stats.damage*additionalPercentageDamage);
+        stats.timeBetweenAtack += (int)Mathf.Round(stats.timeBetweenAtack*additionalPercentageTimeBetweenAtack);
     }
 }

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: FullMoon
   m_EditorClassIdentifier: 
   cardName: Full Moon
-  description: Dog Enemies Have +10% damage & -50% attack cooldown
+  description: Dog enemies deal +25% damage & -25% attack cooldown
   artWork: {fileID: 0}

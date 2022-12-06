@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: BigExplosion
   m_EditorClassIdentifier: 
   cardName: Big Explosion
-  description: Explosion damage deal 15% more damage (Baboom , Explosive Arrow, Hare
-    bomb decoy)
+  description: Bomb attack deal +20% more damage
   artWork: {fileID: 0}

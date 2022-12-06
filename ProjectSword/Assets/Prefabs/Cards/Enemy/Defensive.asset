@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Defensive
   m_EditorClassIdentifier: 
   cardName: Defensive
-  description: Porcupine have 50% chance of blocking your attack
+  description: Porcupine and Dog enemies have 50% chance of blocking your attack
   artWork: {fileID: 0}

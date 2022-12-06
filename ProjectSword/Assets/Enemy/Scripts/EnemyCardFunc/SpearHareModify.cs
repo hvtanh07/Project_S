@@ -5,13 +5,14 @@ using UnityEngine;
 public class SpearHareModify : CardFunc
 {
     [SerializeField] SpearHareAttackStats stats;
-    public int additionalDamage;
+    public float additionalPercentageHealth;
+    public float additionalPercentageDamage;
     public float additionalSpotSpreadRange;
-
     public int additionalNumberOfAttackPoint;
     public override void GiveAdditionalStats()
     {
-        stats.damage += additionalDamage;
+        stats.health += (int)Mathf.Round(stats.health*additionalPercentageHealth);
+        stats.damage += (int)Mathf.Round(stats.damage*additionalPercentageDamage);
         stats.spotSpreadRange += additionalSpotSpreadRange;
         stats.numberOfAttackPoint += additionalNumberOfAttackPoint;
     }

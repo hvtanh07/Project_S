@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: SharpenMetal
   m_EditorClassIdentifier: 
   cardName: Sharpen Metal
-  description: Weapon attack dealt 20% more damage (Mousey, Spear Hare, Dogs)
+  description: Attack with weapon deal +20% more damage
   artWork: {fileID: 0}

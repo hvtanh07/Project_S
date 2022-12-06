@@ -9,5 +9,5 @@ public class PorcupineAttackStats : AttackStats
     
     [Range(0, 3)]
     public int numOfSideProjectiles;
-    public int spreadAngle;
+    public float spreadAngle;
 }

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: TrickOrTreat
   m_EditorClassIdentifier: 
   cardName: Trick or Treat
-  description: Hare will use bomb as a decoy detonate after 1 second
+  description: Hare will use bomb as a decoy, detonate after 1 second dealing 5 DMG
   artWork: {fileID: 0}

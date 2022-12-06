@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: BombImunity
   m_EditorClassIdentifier: 
   cardName: Bomb Imunity
-  description: Bomb Damage Reduced 50%
+  description: Bomb Damage taken wil be reduced by 50%
   artWork: {fileID: 0}

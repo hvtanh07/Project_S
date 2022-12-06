@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: BlackLague
   m_EditorClassIdentifier: 
   cardName: Black Lague
-  description: Mousey get 110% health & 110% damage
+  description: Mousey gain +50% health & +60% damage
   artWork: {fileID: 0}

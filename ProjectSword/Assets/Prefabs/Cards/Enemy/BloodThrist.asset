@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: BloodThrist
   m_EditorClassIdentifier: 
   cardName: Blood Thrist
-  description: All enemies gain 10% damage
+  description: All enemies deal +15% damage
   artWork: {fileID: 0}

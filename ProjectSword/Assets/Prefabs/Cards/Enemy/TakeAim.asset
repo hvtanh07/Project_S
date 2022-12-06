@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: TakeAim
   m_EditorClassIdentifier: 
   cardName: Take Aim
-  description: Porcupine spread -10% & +15% damage
+  description: "Porcupine\u2019s arrow spread -10% & +160% damage"
   artWork: {fileID: 0}
